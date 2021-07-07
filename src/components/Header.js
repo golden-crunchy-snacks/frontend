@@ -1,22 +1,41 @@
-// Media
-import logo from "../assets/img/logo.png";
+// Packages
+import { useLocation, Link } from "react-router-dom";
+
+// Components
+import SearchBar from "../components/Home/SearchBar";
 import { FaShoppingBasket } from "react-icons/fa";
 
+// Media
+import logo from "../assets/img/logo.png";
+
 const Header = () => {
+  const location = useLocation();
+
   return (
     <div className="header-container">
       <img src={logo} alt={logo} className="header-logo" />
+
       <div className="header-menu">
-        <div>SHOP</div>
-        <div>CATALOGUE</div>
-        <div>ABOUT US</div>
-        <div>LEGALS</div>
+        <Link
+          to="/"
+          className={location.pathname === "/" && "header-menu-clicked"}
+        >
+          HOME
+        </Link>
+        <Link>SHOP</Link>
+        <Link
+          to="/about"
+          className={location.pathname === "/about" && "header-menu-clicked"}
+        >
+          ABOUT US
+        </Link>
       </div>
+      <SearchBar placeholder="Search for articles..." />
       <div className="header-user">
-        <div>LOGIN</div>
-        <div>
+        <Link>LOGIN</Link>
+        <Link>
           <FaShoppingBasket />
-        </div>
+        </Link>
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Pages
 import Home from "./containers/Home";
+import About from "./containers/About";
 
 // Components
 import Header from "./components/Header";
@@ -15,6 +16,9 @@ function App() {
     <Router>
       <Header />
       <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
         <Route path="/">
           <Home />
         </Route>

@@ -1,5 +1,7 @@
 const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <div className="footer">© 2020 GoldenCrunchy All Rights reserved.</div>
+  );
 };
 
 export default Footer;
