@@ -2,7 +2,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const ArticleCarousel = ({ data, carouselTitle }) => {
+const ArticleCarousel = ({ data, carouselTitle, modalHandle }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -33,7 +33,14 @@ const ArticleCarousel = ({ data, carouselTitle }) => {
       >
         {data.map((article) => {
           return (
-            <div className="carousel-article-container">
+            <div
+              className="carousel-article-container"
+              onClick={() =>
+                modalHandle({
+                  article: article,
+                })
+              }
+            >
               <div className="carousel-article">
                 <img src={article.picture} alt={article.picture} />
                 <h1>{article.title}</h1>

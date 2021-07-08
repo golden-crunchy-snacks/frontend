@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Pages
 import Home from "./containers/Home";
 import About from "./containers/About";
+import Shop from "./containers/Shop";
 
 // Components
 import Header from "./components/Header";
@@ -18,6 +19,9 @@ function App() {
       <Switch>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/shop">
+          <Shop />
         </Route>
         <Route path="/">
           <Home />

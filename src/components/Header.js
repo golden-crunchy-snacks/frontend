@@ -2,7 +2,7 @@
 import { useLocation, Link } from "react-router-dom";
 
 // Components
-import SearchBar from "../components/Home/SearchBar";
+import SearchBar from "./Utility/SearchBar";
 import { FaShoppingBasket } from "react-icons/fa";
 
 // Media
@@ -13,16 +13,20 @@ const Header = () => {
 
   return (
     <div className="header-container">
-      <img src={logo} alt={logo} className="header-logo" />
-
       <div className="header-menu">
+        <img src={logo} alt={logo} className="header-logo" />
         <Link
           to="/"
           className={location.pathname === "/" && "header-menu-clicked"}
         >
           HOME
         </Link>
-        <Link>SHOP</Link>
+        <Link
+          to="/shop"
+          className={location.pathname === "/shop" && "header-menu-clicked"}
+        >
+          SHOP
+        </Link>
         <Link
           to="/about"
           className={location.pathname === "/about" && "header-menu-clicked"}
