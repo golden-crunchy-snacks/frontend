@@ -1,3 +1,6 @@
+// Components
+import Map from "../components/Utility/Map";
+
 const About = () => {
   return (
     <div>
@@ -12,6 +15,10 @@ const About = () => {
         <h1>E-mail:</h1>
         <h2>sales@hfinternationalmarketing.co.uk</h2>
         <h3>Company Registered in England & Wales No: 09829079</h3>
+      </div>
+
+      <div className="map">
+        <Map />
       </div>
     </div>
   );
