@@ -37,7 +37,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 40%;
 }
 
 .header-menu-clicked {
@@ -391,6 +391,61 @@ body::-webkit-scrollbar {
   font-size: 20px;
   top: 30px;
   right: 30px;
+}
+
+/* Login & Signup */
+
+.credentials-form {
+  margin: 30px auto;
+  padding: 40px;
+  width: 30%;
+  height: 50vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.credentials-form button {
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 15px 10px 15px;
+  width: 80%;
+  border-radius: 1 0px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.credentials-form > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+}
+
+.credentials-form > h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.credentials-form a {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.credentials-form a:hover {
+  color: #e20114;
+}
+
+.credentials-form input {
+  margin: 10px 0 30px 0;
+  padding: 5px;
+  width: 75%;
 }
 
 /* RESPONSIVE */

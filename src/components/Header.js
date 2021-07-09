@@ -36,7 +36,12 @@ const Header = () => {
       </div>
       <SearchBar placeholder="Search for articles..." />
       <div className="header-user">
-        <Link>LOGIN</Link>
+        <Link
+          to="/login"
+          className={location.pathname === "/" && "header-menu-clicked"}
+        >
+          LOGIN
+        </Link>
         <Link>
           <FaShoppingBasket />
         </Link>
