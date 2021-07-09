@@ -38,11 +38,18 @@ const Header = () => {
       <div className="header-user">
         <Link
           to="/login"
-          className={location.pathname === "/login" && "header-menu-clicked"}
+          className={
+            (location.pathname === "/login" ||
+              location.pathname === "/signup") &&
+            "header-menu-clicked"
+          }
         >
           LOGIN
         </Link>
-        <Link>
+        <Link
+          to="/basket"
+          className={location.pathname === "/basket" && "header-menu-clicked"}
+        >
           <FaShoppingBasket />
         </Link>
       </div>

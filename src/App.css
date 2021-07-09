@@ -176,7 +176,7 @@ body::-webkit-scrollbar {
   width: 100%;
   border-radius: 1 0px;
   cursor: pointer;
-  z-index: 10;
+  z-index: 20;
 }
 
 /* About */
@@ -446,6 +446,46 @@ body::-webkit-scrollbar {
   margin: 10px 0 30px 0;
   padding: 5px;
   width: 75%;
+}
+
+/* Basket */
+
+.basket-container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.basket-sub-container {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.basket-sub-container > h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.basket-sub-container > h2 {
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.basket-list-container {
+  display: flex;
+}
+
+.total-container {
+  width: 30%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* RESPONSIVE */

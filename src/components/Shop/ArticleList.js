@@ -1,4 +1,4 @@
-const ArticleList = ({ data, filter, modalHandle }) => {
+const ArticleList = ({ data, filter, modalHandle, setBasket, userBasket }) => {
   return (
     <div className="article-list-container">
       <div
@@ -19,7 +19,18 @@ const ArticleList = ({ data, filter, modalHandle }) => {
               <img src={article.picture} alt={article.picture} />
               <h1>{article.title}</h1>
               <h2>£ {article.price.toFixed(2)}</h2>
-              <button>ADD TO CART</button>
+              <button
+                onClick={() =>
+                  setBasket({
+                    picture: article.picture,
+                    title: article.title,
+                    price: article.price.toFixed(2),
+                    quantity: 1,
+                  })
+                }
+              >
+                ADD TO CART
+              </button>
             </div>
           ) : (
             filter.indexOf(article.category) !== -1 && (
@@ -27,7 +38,18 @@ const ArticleList = ({ data, filter, modalHandle }) => {
                 <img src={article.picture} alt={article.picture} />
                 <h1>{article.title}</h1>
                 <h2>£ {article.price.toFixed(2)}</h2>
-                <button>ADD TO CART</button>
+                <button
+                  onClick={() =>
+                    setBasket({
+                      picture: article.picture,
+                      title: article.title,
+                      price: article.price.toFixed(2),
+                      quantity: 1,
+                    })
+                  }
+                >
+                  ADD TO CART
+                </button>
               </div>
             )
           );

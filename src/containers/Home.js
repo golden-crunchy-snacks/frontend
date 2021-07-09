@@ -9,7 +9,7 @@ import ArticleModal from "../components/Shop/ArticleModal";
 // Temporary Catalogue
 import temporaryCatalogue from "../assets/temporary-catalogue.json";
 
-const Home = () => {
+const Home = ({ setBasket, userBasket }) => {
   // States
   const [modalInfo, setModalInfo] = useState();
   const [modal, setModal] = useState(false);
@@ -30,13 +30,24 @@ const Home = () => {
         data={data}
         carouselTitle="BESTSELLERS"
         modalHandle={modalHandle}
+        setBasket={setBasket}
+        userBasket={userBasket}
       />
       <ArticleCarousel
         data={data}
         carouselTitle="OUR SELECTION OF NUT BARS"
         modalHandle={modalHandle}
+        setBasket={setBasket}
+        userBasket={userBasket}
       />
-      {modal && <ArticleModal data={modalInfo} onX={() => setModal(false)} />}
+      {modal && (
+        <ArticleModal
+          data={modalInfo}
+          onX={() => setModal(false)}
+          setBasket={setBasket}
+          userBasket={userBasket}
+        />
+      )}
     </div>
   );
 };

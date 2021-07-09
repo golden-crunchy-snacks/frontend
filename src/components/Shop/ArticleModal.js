@@ -1,7 +1,7 @@
 // Components
 import { ImCross } from "react-icons/im";
 
-const ArticleModal = ({ data, onX }) => {
+const ArticleModal = ({ data, onX, setBasket, userBasket }) => {
   return (
     <div className="article-modal">
       <div className="article-modal-container">
@@ -17,7 +17,18 @@ const ArticleModal = ({ data, onX }) => {
             ipsam dignissimos earum, minima deserunt?
           </h2>
           <h3>£ {data.price.toFixed(2)}</h3>
-          <button className="">ADD TO CART</button>
+          <button
+            onClick={() =>
+              setBasket({
+                picture: data.picture,
+                title: data.title,
+                price: data.price.toFixed(2),
+                quantity: 1,
+              })
+            }
+          >
+            ADD TO CART
+          </button>
         </div>
         <ImCross className="x-icon" onClick={onX} />
       </div>

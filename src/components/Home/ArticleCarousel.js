@@ -2,7 +2,13 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const ArticleCarousel = ({ data, carouselTitle, modalHandle }) => {
+const ArticleCarousel = ({
+  data,
+  carouselTitle,
+  modalHandle,
+  setBasket,
+  userBasket,
+}) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -45,7 +51,18 @@ const ArticleCarousel = ({ data, carouselTitle, modalHandle }) => {
                 <img src={article.picture} alt={article.picture} />
                 <h1>{article.title}</h1>
                 <h2>£ {article.price.toFixed(2)}</h2>
-                <button>ADD TO CART</button>
+                <button
+                  onClick={() =>
+                    setBasket({
+                      picture: article.picture,
+                      title: article.title,
+                      price: article.price.toFixed(2),
+                      quantity: 1,
+                    })
+                  }
+                >
+                  ADD TO CART
+                </button>
               </div>
             </div>
           );

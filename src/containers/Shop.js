@@ -8,7 +8,7 @@ import ArticleList from "../components/Shop/ArticleList";
 import temporaryCatalogue from "../assets/temporary-catalogue.json";
 import ArticleModal from "../components/Shop/ArticleModal";
 
-const Shop = () => {
+const Shop = ({ setBasket, userBasket, cookieBasket }) => {
   const data = temporaryCatalogue.catalogue;
   // States
   const [searchValue, setSearchValue] = useState("");
@@ -78,7 +78,7 @@ const Shop = () => {
         <form className="shop-categories">
           {categories.categories.map((category) => {
             return (
-              <label>
+              <label key={category.title}>
                 <input
                   type="checkbox"
                   name={category.title}
@@ -92,8 +92,21 @@ const Shop = () => {
           })}
         </form>
       </div>
-      <ArticleList data={data} filter={filter} modalHandle={modalHandle} />
-      {modal && <ArticleModal data={modalInfo} onX={() => setModal(false)} />}
+      <ArticleList
+        data={data}
+        filter={filter}
+        modalHandle={modalHandle}
+        setBasket={setBasket}
+        userBasket={userBasket}
+      />
+      {modal && (
+        <ArticleModal
+          data={modalInfo}
+          onX={() => setModal(false)}
+          setBasket={setBasket}
+          userBasket={userBasket}
+        />
+      )}
     </div>
   );
 };
