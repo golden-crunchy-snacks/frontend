@@ -39,16 +39,17 @@ const ArticleCarousel = ({
       >
         {data.map((article) => {
           return (
-            <div
-              className="carousel-article-container"
-              onClick={() =>
-                modalHandle({
-                  article: article,
-                })
-              }
-            >
+            <div className="carousel-article-container">
               <div className="carousel-article">
-                <img src={article.picture} alt={article.picture} />
+                <img
+                  src={article.picture}
+                  alt={article.picture}
+                  onClick={() =>
+                    modalHandle({
+                      article: article,
+                    })
+                  }
+                />
                 <h1>{article.title}</h1>
                 <h2>£ {article.price.toFixed(2)}</h2>
                 <button

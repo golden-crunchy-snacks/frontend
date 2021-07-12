@@ -8,7 +8,8 @@ import { FaShoppingBasket } from "react-icons/fa";
 // Media
 import logo from "../assets/img/logo.png";
 
-const Header = () => {
+const Header = ({ userBasket }) => {
+  const basket = JSON.parse(userBasket);
   const location = useLocation();
 
   return (
@@ -31,10 +32,12 @@ const Header = () => {
           to="/about"
           className={location.pathname === "/about" && "header-menu-clicked"}
         >
-          ABOUT US
+          ABOUT
         </Link>
       </div>
-      <SearchBar placeholder="Search for articles..." />
+      {location.pathname !== "/shop" && (
+        <SearchBar placeholder="Search for articles..." />
+      )}
       <div className="header-user">
         <Link
           to="/login"
@@ -50,7 +53,16 @@ const Header = () => {
           to="/basket"
           className={location.pathname === "/basket" && "header-menu-clicked"}
         >
-          <FaShoppingBasket />
+          <div
+            className={
+              location.pathname === "/basket"
+                ? "header-menu-clicked header-basket"
+                : "header-basket"
+            }
+          >
+            <FaShoppingBasket />
+            <div className="header-basket-counter">{basket.length}</div>
+          </div>
         </Link>
       </div>
     </div>

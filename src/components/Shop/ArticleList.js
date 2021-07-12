@@ -7,16 +7,16 @@ const ArticleList = ({ data, filter, modalHandle, setBasket, userBasket }) => {
       >
         {data.map((article, index) => {
           return filter.length === 0 ? (
-            <div
-              className="article-list"
-              key={index}
-              onClick={() =>
-                modalHandle({
-                  article: article,
-                })
-              }
-            >
-              <img src={article.picture} alt={article.picture} />
+            <div className="article-list" key={index}>
+              <img
+                src={article.picture}
+                alt={article.picture}
+                onClick={() =>
+                  modalHandle({
+                    article: article,
+                  })
+                }
+              />
               <h1>{article.title}</h1>
               <h2>£ {article.price.toFixed(2)}</h2>
               <button
@@ -35,7 +35,15 @@ const ArticleList = ({ data, filter, modalHandle, setBasket, userBasket }) => {
           ) : (
             filter.indexOf(article.category) !== -1 && (
               <div className="article-list" key={index}>
-                <img src={article.picture} alt={article.picture} />
+                <img
+                  src={article.picture}
+                  alt={article.picture}
+                  onClick={() =>
+                    modalHandle({
+                      article: article,
+                    })
+                  }
+                />
                 <h1>{article.title}</h1>
                 <h2>£ {article.price.toFixed(2)}</h2>
                 <button

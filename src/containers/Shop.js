@@ -9,7 +9,8 @@ import temporaryCatalogue from "../assets/temporary-catalogue.json";
 import ArticleModal from "../components/Shop/ArticleModal";
 
 const Shop = ({ setBasket, userBasket, cookieBasket }) => {
-  const data = temporaryCatalogue.catalogue;
+  const temporaryData = temporaryCatalogue.catalogue;
+  const [data, setData] = useState(temporaryData);
   // States
   const [searchValue, setSearchValue] = useState("");
   const [searchVisibility, setSearchVisibility] = useState(false);
@@ -33,6 +34,20 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
   const searchHandle = (e) => {
     setSearchValue(e.target.value);
     setSearchVisibility(true);
+    if (e.target.value === "") {
+      setData(temporaryData);
+    } else {
+      const newData = [];
+      for (let i = 0; i < data.length; i++) {
+        if (
+          data[i].title.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+        ) {
+          newData.push(data[i]);
+        }
+        setData(newData);
+      }
+      setData(newData);
+    }
   };
 
   // Search Click Handle
@@ -40,14 +55,15 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     setSearchValue(e.target.innerText);
     setSearchVisibility(false);
 
-    // const filterCategory = [...filter];
-    // filterCategory.splice(
-    //   filterCategory.findIndex((x) => x.search !== -1),
-    //   1
-    // );
-    // filterCategory.push({ search: e.target.innerText });
-    // setFilter(filterCategory);
-    console.log(filter);
+    const newData = [];
+    for (let i = 0; i < data.length; i++) {
+      if (
+        data[i].title.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+      ) {
+        newData.push(data[i]);
+      }
+    }
+    setData(newData);
   };
 
   // Modal Info Handle
