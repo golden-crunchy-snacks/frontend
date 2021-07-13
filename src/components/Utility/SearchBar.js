@@ -24,10 +24,7 @@ const SearchBar = ({
       ) : (
         <div className="search-bar-list">
           {data.map((article) => {
-            return (
-              article.title.toLowerCase().search(value.toLowerCase()) !==
-                -1 && <div onClick={onClick}>{article.title}</div>
-            );
+            return <div onClick={onClick}>{article.title}</div>;
           })}
         </div>
       )}

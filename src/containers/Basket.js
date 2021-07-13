@@ -25,11 +25,18 @@ const Basket = ({
     return sum.toFixed(2);
   };
 
-  return (
+  return basket === null ? (
     <div className="basket-container">
       <div className="basket-sub-container">
         <h1>BASKET</h1>
-        <h2>Your basket contains {basket ? basket.length : 0} items</h2>
+        <h2>Your basket contains 0 items</h2>
+      </div>
+    </div>
+  ) : (
+    <div className="basket-container">
+      <div className="basket-sub-container">
+        <h1>BASKET</h1>
+        <h2>Your basket contains {basket.length} items</h2>
 
         <div className="basket-list-container">
           {basket &&

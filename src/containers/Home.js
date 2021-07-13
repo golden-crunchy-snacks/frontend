@@ -1,21 +1,36 @@
 // Packages
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // Components
 import ArticleCarousel from "../components/Home/ArticleCarousel";
 import Hero from "../components/Home/Hero";
 import ArticleModal from "../components/Shop/ArticleModal";
-
-// Temporary Catalogue
-import temporaryCatalogue from "../assets/temporary-catalogue.json";
+import Loader from "../components/Utility/Loader";
 
 const Home = ({ setBasket, userBasket }) => {
   // States
   const [modalInfo, setModalInfo] = useState();
   const [modal, setModal] = useState(false);
+  const [data, setData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Catalogue data source
-  const data = temporaryCatalogue.catalogue;
+  // Get articles
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/articles`
+        );
+
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  });
 
   // Modal Info Handle
   const modalHandle = (props) => {
@@ -23,7 +38,9 @@ const Home = ({ setBasket, userBasket }) => {
     setModalInfo(props.article);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className="home">
       <Hero />
       <ArticleCarousel

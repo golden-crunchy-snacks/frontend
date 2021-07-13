@@ -1,27 +1,88 @@
 // Packages
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 // Components
 import SearchBar from "../components/Utility/SearchBar";
-import categories from "../assets/categories.json";
 import ArticleList from "../components/Shop/ArticleList";
-import temporaryCatalogue from "../assets/temporary-catalogue.json";
 import ArticleModal from "../components/Shop/ArticleModal";
+import Loader from "../components/Utility/Loader";
 
 const Shop = ({ setBasket, userBasket, cookieBasket }) => {
-  const temporaryData = temporaryCatalogue.catalogue;
-  const [data, setData] = useState(temporaryData);
   // States
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
   const [searchValue, setSearchValue] = useState("");
   const [searchVisibility, setSearchVisibility] = useState(false);
   const [modal, setModal] = useState(false);
   const [filter, setFilter] = useState([]);
   const [modalInfo, setModalInfo] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+  // Get inital articles
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/articles`
+        );
+
+        setData(response.data);
+        setFilteredData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Get categories
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/categories`
+        );
+
+        setCategories(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // Search Handle
+  const searchHandle = (e) => {
+    setSearchVisibility(true);
+    setSearchValue(e.target.value);
+    let value = e.target.value.toLowerCase();
+    let result = [];
+    result = data.filter((data) => {
+      return data.title.toLowerCase().search(value) !== -1;
+    });
+    setFilteredData(result);
+  };
+
+  // Search Click Handle
+  const searchClickHandle = (e) => {
+    setSearchValue(e.target.innerText);
+    setSearchVisibility(false);
+    let value = e.target.innerText.toLowerCase();
+    let result = [];
+    result = data.filter((data) => {
+      return data.title.toLowerCase().search(value) !== -1;
+    });
+    setFilteredData(result);
+  };
 
   // Category filter function
   const filterHandle = (e) => {
     const filterCategory = [...filter];
-
+    console.log(e.target.name);
     if (filterCategory.indexOf(e.target.name) === -1) {
       filterCategory.push(e.target.name);
     } else {
@@ -30,55 +91,21 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     setFilter(filterCategory);
   };
 
-  // Search Handle
-  const searchHandle = (e) => {
-    setSearchValue(e.target.value);
-    setSearchVisibility(true);
-    if (e.target.value === "") {
-      setData(temporaryData);
-    } else {
-      const newData = [];
-      for (let i = 0; i < data.length; i++) {
-        if (
-          data[i].title.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
-        ) {
-          newData.push(data[i]);
-        }
-        setData(newData);
-      }
-      setData(newData);
-    }
-  };
-
-  // Search Click Handle
-  const searchClickHandle = (e) => {
-    setSearchValue(e.target.innerText);
-    setSearchVisibility(false);
-
-    const newData = [];
-    for (let i = 0; i < data.length; i++) {
-      if (
-        data[i].title.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
-      ) {
-        newData.push(data[i]);
-      }
-    }
-    setData(newData);
-  };
-
   // Modal Info Handle
   const modalHandle = (props) => {
     setModal(true);
     setModalInfo(props.article);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div>
       <div className="shop-search-container">
         <h1>WHAT SNACK ARE YOU LOOKING FOR ?</h1>
         <SearchBar
           placeholder="Search for articles..."
-          data={data}
+          data={filteredData}
           onChange={(e) => {
             searchHandle(e);
           }}
@@ -92,7 +119,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
       <div className="shop-categories-container">
         <h1>CATEGORIES</h1>
         <form className="shop-categories">
-          {categories.categories.map((category) => {
+          {categories.map((category) => {
             return (
               <label key={category.title}>
                 <input
@@ -109,7 +136,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
         </form>
       </div>
       <ArticleList
-        data={data}
+        data={filteredData}
         filter={filter}
         modalHandle={modalHandle}
         setBasket={setBasket}

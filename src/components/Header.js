@@ -2,7 +2,6 @@
 import { useLocation, Link } from "react-router-dom";
 
 // Components
-import SearchBar from "./Utility/SearchBar";
 import { FaShoppingBasket } from "react-icons/fa";
 
 // Media
@@ -35,9 +34,7 @@ const Header = ({ userBasket }) => {
           ABOUT
         </Link>
       </div>
-      {location.pathname !== "/shop" && (
-        <SearchBar placeholder="Search for articles..." />
-      )}
+
       <div className="header-user">
         <Link
           to="/login"
@@ -47,7 +44,7 @@ const Header = ({ userBasket }) => {
             "header-menu-clicked"
           }
         >
-          LOGIN
+          {location.pathname === "/signup" ? "SIGNUP" : "LOGIN"}
         </Link>
         <Link
           to="/basket"

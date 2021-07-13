@@ -3,7 +3,7 @@ import "./App.css";
 // Packages
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Pages
 import Home from "./containers/Home";
@@ -23,12 +23,14 @@ function App() {
   // States
   const [alertModal, setAlertModal] = useState(false);
   const [alertModalMessage, setAlertModalMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [userToken, setUserToken] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   // Basket
   const [userBasket, setUserBasket] = useState(
     Cookies.get("userBasket") || null
   );
-
   const setBasket = (basket) => {
     if (basket) {
       if (userBasket) {
@@ -109,7 +111,38 @@ function App() {
     }
   };
 
-  return (
+  // Function for creating or deleting Cookies and State Token and Id:
+  const setTokenAndId = async (token, id) => {
+    if (id) {
+      await Cookies.set("userId", id);
+    } else {
+      await Cookies.remove("userId");
+    }
+    if (token) {
+      await Cookies.set("userToken", token);
+    } else {
+      await Cookies.remove("userToken");
+    }
+
+    setUserId(id);
+    setUserToken(token);
+  };
+
+  // useEffect for, on app loading, look for cookie token, call the function and stop isLoading
+  useEffect(() => {
+    const bootstrapAsync = async () => {
+      const userToken = await Cookies.get("userToken");
+      const userId = await Cookies.get("userId");
+      setUserId(userId);
+      setUserToken(userToken);
+
+      setIsLoading(false);
+    };
+
+    bootstrapAsync();
+  }, []);
+
+  return isLoading ? null : (
     <Router>
       <Header userBasket={userBasket} />
       <AlertModal
@@ -130,10 +163,10 @@ function App() {
           />
         </Route>
         <Route path="/signup">
-          <Signup />
+          <Signup setTokenAndId={setTokenAndId} />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login setTokenAndId={setTokenAndId} />
         </Route>
         <Route path="/about">
           <About />
