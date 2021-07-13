@@ -24,7 +24,7 @@ const Signup = ({ setTokenAndId }) => {
       if (password === confirmPassword) {
         try {
           const response = await axios.post(
-            "https://summit-reacteur.herokuapp.com/api/users/signup",
+            "https://golden-crunchy-snacks.herokuapp.com/users/signup",
             { email, password }
           );
 
