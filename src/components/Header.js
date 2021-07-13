@@ -61,7 +61,9 @@ const Header = ({ userBasket }) => {
             }
           >
             <FaShoppingBasket />
-            <div className="header-basket-counter">{basket.length}</div>
+            <div className="header-basket-counter">
+              {basket ? basket.length : "0"}
+            </div>
           </div>
         </Link>
       </div>
