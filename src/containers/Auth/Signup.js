@@ -75,7 +75,7 @@ const Signup = ({ setTokenAndId }) => {
       </div>
 
       <div>
-        <button onClick={() => handleSubmit()}>Signup</button>
+        <button>Signup</button>
         <Link to="/login">Already have an account ? Login here</Link>
       </div>
     </div>
