@@ -12,6 +12,7 @@ import Shop from "./containers/Shop";
 import Login from "./containers/Auth/Login";
 import Signup from "./containers/Auth/Signup";
 import Basket from "./containers/Basket";
+import Checkout from "./containers/Payment/Checkout";
 
 // Components
 import Header from "./components/Header";
@@ -117,6 +118,9 @@ function App() {
         setAlertModal={setAlertModal}
       />
       <Switch>
+        <Route path="/checkout">
+          <Checkout />
+        </Route>
         <Route path="/basket">
           <Basket
             setBasket={setBasket}
