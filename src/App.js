@@ -13,6 +13,7 @@ import Login from "./containers/Auth/Login";
 import Signup from "./containers/Auth/Signup";
 import Basket from "./containers/Basket";
 import Checkout from "./containers/Payment/Checkout";
+import Account from "./containers/Auth/Account";
 
 // Components
 import Header from "./components/Header";
@@ -144,7 +145,7 @@ function App() {
 
   return isLoading ? null : (
     <Router>
-      <Header userBasket={userBasket} />
+      <Header userBasket={userBasket} userToken={userToken} />
       <AlertModal
         alertModal={alertModal}
         alertModalMessage={alertModalMessage}
@@ -152,7 +153,7 @@ function App() {
       />
       <Switch>
         <Route path="/checkout">
-          <Checkout />
+          <Checkout userId={userId} />
         </Route>
         <Route path="/basket">
           <Basket
@@ -161,6 +162,9 @@ function App() {
             removeBasketQuantity={removeBasketQuantity}
             removeBasketItem={removeBasketItem}
           />
+        </Route>
+        <Route path="/account">
+          <Account setTokenAndId={setTokenAndId} />
         </Route>
         <Route path="/signup">
           <Signup setTokenAndId={setTokenAndId} />

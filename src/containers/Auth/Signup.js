@@ -2,22 +2,26 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // Components
 import errorMessages from "../../assets/lang/errorMessages.json";
 
 const Signup = ({ setTokenAndId }) => {
+  const history = useHistory();
+
   // Input content
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  console.log(email, password, confirmPassword);
 
   // Error message
   const [errorMessage, setErrorMessage] = useState();
 
   //   On form submit
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async () => {
     // All inputs must be filled
     if (email && password && confirmPassword) {
       // Passwords must be identical
@@ -25,11 +29,13 @@ const Signup = ({ setTokenAndId }) => {
         try {
           const response = await axios.post(
             "https://golden-crunchy-snacks.herokuapp.com/users/signup",
-            { email, password }
+            { email: email, password: password }
           );
 
           if (response.data.token) {
             setTokenAndId(response.data.token, response.data.id);
+            setErrorMessage();
+            history.push("/");
           }
         } catch (e) {
           setErrorMessage(e.response.data.error);
@@ -49,17 +55,15 @@ const Signup = ({ setTokenAndId }) => {
         <input
           type="email"
           placeholder="Enter your email address"
-          onChange={(text) => {
-            setEmail(text);
-          }}
+          onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <h2>Password</h2>
         <input
           type="password"
           placeholder="Enter your password"
-          onChange={(text) => {
-            setPassword(text);
+          onChange={(e) => {
+            setPassword(e.target.value);
           }}
           value={password}
         />
@@ -67,15 +71,18 @@ const Signup = ({ setTokenAndId }) => {
         <input
           type="password"
           placeholder="Confirm your password"
-          onChange={(text) => {
-            setConfirmPassword(text);
+          onChange={(e) => {
+            setConfirmPassword(e.target.value);
           }}
           value={confirmPassword}
         />
       </div>
 
-      <div>
-        <button>Signup</button>
+      <div className="credentials-form-button">
+        {errorMessage !== "" && (
+          <div className="error-message">{errorMessage}</div>
+        )}
+        <button onClick={() => handleSubmit()}>Signup</button>
         <Link to="/login">Already have an account ? Login here</Link>
       </div>
     </div>

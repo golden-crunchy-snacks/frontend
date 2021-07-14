@@ -87,9 +87,9 @@ body::-webkit-scrollbar {
 
 .header-user {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 120px;
+  width: 180px;
 }
 
 .header-basket {
@@ -191,12 +191,12 @@ body::-webkit-scrollbar {
 /* Carousel */
 
 .carousel > h1 {
-  margin: 35px 0 15px 20px;
+  margin: 35px 0 15px 30px;
   font-size: 22px;
 }
 
 .carousel-container {
-  margin: 0 10px;
+  margin: 0 20px;
 }
 
 .carousel-article-container {
@@ -463,13 +463,13 @@ body::-webkit-scrollbar {
   margin: 30px auto;
   padding: 40px;
   width: 30%;
-  height: 50vh;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+  position: relative;
 }
 
 .credentials-form button {
@@ -494,7 +494,11 @@ body::-webkit-scrollbar {
 
 .credentials-form > h1 {
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.credentials-form h2 {
+  margin-top: 10px;
 }
 
 .credentials-form a {
@@ -507,9 +511,21 @@ body::-webkit-scrollbar {
 }
 
 .credentials-form input {
-  margin: 10px 0 30px 0;
+  margin: 10px 0 20px 0;
   padding: 5px;
   width: 75%;
+}
+
+.error-message {
+  position: absolute;
+  top: 0;
+  color: #e20114;
+  font-style: italic;
+}
+
+.credentials-form-button {
+  position: relative;
+  padding-top: 30px;
 }
 
 /* Basket */
