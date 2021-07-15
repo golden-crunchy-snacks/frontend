@@ -173,7 +173,7 @@ function App() {
           />
         </Route>
         <Route path="/account">
-          <Account setTokenAndId={setTokenAndId} />
+          <Account setTokenAndId={setTokenAndId} userId={userId} />
         </Route>
         <Route path="/signup">
           <Signup setTokenAndId={setTokenAndId} />

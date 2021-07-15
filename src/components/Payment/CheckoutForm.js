@@ -65,7 +65,7 @@ const CheckoutForm = ({ userId, basket, setBasket }) => {
       const cardElement = elements.getElement(CardElement);
 
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: userId ? userId : `${firstName} ${lastName}`,
+        name: `${firstName} ${lastName}`,
       });
       console.log(stripeResponse);
 
