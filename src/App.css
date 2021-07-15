@@ -30,6 +30,10 @@ body::-webkit-scrollbar {
   margin: 10px 0;
 }
 
+.margin-top {
+  margin-top: 20px;
+}
+
 .loader {
   position: absolute;
   z-index: 5000;
@@ -684,6 +688,114 @@ body::-webkit-scrollbar {
   font-size: 14px;
   margin-left: 10px;
   cursor: pointer;
+}
+
+/* Checkout */
+
+.payment {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.payment-container {
+  position: relative;
+  width: 50%;
+  background-color: white;
+  border-radius: 5px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-container > h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.payment-container > h2 {
+  font-size: 14px;
+  margin-bottom: 25px;
+  color: grey;
+  font-style: italic;
+}
+
+.shipping-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.shipping-form > label {
+  display: flex;
+  flex-direction: column;
+}
+
+.shipping-form input {
+  margin-bottom: 15px;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.shipping-form > label:nth-child(1) {
+  width: 100%;
+}
+
+.shipping-form > label:nth-child(2),
+.shipping-form > label:nth-child(3),
+.shipping-form > label:nth-child(4),
+.shipping-form > label:nth-child(5) {
+  width: 47%;
+}
+
+.shipping-form > label:nth-child(6),
+.shipping-form > label:nth-child(7),
+.shipping-form > label:nth-child(8) {
+  width: 30%;
+}
+
+.payment-form {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.payment-form-error-message {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #e20114;
+  font-style: italic;
+}
+
+/* Succes */
+
+.success-container {
+  margin: 0 auto;
+  padding: 25px;
+  background-color: white;
+  border-radius: 5px;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-container > h1 {
+  color: rgba(38, 166, 91, 1);
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.success-container > p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: grey;
+  width: 60%;
+  text-align: center;
+  line-height: 18px;
 }
 
 /* RESPONSIVE */

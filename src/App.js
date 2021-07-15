@@ -12,8 +12,9 @@ import Shop from "./containers/Shop";
 import Login from "./containers/Auth/Login";
 import Signup from "./containers/Auth/Signup";
 import Basket from "./containers/Basket";
-import Checkout from "./containers/Payment/Checkout";
+import Payment from "./containers/Payment/Payment";
 import Account from "./containers/Auth/Account";
+import Success from "./containers/Payment/Success";
 
 // Components
 import Header from "./components/Header";
@@ -152,8 +153,15 @@ function App() {
         setAlertModal={setAlertModal}
       />
       <Switch>
-        <Route path="/checkout">
-          <Checkout userId={userId} />
+        <Route path="/success">
+          <Success />
+        </Route>
+        <Route path="/payment">
+          <Payment
+            userBasket={userBasket}
+            setBasket={setBasket}
+            userId={userId}
+          />
         </Route>
         <Route path="/basket">
           <Basket
@@ -161,6 +169,7 @@ function App() {
             userBasket={userBasket}
             removeBasketQuantity={removeBasketQuantity}
             removeBasketItem={removeBasketItem}
+            userId={userId}
           />
         </Route>
         <Route path="/account">

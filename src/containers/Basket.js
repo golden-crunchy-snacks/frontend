@@ -1,3 +1,6 @@
+// Packages
+import { useHistory } from "react-router-dom";
+
 // Components
 import QuantityCounter from "../components/Utility/QuantityCounter";
 
@@ -6,8 +9,10 @@ const Basket = ({
   userBasket,
   removeBasketQuantity,
   removeBasketItem,
+  userId,
 }) => {
   const basket = JSON.parse(userBasket);
+  const history = useHistory();
 
   // Function to calculate article  total
   const articleTotal = (price, quantity) => {
@@ -108,8 +113,29 @@ const Basket = ({
             <span>Total :</span>
             <span>£ {orderTotal()}</span>
           </h3>
-          <button className="default-button">Guest Checkout</button>
-          <button className="default-button">Login</button>
+          {userId ? (
+            <button
+              className="default-button"
+              onClick={() => history.push("/payment")}
+            >
+              Checkout
+            </button>
+          ) : (
+            <>
+              <button
+                className="default-button"
+                onClick={() => history.push("/payment")}
+              >
+                Guest Checkout
+              </button>
+              <button
+                className="default-button"
+                onClick={() => history.push("/login")}
+              >
+                Login
+              </button>{" "}
+            </>
+          )}
         </div>
       )}
     </div>
