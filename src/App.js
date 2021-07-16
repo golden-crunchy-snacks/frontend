@@ -146,7 +146,11 @@ function App() {
 
   return isLoading ? null : (
     <Router>
-      <Header userBasket={userBasket} userToken={userToken} />
+      <Header
+        userBasket={userBasket}
+        userToken={userToken}
+        setTokenAndId={setTokenAndId}
+      />
       <AlertModal
         alertModal={alertModal}
         alertModalMessage={alertModalMessage}

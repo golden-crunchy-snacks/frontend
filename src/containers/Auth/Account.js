@@ -1,22 +1,23 @@
 // Packages
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
 // Components
 import Loader from "../../components/Utility/Loader";
+import Order from "../../components/Account/Order";
+import OrderModal from "../../components/Account/OrderModal";
 
-const Account = ({ setTokenAndId, userId }) => {
-  const history = useHistory();
-
+const Account = ({ userId }) => {
   // States
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [modalInfo, setModalInfo] = useState();
+  const [modal, setModal] = useState(false);
 
-  // Logout Handle
-  const handleLogout = () => {
-    setTokenAndId();
-    history.push("/");
+  // Modal Info Handle
+  const modalHandle = (props) => {
+    setModalInfo(props.order);
+    setModal(true);
   };
 
   // Get user orders
@@ -41,17 +42,8 @@ const Account = ({ setTokenAndId, userId }) => {
     <Loader />
   ) : (
     <div>
-      Account
-      <div>
-        {data
-          ? data.map((order) => {
-              return <div>{order._id}</div>;
-            })
-          : "No orders"}
-      </div>
-      <div>
-        <button onClick={() => handleLogout()}>LOGOUT</button>
-      </div>
+      <Order data={data} modalHandle={modalHandle} />
+      {modal && <OrderModal data={modalInfo} onX={() => setModal(false)} />}
     </div>
   );
 };

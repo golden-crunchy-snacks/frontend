@@ -1,5 +1,6 @@
 // Packages
 import { useLocation, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 // Components
 import { FaShoppingBasket } from "react-icons/fa";
@@ -7,9 +8,16 @@ import { FaShoppingBasket } from "react-icons/fa";
 // Media
 import logo from "../assets/img/logo.png";
 
-const Header = ({ userBasket, userToken }) => {
+const Header = ({ userBasket, userToken, setTokenAndId }) => {
   const basket = JSON.parse(userBasket);
   const location = useLocation();
+  const history = useHistory();
+
+  // Logout Handle
+  const handleLogout = () => {
+    setTokenAndId();
+    history.push("/");
+  };
 
   return (
     <div className="header-container">
@@ -37,21 +45,27 @@ const Header = ({ userBasket, userToken }) => {
 
       <div className="header-user">
         {userToken ? (
-          <Link
-            to="/account"
-            className={
-              location.pathname === "/account" && "header-menu-clicked"
-            }
-          >
-            ACCOUNT
-          </Link>
+          <>
+            <button onClick={() => handleLogout()} className="logout">
+              LOGOUT
+            </button>
+
+            <Link
+              to="/account"
+              className={
+                location.pathname === "/account" && "header-menu-clicked"
+              }
+            >
+              ACCOUNT
+            </Link>
+          </>
         ) : (
           <Link
             to="/login"
             className={
-              (location.pathname === "/login" ||
-                location.pathname === "/signup") &&
-              "header-menu-clicked"
+              location.pathname === "/login" || location.pathname === "/signup"
+                ? "header-menu-clicked log"
+                : "log"
             }
           >
             {location.pathname === "/signup" ? "SIGNUP" : "LOGIN"}
