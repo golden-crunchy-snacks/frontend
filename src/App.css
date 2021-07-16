@@ -847,6 +847,20 @@ body::-webkit-scrollbar {
 
 /* Account */
 
+.account-container {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 30px;
+}
+
+.account-container > h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
 .account-order {
   display: flex;
   justify-content: space-between;

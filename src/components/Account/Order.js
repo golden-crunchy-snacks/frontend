@@ -8,13 +8,13 @@ const Order = ({ data, modalHandle }) => {
               Order Reference : <span>{order.orderRef}</span>
             </h1>
             <h1>
-              Order Date :
+              Order Date :{" "}
               <span>
                 {order.orderDate.substring(0, order.orderDate.indexOf("@"))}
               </span>
             </h1>
             <h1>
-              To :
+              To :{" "}
               <span>
                 {order.customer.firstName} {order.customer.lastName}
               </span>

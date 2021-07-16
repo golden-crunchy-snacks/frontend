@@ -41,7 +41,8 @@ const Account = ({ userId }) => {
   return isLoading ? (
     <Loader />
   ) : (
-    <div>
+    <div className="account-container">
+      <h1>Your orders</h1>
       <Order data={data} modalHandle={modalHandle} />
       {modal && <OrderModal data={modalInfo} onX={() => setModal(false)} />}
     </div>
