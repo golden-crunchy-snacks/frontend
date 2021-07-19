@@ -45,14 +45,14 @@ const Home = ({ setBasket, userBasket }) => {
       <Hero />
       <ArticleCarousel
         data={data}
-        carouselTitle="BESTSELLERS"
+        carouselTitle="Best sellers"
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}
       />
       <ArticleCarousel
         data={data}
-        carouselTitle="OUR SELECTION OF NUT BARS"
+        carouselTitle="Our Selection of Nut Bars"
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}

@@ -27,19 +27,19 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
           to="/"
           className={location.pathname === "/" && "header-menu-clicked"}
         >
-          HOME
+          Home
         </Link>
         <Link
           to="/shop"
           className={location.pathname === "/shop" && "header-menu-clicked"}
         >
-          SHOP
+          Shop
         </Link>
         <Link
           to="/about"
           className={location.pathname === "/about" && "header-menu-clicked"}
         >
-          ABOUT
+          About
         </Link>
       </div>
 
@@ -47,7 +47,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
         {userToken ? (
           <>
             <button onClick={() => handleLogout()} className="logout">
-              LOGOUT
+              Logout
             </button>
 
             <Link
@@ -56,7 +56,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
                 location.pathname === "/account" && "header-menu-clicked"
               }
             >
-              ACCOUNT
+              Account
             </Link>
           </>
         ) : (
@@ -68,7 +68,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
                 : "log"
             }
           >
-            {location.pathname === "/signup" ? "SIGNUP" : "LOGIN"}
+            {location.pathname === "/signup" ? "Sign Up" : "Login"}
           </Link>
         )}
 
