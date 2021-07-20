@@ -15,19 +15,30 @@ const OrderModal = ({ data, onX }) => {
             Order Reference : <span>{data.orderRef}</span>
           </h1>
           <h1>
-            Order Date :
+            Order Date :{" "}
             <span>
               {data.orderDate.substring(0, data.orderDate.indexOf("@"))}
             </span>
           </h1>
           <h1>
-            To :
+            To :{" "}
             <span>
               {data.customer.firstName} {data.customer.lastName}
             </span>
           </h1>
           <h1>
-            Total :<span>£ {data.amount.toFixed(2)}</span>
+            Total : <span>£ {data.amount.toFixed(2)}</span>
+          </h1>
+          <h1>
+            Email : <span>{data.customer.email}</span>
+          </h1>
+          <h1>
+            Delivery Address :{" "}
+            <span>
+              {data.delivery.address}, {data.delivery.postcode} -{" "}
+              {data.delivery.city}, {data.delivery.country},{" "}
+              {data.delivery.state}
+            </span>
           </h1>
         </div>
 

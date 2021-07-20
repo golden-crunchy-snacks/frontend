@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Loader from "../../components/Utility/Loader";
 import Order from "../../components/Account/Order";
 import OrderModal from "../../components/Account/OrderModal";
+import Admin from "../../components/Account/Admin";
 
 const Account = ({ userId }) => {
   // States
@@ -24,13 +25,26 @@ const Account = ({ userId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://golden-crunchy-snacks.herokuapp.com/orders/${userId}`
-        );
+        if (userId === "60f5654674b2c80015d86e7e") {
+          const response = await axios.get(
+            `https://golden-crunchy-snacks.herokuapp.com/orders`
+          );
 
-        setData(response.data);
-        console.log(userId);
-        setIsLoading(false);
+          setData(response.data);
+          console.log(userId);
+          setIsLoading(false);
+        } else {
+          try {
+            const response = await axios.get(
+              `https://golden-crunchy-snacks.herokuapp.com/orders/${userId}`
+            );
+            setData(response.data);
+            console.log(userId);
+            setIsLoading(false);
+          } catch (error) {
+            setIsLoading(false);
+          }
+        }
       } catch (error) {
         console.log(error.message);
       }
@@ -39,11 +53,17 @@ const Account = ({ userId }) => {
   }, []);
 
   return isLoading ? (
-    <Loader />
+    <Loader data={data} />
+  ) : userId === "60f5654674b2c80015d86e7e" ? (
+    <Admin />
   ) : (
     <div className="account-container">
       <h1>Your orders</h1>
-      <Order data={data} modalHandle={modalHandle} />
+      {data ? (
+        <Order data={data} modalHandle={modalHandle} />
+      ) : (
+        <h2>You have no orders</h2>
+      )}
       {modal && <OrderModal data={modalInfo} onX={() => setModal(false)} />}
     </div>
   );
