@@ -31,101 +31,136 @@ const AdminArticle = ({ article }) => {
     fetchData();
   }, []);
 
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <div className="admin-article">
-      <img
-        src={article.picture}
-        alt={article.picture}
-        className="image-default"
-      />
+  // Update Article
+  const updateHandle = async () => {
+    try {
+      setIsLoading(true);
+      const formData = new FormData();
 
-      <div>
-        <label for="title">
-          <h1>Title</h1>
-          <input
-            id="title"
-            type="text"
-            value={title}
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("category", category);
+      formData.append("quantity", quantity);
+
+      formData.append("picture", picture);
+
+      const response = await axios.post(
+        "https://golden-crunchy-snacks.herokuapp.com/article/update",
+
+        formData
+      );
+      console.log(response.data);
+      setIsLoading(false);
+      alert("Item succesfully updated");
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+      alert("There was a problem updating this article");
+    }
+  };
+
+  return (
+    <div className="admin-article">
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <img
+            src={article.picture}
+            alt={article.picture}
+            className="image-default"
           />
-        </label>
-        <label for="description">
-          <h1>Description</h1>
-          <textarea
-            name="description"
-            id="description"
-            cols="40"
-            rows="5"
-            value={description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-          ></textarea>
-        </label>
-      </div>
-      <div>
-        <label for="picture">
-          <h1> Change Picture</h1>
-          <input
-            type="file"
-            id="picture"
-            name="picture"
-            accept="image/png, image/jpeg"
-            onChange={(e) => {
-              setPicture(e.target.value);
-            }}
-          />
-        </label>
-        <label for="category">
-          <h1>Category</h1>
-          <select
-            name="category"
-            id="category"
-            cols="40"
-            rows="5"
-            value={category}
-            onChange={(e) => {
-              setCategory(e.target.value);
-            }}
-          >
-            {categoryList.map((category) => {
-              return <option value={category.title}>{category.title}</option>;
-            })}
-          </select>
-        </label>
-        <label for="quantity">
-          {" "}
-          <h1>Quantity</h1>{" "}
-          <input
-            id="quantity"
-            type="text"
-            value={quantity}
-            onChange={(e) => {
-              setQuantity(e.target.value);
-            }}
-          />
-        </label>
-        <label for="price">
-          {" "}
-          <h1>Price</h1>{" "}
-          <input
-            id="price"
-            type="text"
-            value={price.toFixed(2)}
-            onChange={(e) => {
-              setPrice(e.target.value);
-            }}
-          />
-        </label>
-      </div>
-      <div>
-        <button>Save Changes</button>
-        <button>Delete Article</button>
-      </div>
+
+          <div>
+            <label for="title">
+              <h1>Title</h1>
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
+              />
+            </label>
+            <label for="description">
+              <h1>Description</h1>
+              <textarea
+                name="description"
+                cols="40"
+                rows="5"
+                value={description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              ></textarea>
+            </label>
+          </div>
+          <div>
+            <label for="picture">
+              <h1> Change Picture</h1>
+              <input
+                type="file"
+                name="picture"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                  setPicture(e.target.value);
+                }}
+              />
+            </label>
+            <label for="category">
+              <h1>Category</h1>
+              <select
+                name="category"
+                cols="40"
+                rows="5"
+                value={category}
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                {categoryList.map((category) => {
+                  return (
+                    <option value={category.title}>{category.title}</option>
+                  );
+                })}
+              </select>
+            </label>
+            <label for="quantity">
+              {" "}
+              <h1>Quantity</h1>{" "}
+              <input
+                type="text"
+                value={quantity}
+                onChange={(e) => {
+                  setQuantity(e.target.value);
+                }}
+              />
+            </label>
+            <label for="price">
+              {" "}
+              <h1>Price</h1>{" "}
+              <input
+                type="text"
+                value={price.toFixed(2)}
+                onChange={(e) => {
+                  setPrice(e.target.value);
+                }}
+              />
+            </label>
+          </div>
+          <div>
+            <button
+              onClick={() => {
+                updateHandle();
+              }}
+            >
+              Save Changes
+            </button>
+            <button>Delete Article</button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

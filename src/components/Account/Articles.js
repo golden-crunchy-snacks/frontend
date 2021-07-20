@@ -5,11 +5,13 @@ import Loader from "../Utility/SmallLoader";
 
 // Components
 import AdminArticle from "./AdminArticle";
+import NewArticleModal from "./NewArticleModal";
 
 const Articles = () => {
   // States
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [modal, setModal] = useState(false);
 
   // Get orders
   useEffect(() => {
@@ -40,8 +42,21 @@ const Articles = () => {
       </div>
 
       <div>
-        <button>Create New Article</button>
+        <button
+          onClick={() => {
+            setModal(true);
+          }}
+        >
+          Create New Article
+        </button>
       </div>
+      {modal && (
+        <NewArticleModal
+          onX={() => {
+            setModal(false);
+          }}
+        />
+      )}
     </div>
   );
 };
