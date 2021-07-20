@@ -18,19 +18,22 @@ const ArticleList = ({ data, filter, modalHandle, setBasket, userBasket }) => {
                 }
               />
               <h1>{article.title}</h1>
-              <h2>£ {article.price.toFixed(2)}</h2>
-              <button
-                onClick={() =>
-                  setBasket({
-                    picture: article.picture,
-                    title: article.title,
-                    price: article.price.toFixed(2),
-                    quantity: 1,
-                  })
-                }
-              >
-                ADD TO CART
-              </button>
+              <div className="article-body">
+                <h2 className="article-price">£ {article.price.toFixed(2)}</h2>
+                <button
+                  className="article-button"
+                  onClick={() =>
+                    setBasket({
+                      picture: article.picture,
+                      title: article.title,
+                      price: article.price.toFixed(2),
+                      quantity: 1,
+                    })
+                  }
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           ) : (
             filter.indexOf(article.category) !== -1 && (
