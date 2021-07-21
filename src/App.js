@@ -15,6 +15,7 @@ import Basket from "./containers/Basket";
 import Payment from "./containers/Payment/Payment";
 import Account from "./containers/Auth/Account";
 import Success from "./containers/Payment/Success";
+import Trade from "./containers/Trade";
 
 // Components
 import Header from "./components/Header";
@@ -184,6 +185,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login setTokenAndId={setTokenAndId} />
+        </Route>
+        <Route path="/trade">
+          <Trade />
         </Route>
         <Route path="/about">
           <About />
