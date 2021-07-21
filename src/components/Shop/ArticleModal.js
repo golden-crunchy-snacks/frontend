@@ -20,6 +20,7 @@ const ArticleModal = ({ data, onX, setBasket, userBasket }) => {
           <button
             onClick={() =>
               setBasket({
+                id: data._id,
                 picture: data.picture,
                 title: data.title,
                 price: data.price.toFixed(2),
