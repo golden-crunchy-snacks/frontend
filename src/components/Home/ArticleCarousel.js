@@ -59,6 +59,7 @@ const ArticleCarousel = ({
                     className="carousel-article-button"
                     onClick={() =>
                       setBasket({
+                        id: article._id,
                         picture: article.picture,
                         title: article.title,
                         price: article.price.toFixed(2),

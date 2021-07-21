@@ -67,6 +67,7 @@ const Basket = ({
                           title: article.title,
                         })
                       }
+                      id={article.id}
                     />
                   </h2>
                   <h3>

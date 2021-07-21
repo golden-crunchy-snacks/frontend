@@ -109,6 +109,19 @@ const CheckoutForm = ({ userId, basket, setBasket }) => {
           console.log(response.data);
 
           if (response.data.status === "succeeded") {
+            try {
+              for (let i = 0; i < basket.length; i++) {
+                await axios.put(
+                  "https://golden-crunchy-snacks.herokuapp.com/article/pay",
+                  {
+                    id: basket[i].id,
+                    quantity: basket[i].quantity,
+                  }
+                );
+              }
+            } catch (error) {
+              alert(error);
+            }
             setIsLoading(false);
             setCompleted(true);
             setBasket();

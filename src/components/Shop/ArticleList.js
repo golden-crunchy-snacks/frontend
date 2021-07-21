@@ -24,6 +24,7 @@ const ArticleList = ({ data, filter, modalHandle, setBasket, userBasket }) => {
                   className="article-button"
                   onClick={() =>
                     setBasket({
+                      id: article._id,
                       picture: article.picture,
                       title: article.title,
                       price: article.price.toFixed(2),
@@ -52,6 +53,7 @@ const ArticleList = ({ data, filter, modalHandle, setBasket, userBasket }) => {
                 <button
                   onClick={() =>
                     setBasket({
+                      id: article._id,
                       picture: article.picture,
                       title: article.title,
                       price: article.price.toFixed(2),
