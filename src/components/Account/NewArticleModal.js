@@ -42,9 +42,9 @@ const NewArticleModal = ({ onX }) => {
 
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("price", price);
+      formData.append("price", parseFloat(price).toFixed(2));
       formData.append("category", category);
-      formData.append("quantity", quantity);
+      formData.append("quantity", parseInt(quantity, 10));
 
       formData.append("picture", picture);
 
@@ -56,6 +56,7 @@ const NewArticleModal = ({ onX }) => {
       console.log(response.data);
       setIsLoading(false);
       alert("New article successfully created");
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -103,7 +104,7 @@ const NewArticleModal = ({ onX }) => {
                     name="picture"
                     accept="image/png, image/jpeg"
                     onChange={(e) => {
-                      setPicture(e.target.value);
+                      setPicture(e.target.files[0]);
                     }}
                   />
                 </label>

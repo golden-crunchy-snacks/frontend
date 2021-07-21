@@ -36,27 +36,53 @@ const AdminArticle = ({ article }) => {
     try {
       setIsLoading(true);
       const formData = new FormData();
-
+      formData.append("id", article._id);
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("price", price);
+      formData.append("price", parseFloat(price).toFixed(2));
       formData.append("category", category);
-      formData.append("quantity", quantity);
-
+      formData.append("quantity", parseInt(quantity, 10));
       formData.append("picture", picture);
 
-      const response = await axios.post(
+      const response = await axios.put(
         "https://golden-crunchy-snacks.herokuapp.com/article/update",
 
         formData
       );
+
       console.log(response.data);
       setIsLoading(false);
       alert("Item succesfully updated");
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
       setIsLoading(false);
       alert("There was a problem updating this article");
+    }
+  };
+
+  // Delete Article
+
+  const deleteHandle = async () => {
+    try {
+      console.log(article._id);
+      setIsLoading(true);
+      const response = await axios.delete(
+        `https://golden-crunchy-snacks.herokuapp.com/article/delete/${article._id}`
+      );
+
+      if (response.data.message === "Article removed") {
+        setIsLoading(false);
+        alert("Item succesfully deleted");
+        window.location.reload(false);
+        console.log(response.data);
+      } else {
+        alert("There's been a problem deleting this article");
+        window.location.reload(false);
+      }
+    } catch (error) {
+      alert(error);
+      setIsLoading(false);
     }
   };
 
@@ -104,7 +130,7 @@ const AdminArticle = ({ article }) => {
                 name="picture"
                 accept="image/png, image/jpeg"
                 onChange={(e) => {
-                  setPicture(e.target.value);
+                  setPicture(e.target.files[0]);
                 }}
               />
             </label>
@@ -142,7 +168,7 @@ const AdminArticle = ({ article }) => {
               <h1>Price</h1>{" "}
               <input
                 type="text"
-                value={price.toFixed(2)}
+                value={price}
                 onChange={(e) => {
                   setPrice(e.target.value);
                 }}
@@ -151,13 +177,21 @@ const AdminArticle = ({ article }) => {
           </div>
           <div>
             <button
+              className="default-button"
               onClick={() => {
                 updateHandle();
               }}
             >
               Save Changes
             </button>
-            <button>Delete Article</button>
+            <button
+              className="default-button"
+              onClick={() => {
+                deleteHandle();
+              }}
+            >
+              Delete Article
+            </button>
           </div>
         </>
       )}
