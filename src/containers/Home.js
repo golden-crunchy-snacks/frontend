@@ -5,6 +5,7 @@ import axios from "axios";
 // Components
 import ArticleCarousel from "../components/Home/ArticleCarousel";
 import Hero from "../components/Home/Hero";
+import Info from "../components/Home/Info";
 import ArticleModal from "../components/Shop/ArticleModal";
 import Loader from "../components/Utility/Loader";
 
@@ -57,6 +58,7 @@ const Home = ({ setBasket, userBasket }) => {
         setBasket={setBasket}
         userBasket={userBasket}
       />
+      <Info />
       {modal && (
         <ArticleModal
           data={modalInfo}
