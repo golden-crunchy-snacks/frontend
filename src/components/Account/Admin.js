@@ -11,6 +11,7 @@ const Admin = () => {
   const selectorCookie = (selector) => {
     console.log(selector);
     if (selector) {
+      setSelector(selector);
       Cookies.set("selector", selector, { expires: 1 });
       window.location.reload(false);
     }
@@ -19,7 +20,7 @@ const Admin = () => {
   console.log(selector);
 
   return (
-    <div>
+    <div className="admin-container">
       <div className="admin-selector">
         <button
           onClick={() => {

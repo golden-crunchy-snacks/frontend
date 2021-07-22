@@ -6,13 +6,25 @@ import SmallLoader from "../Utility/SmallLoader";
 // Components
 import AdminOrder from "./AdminOrder";
 import OrderModal from "./OrderModal";
+import SearchBar from "../Utility/SearchBar";
 
 const Orders = () => {
   // States
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
   const [isLoading, setIsLoading] = useState(true);
   const [modalInfo, setModalInfo] = useState();
   const [modal, setModal] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchVisibility, setSearchVisibility] = useState(false);
+
+  // Get orders
+  useEffect(() => {
+    const resetSearch = async () => {
+      setFilteredData(data);
+    };
+    resetSearch();
+  }, [data]);
 
   // Modal Info Handle
   const modalHandle = (props) => {
@@ -39,7 +51,6 @@ const Orders = () => {
   }, []);
 
   //   Complete and un-complete function
-
   const completeHandle = async (order) => {
     console.log(order.deliveryStatus);
     console.log(order);
@@ -68,15 +79,55 @@ const Orders = () => {
     }
   };
 
+  // Search Handle
+  const searchHandle = (e) => {
+    setSearchVisibility(true);
+    setSearchValue(e.target.value);
+    let value = e.target.value.toLowerCase();
+    let result = [];
+    result = data.filter((data) => {
+      return data.orderRef.toLowerCase().search(value) !== -1;
+    });
+    setFilteredData(result);
+  };
+
+  // Search Click Handle
+  const searchClickHandle = (e) => {
+    setSearchValue(e.target.innerText);
+    setSearchVisibility(false);
+    let value = e.target.innerText.toLowerCase();
+    let result = [];
+    result = data.filter((data) => {
+      return data.orderRef.toLowerCase().search(value) !== -1;
+    });
+    setFilteredData(result);
+  };
+
   return (
-    <div>
+    <div className="admin-orders-container">
+      <div>
+        <h1>Search by Reference Number</h1>
+        <SearchBar
+          placeholder="Search for order ..."
+          data={filteredData}
+          onChange={(e) => {
+            searchHandle(e);
+          }}
+          value={searchValue}
+          onClick={(e) => {
+            searchClickHandle(e);
+          }}
+          searchVisibility={searchVisibility}
+        />
+      </div>
+
       {isLoading ? (
         <SmallLoader />
       ) : (
         <div className="admin-orders">
           <div>
             <h1>Pending</h1>
-            {data.map((order) => {
+            {filteredData.map((order) => {
               return (
                 order.deliveryStatus === "pending" && (
                   <AdminOrder

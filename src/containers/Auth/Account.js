@@ -50,7 +50,7 @@ const Account = ({ userId }) => {
       }
     };
     fetchData();
-  }, []);
+  });
 
   return isLoading ? (
     <Loader data={data} />

@@ -20,7 +20,7 @@ const QuantityCounter = ({ quantity, upClick, downClick, id }) => {
       }
     };
     fetchData();
-  }, []);
+  });
   return (
     <div className="quantity-counter-container">
       <h1>{quantity}</h1>
