@@ -5,7 +5,6 @@ body {
   background-color: #f4f4f4;
   font-family: "Roboto", sans-serif;
   position: relative;
-  padding-bottom: 140px;
   -ms-overflow-style: none;
 }
 
@@ -1114,6 +1113,10 @@ body::-webkit-scrollbar {
 }
 /* Admin */
 
+.admin-container {
+  margin-bottom: 120px;
+}
+
 .admin-selector {
   margin: 0 auto;
   margin-bottom: 50px;
@@ -1139,6 +1142,24 @@ body::-webkit-scrollbar {
 
 .admin-selector > button:nth-child(1) {
   margin-right: 60px;
+}
+
+.admin-orders-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.admin-orders-container > div:nth-child(1) {
+  margin-bottom: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admin-orders-container > div:nth-child(1) > h1 {
+  margin-bottom: 15px;
 }
 
 .admin-orders {
