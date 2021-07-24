@@ -43,9 +43,9 @@ const Login = ({ setTokenAndId }) => {
   };
   return (
     <div className="credentials-form">
-      <h1>LOGIN</h1>
+      <h1 className="credential__heading">Login</h1>
       <div>
-        <h2>Email</h2>
+        <h2 className="credential__subheading">Email</h2>
         <input
           type="email"
           placeholder="Enter your email address"
@@ -53,7 +53,7 @@ const Login = ({ setTokenAndId }) => {
             setEmail(e.target.value);
           }}
         />
-        <h2>Password</h2>
+        <h2 className="credential__subheading">Password</h2>
         <input
           type="password"
           placeholder="Enter your password"
@@ -68,7 +68,10 @@ const Login = ({ setTokenAndId }) => {
           <div className="error-message">{errorMessage}</div>
         )}
         <button onClick={() => handleSubmit()}>Login</button>
-        <Link to="/signup">No account ? Register here</Link>
+        <Link to="/signup">
+          No account ?{" "}
+          <span className="credentials__loginhere">Register here</span>
+        </Link>
       </div>
     </div>
   );

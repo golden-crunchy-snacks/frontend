@@ -100,11 +100,10 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
   return isLoading ? (
     <Loader />
   ) : (
-    <div>
+    <div className="shop">
       <div className="shop-search-container">
-        <h1>WHAT SNACK ARE YOU LOOKING FOR ?</h1>
         <SearchBar
-          placeholder="Search for articles..."
+          placeholder="Search..."
           data={filteredData}
           onChange={(e) => {
             searchHandle(e);
@@ -116,32 +115,34 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
           searchVisibility={searchVisibility}
         />
       </div>
-      <div className="shop-categories-container">
-        <h1>CATEGORIES</h1>
-        <form className="shop-categories">
-          {categories.map((category) => {
-            return (
-              <label key={category.title}>
-                <input
-                  type="checkbox"
-                  name={category.title}
-                  onClick={(e) => {
-                    filterHandle(e);
-                  }}
-                />
-                {category.title}
-              </label>
-            );
-          })}
-        </form>
+      <div className="shop__categoriesandlist">
+        <div className="shop-categories-container">
+          <h1>CATEGORIES</h1>
+          <form className="shop-categories">
+            {categories.map((category) => {
+              return (
+                <label key={category.title}>
+                  <input
+                    type="checkbox"
+                    name={category.title}
+                    onClick={(e) => {
+                      filterHandle(e);
+                    }}
+                  />
+                  {category.title}
+                </label>
+              );
+            })}
+          </form>
+        </div>
+        <ArticleList
+          data={filteredData}
+          filter={filter}
+          modalHandle={modalHandle}
+          setBasket={setBasket}
+          userBasket={userBasket}
+        />
       </div>
-      <ArticleList
-        data={filteredData}
-        filter={filter}
-        modalHandle={modalHandle}
-        setBasket={setBasket}
-        userBasket={userBasket}
-      />
       {modal && (
         <ArticleModal
           data={modalInfo}
