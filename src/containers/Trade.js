@@ -1,5 +1,12 @@
+// Components
+import ContactForm from "../components/Contact/ContactForm";
+
 const Trade = () => {
-  return <div>Contact Form</div>;
+  return (
+    <div>
+      <ContactForm />
+    </div>
+  );
 };
 
 export default Trade;

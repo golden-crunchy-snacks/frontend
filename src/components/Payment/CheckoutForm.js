@@ -119,6 +119,24 @@ const CheckoutForm = ({ userId, basket, setBasket }) => {
                   }
                 );
               }
+              const formData = new FormData();
+              formData.append("to", email);
+              formData.append(
+                "orderRef",
+                `${lastName.substring(0, 2).toUpperCase()}${new Date()
+                  .toLocaleDateString()
+                  .split("/")
+                  .join("")}${("0" + currentdate.getHours()).slice(-2)}${(
+                  "0" + currentdate.getMinutes()
+                ).slice(-2)}${("0" + currentdate.getSeconds()).slice(-2)}`
+              );
+              formData.append("firstName", firstName);
+              formData.append("lastName", lastName);
+
+              await axios.post(
+                "https://golden-crunchy-snacks.herokuapp.com/mail/order",
+                formData
+              );
             } catch (error) {
               alert(error);
             }
