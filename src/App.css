@@ -353,6 +353,7 @@ body::-webkit-scrollbar {
   width: 100%;
   max-width: 1440px;
   /* background-color: white; */
+  margin: 0 auto;
 }
 
 .about__container {
@@ -1161,6 +1162,7 @@ body::-webkit-scrollbar {
 
 /* Trade */
 .trade {
+  margin: 0 auto;
   width: 100%;
   max-width: 1440px;
   margin-top: 3em;
