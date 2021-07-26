@@ -101,40 +101,44 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     <Loader />
   ) : (
     <div className="shop">
-      <div className="shop-search-container">
-        <SearchBar
-          placeholder="Search..."
-          data={filteredData}
-          onChange={(e) => {
-            searchHandle(e);
-          }}
-          value={searchValue}
-          onClick={(e) => {
-            searchClickHandle(e);
-          }}
-          searchVisibility={searchVisibility}
-        />
-      </div>
       <div className="shop__categoriesandlist">
-        <div className="shop-categories-container">
-          <h1>CATEGORIES</h1>
-          <form className="shop-categories">
-            {categories.map((category) => {
-              return (
-                <label key={category.title}>
-                  <input
-                    type="checkbox"
-                    name={category.title}
-                    onClick={(e) => {
-                      filterHandle(e);
-                    }}
-                  />
-                  {category.title}
-                </label>
-              );
-            })}
-          </form>
+        <div>
+          {" "}
+          <div className="shop-search-container">
+            <SearchBar
+              placeholder="Search..."
+              data={filteredData}
+              onChange={(e) => {
+                searchHandle(e);
+              }}
+              value={searchValue}
+              onClick={(e) => {
+                searchClickHandle(e);
+              }}
+              searchVisibility={searchVisibility}
+            />
+          </div>
+          <div className="shop-categories-container">
+            <h1>CATEGORIES</h1>
+            <form className="shop-categories">
+              {categories.map((category) => {
+                return (
+                  <label key={category.title}>
+                    <input
+                      type="checkbox"
+                      name={category.title}
+                      onClick={(e) => {
+                        filterHandle(e);
+                      }}
+                    />
+                    <span>{category.title}</span>
+                  </label>
+                );
+              })}
+            </form>
+          </div>
         </div>
+
         <ArticleList
           data={filteredData}
           filter={filter}
