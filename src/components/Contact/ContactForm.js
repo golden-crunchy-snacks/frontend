@@ -53,34 +53,34 @@ const ContactForm = () => {
 
   // Trade facts
 
-  const tradeFacts = [
-    {
-      id: 1,
-      title: "Assortment",
-      info: "Choose from an assortment of our branded products and as well as a wide selection of international brands.",
-    },
-    {
-      id: 2,
-      title: "Price",
-      info: "You benefit from out clear and transparent pricing. We offer attractive conditions for every customer structure.",
-    },
-    {
-      id: 3,
-      title: "Service",
-      info: "Our field sales representatives and our competent staff in the office are always happy to help you.",
-    },
-    {
-      id: 4,
-      title: "Logistics",
-      info: "Within just 24 hours of receiving your order, we can send out your delivery. Our streamlined logistics solutions allow us to deliver all around the United Kingdom.",
-    },
-  ];
+  // const tradeFacts = [
+  //   {
+  //     id: 1,
+  //     title: "Assortment",
+  //     info: "Choose from an assortment of our branded products and as well as a wide selection of international brands.",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Price",
+  //     info: "You benefit from out clear and transparent pricing. We offer attractive conditions for every customer structure.",
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Service",
+  //     info: "Our field sales representatives and our competent staff in the office are always happy to help you.",
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Logistics",
+  //     info: "Within just 24 hours of receiving your order, we can send out your delivery. Our streamlined logistics solutions allow us to deliver all around the United Kingdom.",
+  //   },
+  // ];
 
   return isLoading ? (
     <Loader />
   ) : (
     <>
-      <div className="trade">
+      {/* <div className="trade">
         <div className="trade__container">
           <h1 className="trade__heading">Trade</h1>
           <section className="trade__info">
@@ -89,17 +89,22 @@ const ContactForm = () => {
             })}
           </section>
         </div>
-      </div>
+      </div> */}
       <div className="contact-form">
         <div className="contact__container">
           <h1>Contact Form</h1>
-          <p>All fields marked with * are mandatory</p>
+          <p>
+            All fields marked with <span className="contact__star">*</span> are
+            mandatory
+          </p>
           <div>
             <div className="contact-flex">
               {" "}
               <div>
                 {" "}
-                <h2>Email *</h2>
+                <h2 className="contact__heading">
+                  Email <span className="contact__star">*</span>
+                </h2>
                 <input
                   className="contact__input"
                   type="email"
@@ -111,7 +116,9 @@ const ContactForm = () => {
               </div>
               <div>
                 {" "}
-                <h2>Order Reference (if applicable)</h2>
+                <h2 className="contact__heading">
+                  Order Reference (if applicable)
+                </h2>
                 <input
                   className="contact__input"
                   type="text"
@@ -126,7 +133,9 @@ const ContactForm = () => {
               {" "}
               <div>
                 {" "}
-                <h2>First Name *</h2>
+                <h2 className="contact__heading">
+                  First Name <span className="contact__star">*</span>
+                </h2>
                 <input
                   className="contact__input"
                   type="text"
@@ -137,7 +146,9 @@ const ContactForm = () => {
                 />
               </div>
               <div>
-                <h2>Last Name *</h2>
+                <h2 className="contact__heading">
+                  Last Name <span className="contact__star">*</span>
+                </h2>
                 <input
                   className="contact__input"
                   type="text"
@@ -152,7 +163,9 @@ const ContactForm = () => {
 
           <div>
             {" "}
-            <h2>Subject *</h2>
+            <h2 className="contact__heading">
+              Subject <span className="contact__star">*</span>
+            </h2>
             <input
               className="contact__input"
               type="text"
@@ -164,7 +177,9 @@ const ContactForm = () => {
           </div>
           <div>
             {" "}
-            <h2>Your message *</h2>
+            <h2 className="contact__heading">
+              Your message <span className="contact__star">*</span>
+            </h2>
             <textarea
               className="contact__textarea"
               cols="40"

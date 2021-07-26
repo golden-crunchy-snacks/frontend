@@ -45,7 +45,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
           to="/about"
           className={location.pathname === "/about" && "header-menu-clicked"}
         >
-          About
+          Contact
         </Link>
       </div>
 
