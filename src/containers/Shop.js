@@ -131,7 +131,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
                         filterHandle(e);
                       }}
                     />
-                    {category.title}
+                    <span>{category.title}</span>
                   </label>
                 );
               })}
