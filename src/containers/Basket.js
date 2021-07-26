@@ -31,114 +31,118 @@ const Basket = ({
   };
 
   return basket === null ? (
-    <div className="basket-container">
-      <div className="basket-sub-container">
-        <h1>BASKET</h1>
-        <h2>Your basket contains 0 items</h2>
+    <div className="basket">
+      <div className="basket-container">
+        <div className="basket-sub-container">
+          <h1>Basket</h1>
+          <h2>Your basket contains 0 items</h2>
+        </div>
       </div>
     </div>
   ) : (
-    <div className="basket-container">
-      <div className="basket-sub-container">
-        <h1>BASKET</h1>
-        <h2>Your basket contains {basket.length} items</h2>
+    <div className="basket">
+      <div className="basket-container">
+        <div className="basket-sub-container">
+          <h1>Basket</h1>
+          <h2>Your basket contains {basket.length} items</h2>
 
-        <div className="basket-list-container">
-          {basket &&
-            basket.map((article) => {
-              return (
-                <div key={article.title} className="basket-list">
-                  <img src={article.picture} alt={article.picture} />
-                  <h1>{article.title}</h1>
+          <div className="basket-list-container">
+            {basket &&
+              basket.map((article) => {
+                return (
+                  <div key={article.title} className="basket-list">
+                    <img src={article.picture} alt={article.picture} />
+                    <h1>{article.title}</h1>
+                    <h2>
+                      <QuantityCounter
+                        quantity={article.quantity}
+                        basket={basket}
+                        upClick={() =>
+                          setBasket({
+                            picture: article.picture,
+                            title: article.title,
+                            price: article.price,
+                            quantity: 1,
+                          })
+                        }
+                        downClick={() =>
+                          removeBasketQuantity({
+                            title: article.title,
+                          })
+                        }
+                        id={article.id}
+                      />
+                    </h2>
+                    <h3>
+                      £ {articleTotal(article.price, article.quantity)}
+                      <span>
+                        {" "}
+                        ({article.quantity} x {article.price})
+                      </span>
+                    </h3>
+                    <button
+                      className="default-button basket__button"
+                      onClick={() =>
+                        removeBasketItem({
+                          title: article.title,
+                        })
+                      }
+                    >
+                      Remove
+                    </button>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        {basket.length > 0 && (
+          <div className="total-container">
+            <h1>Your order</h1>
+            {basket &&
+              basket.map((article) => {
+                return (
                   <h2>
-                    <QuantityCounter
-                      quantity={article.quantity}
-                      basket={basket}
-                      upClick={() =>
-                        setBasket({
-                          picture: article.picture,
-                          title: article.title,
-                          price: article.price,
-                          quantity: 1,
-                        })
-                      }
-                      downClick={() =>
-                        removeBasketQuantity({
-                          title: article.title,
-                        })
-                      }
-                      id={article.id}
-                    />
-                  </h2>
-                  <h3>
-                    £ {articleTotal(article.price, article.quantity)}
+                    <span>
+                      {article.quantity} x {article.title}{" "}
+                    </span>{" "}
                     <span>
                       {" "}
-                      ({article.quantity} x {article.price})
+                      £ {articleTotal(article.price, article.quantity)}
                     </span>
-                  </h3>
-                  <button
-                    className="default-button"
-                    onClick={() =>
-                      removeBasketItem({
-                        title: article.title,
-                      })
-                    }
-                  >
-                    Remove
-                  </button>
-                </div>
-              );
-            })}
-        </div>
-      </div>
-      {basket.length > 0 && (
-        <div className="total-container">
-          <h1>Your order</h1>
-          {basket &&
-            basket.map((article) => {
-              return (
-                <h2>
-                  <span>
-                    {article.quantity} x {article.title}{" "}
-                  </span>{" "}
-                  <span>
-                    {" "}
-                    £ {articleTotal(article.price, article.quantity)}
-                  </span>
-                </h2>
-              );
-            })}
-          <div className="line"></div>
-          <h3>
-            <span>Total :</span>
-            <span>£ {orderTotal()}</span>
-          </h3>
-          {userId ? (
-            <button
-              className="default-button"
-              onClick={() => history.push("/payment")}
-            >
-              Checkout
-            </button>
-          ) : (
-            <>
+                  </h2>
+                );
+              })}
+            <div className="line"></div>
+            <h3>
+              <span>Total :</span>
+              <span>£ {orderTotal()}</span>
+            </h3>
+            {userId ? (
               <button
-                className="default-button"
+                className="default-button basket__button"
                 onClick={() => history.push("/payment")}
               >
-                Guest Checkout
+                Checkout
               </button>
-              <button
-                className="default-button"
-                onClick={() => history.push("/login")}
-              >
-                Login
-              </button>{" "}
-            </>
-          )}
-        </div>
-      )}
+            ) : (
+              <>
+                <button
+                  className="default-button basket__button"
+                  onClick={() => history.push("/payment")}
+                >
+                  Guest Checkout
+                </button>
+                <button
+                  className="default-button basket__button"
+                  onClick={() => history.push("/login")}
+                >
+                  Login
+                </button>{" "}
+              </>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
