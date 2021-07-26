@@ -369,10 +369,6 @@ body::-webkit-scrollbar {
   align-items: center;
 }
 
-.about__body {
-  /* margin-right: 10em; */
-}
-
 .about__body > h1 {
   font-size: 18px;
   font-weight: 800;
@@ -1697,7 +1693,6 @@ body::-webkit-scrollbar {
     display: none;
   }
 
-
   .about__container {
     flex-direction: column;
   }
@@ -1719,8 +1714,7 @@ body::-webkit-scrollbar {
 
   .shop {
     width: 98%;
-  
-
+  }
 }
 
 @media (max-width: 500px) {
