@@ -81,14 +81,14 @@ const Basket = ({
                       </span>
                     </h3>
                     <button
-                      className="default-button basket__button"
+                      className=" remove__button"
                       onClick={() =>
                         removeBasketItem({
                           title: article.title,
                         })
                       }
                     >
-                      Remove
+                      X
                     </button>
                   </div>
                 );
