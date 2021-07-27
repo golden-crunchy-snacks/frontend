@@ -70,8 +70,8 @@ const Trade = () => {
               <h1 className="trade__sectionHeading trade__text--black ">
                 Price
               </h1>
-              <div className="trade__sectionBody">
-                <p className=" trade__text trade__text--black">
+              <div className="trade__sectionBody trade__sectionBody-flip">
+                <p className=" trade__text trade__text--black trade__text--padding ">
                   You benefit from out clear and transparent pricing. We offer
                   attractive conditions for every customer structure.
                 </p>
@@ -108,8 +108,8 @@ const Trade = () => {
               <h1 className="trade__sectionHeading  trade__text--black">
                 Logistics
               </h1>
-              <div className="trade__sectionBody">
-                <p className=" trade__text trade__text--black">
+              <div className="trade__sectionBody trade__sectionBody-flip">
+                <p className=" trade__text trade__text--black trade__text--padding">
                   Within just 24 hours of receiving your order, we can send out
                   your delivery. Our streamlined logistics solutions allow us to
                   deliver all around the United Kingdom.

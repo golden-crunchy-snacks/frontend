@@ -89,11 +89,11 @@ body::-webkit-scrollbar {
 .header-container > div > a:nth-child(4):hover,
 .header-container > div > a:nth-child(5):hover,
 .header-container > div > a:nth-child(6):hover {
-  color: #0087d3;
+  color: #d33f00;
 }
 
 .header-container > div > a > div:hover {
-  color: #0087d3;
+  color: #d33f00;
 }
 
 .header-logo {
@@ -109,7 +109,7 @@ body::-webkit-scrollbar {
 }
 
 .header-menu-clicked {
-  color: #0087d3;
+  color: #d33f00;
 }
 
 .header-user {
@@ -142,7 +142,7 @@ body::-webkit-scrollbar {
 }
 
 .log {
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   color: white;
   border: none;
   border-radius: 10px;
@@ -152,7 +152,7 @@ body::-webkit-scrollbar {
 }
 
 .log:hover {
-  background: linear-gradient(#0087d3, #00befa);
+  background: #d33f00;
 }
 
 .logout {
@@ -255,17 +255,17 @@ body::-webkit-scrollbar {
   border: none;
   border-radius: 15px;
   padding: 1em 3em;
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   color: #ffffff;
   cursor: pointer;
 }
 .hero__button:hover {
-  background: linear-gradient(#0087d3, #00befa);
+  background: #d33f00;
 }
 
 .hero__image {
   /* height: 20rem; */
-  width: 30rem;
+  width: 50rem;
 }
 .hero__image > img {
   width: 100%;
@@ -336,7 +336,7 @@ body::-webkit-scrollbar {
 
 .carousel-article-button {
   border-radius: 15px;
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   color: white;
   font-weight: 500;
   border: none;
@@ -367,7 +367,12 @@ body::-webkit-scrollbar {
 
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.about__body {
+  margin-right: 6em;
+  margin-bottom: 3em;
 }
 
 .about__body > h1 {
@@ -523,7 +528,7 @@ body::-webkit-scrollbar {
 
 .article-button {
   border-radius: 15px;
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   color: white;
   font-weight: 500;
   border: none;
@@ -589,7 +594,7 @@ body::-webkit-scrollbar {
 
 .article-modal-container > button {
   border-radius: 15px;
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   color: white;
   font-weight: 500;
   border: none;
@@ -628,7 +633,7 @@ body::-webkit-scrollbar {
 
 .credentials-form button {
   border-radius: 10px;
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   color: white;
   font-weight: 600;
 
@@ -695,7 +700,7 @@ body::-webkit-scrollbar {
 
 .credentials__loginhere {
   font-weight: 900;
-  color: #0087d3;
+  color: #fa4b00;
   text-decoration: underline;
 }
 
@@ -853,7 +858,7 @@ body::-webkit-scrollbar {
 }
 
 .quantity-counter-container > div > button {
-  background: linear-gradient(#0087d3, #86d2ff);
+  background: #fa4b00;
   border: none;
   font-size: 8px;
   padding: 0.5em;
@@ -870,13 +875,13 @@ body::-webkit-scrollbar {
 }
 
 .basket__button {
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   font-weight: 600;
   max-width: 20em;
 }
 
 .info {
-  background: linear-gradient(#0087d3, #86d2ff);
+  background: linear-gradient(#ff7b42, #ffffff);
 }
 .info__container {
   margin: 4em auto 0;
@@ -890,7 +895,7 @@ body::-webkit-scrollbar {
   padding-bottom: 2em;
   font-size: 2rem;
   text-align: center;
-  color: #ffffff;
+  color: #000000;
 }
 .info__body {
   display: flex;
@@ -900,7 +905,7 @@ body::-webkit-scrollbar {
 }
 .info__description {
   max-width: 25em;
-  color: #ffffff;
+  color: #000000;
   font-weight: 500;
   padding-right: 4rem;
 }
@@ -1223,7 +1228,7 @@ body::-webkit-scrollbar {
   min-height: 30vh;
 }
 .trade__section-blue {
-  background: #0087d3;
+  background: linear-gradient(#ff7b42, #ffffff);
 }
 .trade__section-white {
   background: #ffffff;
@@ -1239,6 +1244,14 @@ body::-webkit-scrollbar {
 }
 .trade__text--white {
   color: white;
+}
+
+.trade__sectionBody-flip {
+  flex-direction: row-reverse;
+}
+
+.trade__text--padding {
+  padding-left: 3em;
 }
 
 .trade__sectionHeading {
@@ -1475,7 +1488,7 @@ body::-webkit-scrollbar {
 .contact-form {
   box-sizing: border-box;
   margin: 0 auto;
-  margin-top: 3em;
+  /* margin-top: 3em; */
   padding: 50px;
   background-color: white;
   height: 50em;
@@ -1540,7 +1553,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  background: linear-gradient(#00befa, #0087d3);
+  background: #fa4b00;
   font-weight: 600;
   max-width: 20em;
 }
@@ -1668,6 +1681,10 @@ body::-webkit-scrollbar {
     margin-right: 0;
   }
 
+  .trade__text--padding {
+    padding-left: 0;
+  }
+
   .footer {
     font-size: larger;
   }
@@ -1713,6 +1730,7 @@ body::-webkit-scrollbar {
 
   .about__body {
     text-align: center;
+    margin: 0 auto 3em;
   }
 
   /* .contact-form {

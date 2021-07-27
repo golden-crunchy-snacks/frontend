@@ -13,7 +13,10 @@ const Hero = () => {
           <button className="hero__button">Shop Now</button>
         </div>
         <div className="hero__image">
-          <img src={hero} alt="" />
+          <img
+            src="https://i.dlpng.com/static/png/6478241_preview.png"
+            alt=""
+          />
         </div>
       </div>
     </section>
