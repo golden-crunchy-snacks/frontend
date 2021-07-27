@@ -138,14 +138,16 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
             </form>
           </div>
         </div>
-
-        <ArticleList
-          data={filteredData}
-          filter={filter}
-          modalHandle={modalHandle}
-          setBasket={setBasket}
-          userBasket={userBasket}
-        />
+        <div>
+          <h1>Showing {filteredData.length} Results</h1>
+          <ArticleList
+            data={filteredData}
+            filter={filter}
+            modalHandle={modalHandle}
+            setBasket={setBasket}
+            userBasket={userBasket}
+          />
+        </div>
       </div>
       {modal && (
         <ArticleModal
