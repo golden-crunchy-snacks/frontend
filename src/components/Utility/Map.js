@@ -1,11 +1,11 @@
 // Packages
 import { Component } from "react";
-import { Map, GoogleApiWrapper } from "google-maps-react";
+import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
 
 const mapStyles = {
   margin: "0 auto",
-  maxWidth: "400px",
-  height: "400px",
+  maxWidth: "1100px",
+  height: "500px",
 };
 
 const containerStyle = {
@@ -26,7 +26,9 @@ export class MapContainer extends Component {
           lat: -0.6445569,
           lng: 51.5258861,
         }}
-      />
+      >
+        <Marker title={"HF International Marketing"} />
+      </Map>
     );
   }
 }

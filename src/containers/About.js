@@ -5,6 +5,7 @@ import ContactForm from "../components/Contact/ContactForm";
 const About = () => {
   return (
     <div className="about">
+      <ContactForm />
       <div className="about">
         <div className="about__container">
           <div className="about__body">
@@ -19,7 +20,6 @@ const About = () => {
             <h2>sales@hfinternationalmarketing.co.uk</h2>
             <h3>Company Registered in England & Wales No: 09829079</h3>
           </div>
-          <ContactForm />
         </div>
       </div>
 
