@@ -634,6 +634,7 @@ body::-webkit-scrollbar {
   border-radius: 1em;
   box-shadow: 1px 1px 10px rgb(170, 170, 170);
   position: relative;
+  margin-bottom: 60px;
 }
 
 .credentials-form button {
