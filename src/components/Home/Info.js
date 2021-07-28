@@ -2,7 +2,7 @@ const Info = () => {
   return (
     <div className="info">
       <div className="info__container">
-        <h1 className="info__heading">More Information</h1>
+        <h1 className="info__heading">About Us</h1>
         <div className="info__body">
           <p className="info__description">
             The Golden Crunchy brand is becoming very popular and growing
