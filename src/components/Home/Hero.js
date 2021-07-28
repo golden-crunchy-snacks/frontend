@@ -17,7 +17,7 @@ const Hero = () => {
         </div>
         <div className="hero__image">
           <img
-            src="https://64.media.tumblr.com/21d6386e1ae896ea9cc30e8c5b28eb4f/tumblr_mj5u8ftfKD1s7umblo1_400.png"
+            src="https://i.ibb.co/F6StBn0/tumblr-mj5u8ftf-KD1s7umblo1-400.png"
             alt=""
           />
         </div>
