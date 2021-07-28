@@ -31,7 +31,7 @@ const Account = ({ userId }) => {
           );
 
           setData(response.data);
-          console.log(userId);
+
           setIsLoading(false);
         } else {
           try {
@@ -39,7 +39,7 @@ const Account = ({ userId }) => {
               `https://golden-crunchy-snacks.herokuapp.com/orders/${userId}`
             );
             setData(response.data);
-            console.log(userId);
+
             setIsLoading(false);
           } catch (error) {
             setIsLoading(false);

@@ -9,15 +9,12 @@ import Articles from "./Articles";
 const Admin = () => {
   const [selector, setSelector] = useState(Cookies.get("selector") || null);
   const selectorCookie = (selector) => {
-    console.log(selector);
     if (selector) {
       setSelector(selector);
       Cookies.set("selector", selector, { expires: 1 });
       window.location.reload(false);
     }
   };
-
-  console.log(selector);
 
   return (
     <div className="admin-container">
