@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
 
+ul {
+  list-style-type: circle;
+}
+
 body {
   background-color: #f4f4f4;
   font-family: "Roboto", sans-serif;
@@ -583,6 +587,13 @@ body::-webkit-scrollbar {
   font-weight: 800;
   margin-bottom: 30px;
   margin-top: 30px;
+}
+
+.article-modal-container > ul {
+  color: grey;
+  text-align: left;
+  width: 80%;
+  margin-top: 20px;
 }
 
 .article-modal-container > h2 {

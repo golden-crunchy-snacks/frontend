@@ -44,13 +44,12 @@ const AdminArticle = ({ article }) => {
       formData.append("quantity", parseInt(quantity, 10));
       formData.append("picture", picture);
 
-      const response = await axios.put(
+      await axios.put(
         "https://golden-crunchy-snacks.herokuapp.com/article/update",
 
         formData
       );
 
-      console.log(response.data);
       setIsLoading(false);
       alert("Item succesfully updated");
       window.location.reload(false);
@@ -75,7 +74,6 @@ const AdminArticle = ({ article }) => {
         setIsLoading(false);
         alert("Item succesfully deleted");
         window.location.reload(false);
-        console.log(response.data);
       } else {
         alert("There's been a problem deleting this article");
         window.location.reload(false);
