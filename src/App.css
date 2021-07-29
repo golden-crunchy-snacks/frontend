@@ -229,6 +229,8 @@ body::-webkit-scrollbar {
 .hero {
   width: 100%;
   height: 60vh;
+
+  background: linear-gradient(#f4f4f4, #ff9263);
 }
 .hero__container {
   display: flex;
@@ -243,14 +245,14 @@ body::-webkit-scrollbar {
 .hero__heading {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  width: 75%;
-  font-size: 4vw;
+  width: 90%;
+  font-size: 3vw;
   margin-bottom: 1rem;
 }
 .hero__subheading {
-  width: 60%;
+  width: 90%;
   font-weight: 300;
-  font-size: 2vw;
+  font-size: 1.5vw;
   padding-bottom: 4rem;
 }
 .hero__button {
@@ -355,8 +357,9 @@ body::-webkit-scrollbar {
 
 .about {
   width: 100%;
-  max-width: 1440px;
-  /* background-color: white; */
+  /* max-width: 1440px; */
+  background: url("https://i.ibb.co/R6PvrWG/nuts-background-different-kinds-nuts-2862610.png");
+  /* object-fit: contain; */
   margin: 0 auto;
   margin-top: 30px;
 }
@@ -367,8 +370,13 @@ body::-webkit-scrollbar {
   /* justify-content: center; */
   /* align-items: center; */
   width: 80%;
+  max-width: 50em;
   margin: 0 auto;
+  margin-bottom: 2em;
   padding: 5em 0;
+
+  /* background: rgba(0, 0, 0, 0.4); */
+  border-radius: 1em;
 
   display: flex;
   justify-content: space-between;
@@ -385,18 +393,38 @@ body::-webkit-scrollbar {
 }
 
 .about__body > h1 {
-  font-size: 18px;
+  -webkit-text-stroke-width: 1.5px;
+
+  -webkit-text-stroke-color: black;
+  color: #ffffff;
+  font-size: 20px;
   font-weight: 800;
   margin: 20px 0 10px 0;
 }
 
 .about__body > h3 {
-  color: grey;
+  font-size: 14px;
+
+  color: #ffffff;
+
   margin-top: 50px;
 }
+
+.about__body > h2 {
+  color: #ffffff;
+
+  font-size: 14px;
+}
 .map {
-  width: 100%;
   height: 650px;
+  width: 80%;
+  max-width: 50em;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  padding: 5em 0;
+
+  /* width: 100%;
+  height: 650px; */
   /* background-color: white; */
 }
 
@@ -899,7 +927,7 @@ body::-webkit-scrollbar {
 }
 
 .info {
-  background: linear-gradient(#ff7b42, #ffffff);
+  background: linear-gradient(#ff7b42, #f4f4f4);
 }
 .info__container {
   margin: 4em auto 0;
@@ -1508,7 +1536,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   /* margin-top: 3em; */
   padding: 50px;
-  background-color: white;
+  /* background-color: rgba(0, 0, 0, 0.4); */
   height: 50em;
   width: 80%;
   max-width: 50em;
@@ -1517,7 +1545,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 1px 1px 10px rgb(218, 218, 218);
+  /* box-shadow: 1px 1px 10px rgb(218, 218, 218); */
 }
 
 .contact-flex {
@@ -1540,11 +1568,18 @@ body::-webkit-scrollbar {
 } */
 
 .contact__container h2 {
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  font-weight: 600;
+  color: #ffffff;
   margin-bottom: 10px;
   margin-top: 15px;
 }
 
 .contact__container h1 {
+  color: #ffffff;
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   margin: 0 auto;
@@ -1553,13 +1588,19 @@ body::-webkit-scrollbar {
 }
 
 .contact__container p {
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  font-weight: 600;
   margin: 0 auto;
   margin-bottom: 40px;
-  color: grey;
+  color: #ffffff;
   font-style: italic;
 }
 
 .contact__container h3 {
+  -webkit-text-stroke-width: 0.75px;
+  -webkit-text-stroke-color: black;
+  font-weight: 600;
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 20px;
@@ -1577,18 +1618,28 @@ body::-webkit-scrollbar {
 }
 
 .contact__input {
+  font-size: 1.25rem;
+  background: none;
+  color: #ffffff;
   margin-left: 1px;
-  width: 90%;
+  width: 100%;
   /* height: 20%; */
-  border-radius: 0.5em;
+
+  border: none;
+  border-bottom: 3px solid #ff9263;
 }
 
 .contact__textarea {
+  font-size: 1.25rem;
+  border: none;
+  border-bottom: 3px solid #ff9263;
+  color: #ffffff;
+  background: none;
   width: 100%;
   margin-right: 15px;
-  height: 200px;
+  height: 1.5rem;
   margin-bottom: 10px;
-  border-radius: 0.5em;
+  /* border-radius: 0.5em; */
 }
 
 .contact__heading {
@@ -1800,5 +1851,12 @@ body::-webkit-scrollbar {
 
   .basket-list h3 {
     font-size: 0.75rem;
+  }
+
+  .about__container {
+    width: 100%;
+  }
+  .contact-form {
+    width: 100%;
   }
 }
