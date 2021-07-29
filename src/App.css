@@ -109,7 +109,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 500px;
+  width: 60%;
 }
 
 .header-menu-clicked {
@@ -353,18 +353,18 @@ body::-webkit-scrollbar {
   z-index: 20;
 }
 
-/* About */
+/* Contact */
 
-.about {
+.contact {
   width: 100%;
   /* max-width: 1440px; */
-  background: url("https://i.ibb.co/R6PvrWG/nuts-background-different-kinds-nuts-2862610.png");
+  background: url("https://cdn.shopify.com/s/files/1/1454/9374/articles/AdobeStock_234377349_protein_bars_Fotor.jpg?v=1589909151");
   /* object-fit: contain; */
   margin: 0 auto;
-  margin-top: 30px;
+  padding-top: 50px;
 }
 
-.about__container {
+.contact__container {
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: center; */
@@ -383,16 +383,19 @@ body::-webkit-scrollbar {
   align-items: flex-start;
 }
 
-.about__body {
+.contact__body {
   margin-right: 6em;
   margin-bottom: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 1em;
+  padding: 40px 0;
 }
 
-.about__body > h1 {
+.contact__body > h1 {
   -webkit-text-stroke-width: 1.5px;
 
   -webkit-text-stroke-color: black;
@@ -402,7 +405,7 @@ body::-webkit-scrollbar {
   margin: 20px 0 10px 0;
 }
 
-.about__body > h3 {
+.contact__body > h3 {
   font-size: 14px;
 
   color: #ffffff;
@@ -410,7 +413,7 @@ body::-webkit-scrollbar {
   margin-top: 50px;
 }
 
-.about__body > h2 {
+.contact__body > h2 {
   color: #ffffff;
 
   font-size: 14px;
@@ -430,14 +433,16 @@ body::-webkit-scrollbar {
 
 /* Shop */
 .shop {
-  width: 80%;
-  max-width: 1440px;
   margin: 0 auto;
-  margin-top: 3em;
-  margin-bottom: 50px;
+  padding-top: 3em;
+  padding-bottom: 5em;
+  background: linear-gradient(#f4f4f4, #ff9263);
 }
 
 .shop__categoriesandlist {
+  margin: 0 auto;
+  width: 80%;
+  max-width: 1440px;
   display: flex;
 }
 
@@ -446,7 +451,7 @@ body::-webkit-scrollbar {
 }
 
 .shop__categoriesandlist > div:nth-child(2) > h1 {
-  margin-left: 3%;
+  margin-left: 8%;
   margin-bottom: 20px;
   color: grey;
 }
@@ -503,7 +508,7 @@ body::-webkit-scrollbar {
   align-items: center;
   flex-direction: column;
 
-  width: 90%;
+  width: 100%;
   /* max-width: 1440px; */
   /* margin: 0 auto; */
 }
@@ -523,7 +528,7 @@ body::-webkit-scrollbar {
 
 .article-list {
   box-sizing: border-box;
-  margin: 0 10px 10px 10px;
+  margin: 0 10px 20px 10px;
   border-radius: 10px;
   background-color: white;
   color: black;
@@ -1371,6 +1376,12 @@ body::-webkit-scrollbar {
   color: #727272;
   padding-bottom: 0.4rem;
 }
+
+.footer__links > ul > li > a {
+  color: #727272;
+
+  margin-bottom: 3px;
+}
 .footer__links ul {
   margin-top: 1em;
 }
@@ -1531,12 +1542,14 @@ body::-webkit-scrollbar {
   position: relative;
 }
 
+/* Contact */
+
 .contact-form {
   box-sizing: border-box;
   margin: 0 auto;
-  /* margin-top: 3em; */
-  padding: 50px;
-  /* background-color: rgba(0, 0, 0, 0.4); */
+  margin-top: 3em;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
   height: 50em;
   width: 80%;
   max-width: 50em;
@@ -1551,15 +1564,23 @@ body::-webkit-scrollbar {
 .contact-flex {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+
+.contact-flex > div {
+  width: 100%;
 }
 
 .contact__container {
   width: 80%;
   margin: 0 auto;
-
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: column;
+}
+
+.contact__container > div {
+  width: 100%;
 }
 
 /* .contact__container > div > div {
@@ -1604,7 +1625,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 20px;
-  color: #e20114;
+  color: lightgrey;
   font-style: italic;
 }
 
@@ -1615,6 +1636,7 @@ body::-webkit-scrollbar {
   background: #fa4b00;
   font-weight: 600;
   max-width: 20em;
+  margin-top: 40px;
 }
 
 .contact__input {
@@ -1653,6 +1675,37 @@ body::-webkit-scrollbar {
 .fas {
   font-size: 3em;
   margin: 1em;
+}
+
+/* About */
+
+.about {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  background: linear-gradient(#f4f4f4, #ff9263);
+  padding-bottom: 80px;
+}
+
+.about > div {
+  max-width: 1440px;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.about > div > h1 {
+  font-weight: 600;
+  margin: 50px 0;
+  font-size: 24px;
+}
+
+.about > div > p {
+  line-height: 24px;
+  width: 80%;
+  text-align: center;
 }
 
 /* RESPONSIVE */
@@ -1793,11 +1846,11 @@ body::-webkit-scrollbar {
     display: none;
   }
 
-  .about__container {
+  .contact__container {
     flex-direction: column;
   }
 
-  .about__body {
+  .contact__body {
     text-align: center;
     margin: 0 auto 3em;
   }
@@ -1853,7 +1906,7 @@ body::-webkit-scrollbar {
     font-size: 0.75rem;
   }
 
-  .about__container {
+  .contact__container {
     width: 100%;
   }
   .contact-form {

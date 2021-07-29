@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 // Pages
 import Home from "./containers/Home";
-import About from "./containers/About";
+import Contact from "./containers/Contact";
 import Shop from "./containers/Shop";
 import Login from "./containers/Auth/Login";
 import Signup from "./containers/Auth/Signup";
@@ -16,6 +16,7 @@ import Payment from "./containers/Payment/Payment";
 import Account from "./containers/Auth/Account";
 import Success from "./containers/Payment/Success";
 import Trade from "./containers/Trade";
+import About from "./containers/About";
 
 // Components
 import Header from "./components/Header";
@@ -186,11 +187,14 @@ function App() {
         <Route path="/login">
           <Login setTokenAndId={setTokenAndId} />
         </Route>
+        <Route path="/about">
+          <About />
+        </Route>
         <Route path="/trade">
           <Trade />
         </Route>
-        <Route path="/about">
-          <About />
+        <Route path="/contact">
+          <Contact />
         </Route>
         <Route path="/shop">
           <Shop setBasket={setBasket} userBasket={userBasket} />

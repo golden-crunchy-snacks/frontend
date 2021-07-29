@@ -42,10 +42,16 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
           Trade
         </Link>
         <Link
+          to="/contact"
+          className={location.pathname === "/contact" && "header-menu-clicked"}
+        >
+          Contact
+        </Link>
+        <Link
           to="/about"
           className={location.pathname === "/about" && "header-menu-clicked"}
         >
-          Contact
+          About Us
         </Link>
       </div>
 

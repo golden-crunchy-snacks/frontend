@@ -1,28 +1,22 @@
-// Components
-import Map from "../components/Utility/Map";
-import ContactForm from "../components/Contact/ContactForm";
-
 const About = () => {
   return (
     <div className="about">
-      <ContactForm />
-      <div className="about__container">
-        <div className="about__body">
-          <h1>Company Name:</h1>
-          <h2>HF International Marketing Ltd</h2>
-          <h1>Registered Address:</h1>
-          <h2>861 Plymouth Road</h2>
-          <h2>Slough SL1 4LP</h2>
-          <h2>Berkshire </h2>
-          <h2>United Kingdom</h2>
-          <h1>E-mail:</h1>
-          <h2>sales@hfinternationalmarketing.co.uk</h2>
-          <h3>Company Registered in England & Wales No: 09829079</h3>
-        </div>
-      </div>
-
-      <div className="map">
-        <Map />
+      <div>
+        <h1>About Us</h1>
+        <p>
+          The Golden Crunchy brand is becoming very popular and growing stronger
+          year by year reaching customers nationally. The company products are
+          all 100% Vegetarian, Halal and manufactured in UK and Europe. The
+          products have the finest ingredients creating superior and rich taste
+          with high quality.
+        </p>
+        <h1>What Matters To Us</h1>
+        <p>
+          We make products we can be proud of. We pour heart and soul into
+          everything we do, and every pack that leaves our factory is of the
+          highest quality. We make products which our customers love, keeping
+          them coming back for more.
+        </p>
       </div>
     </div>
   );
