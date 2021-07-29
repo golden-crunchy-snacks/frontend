@@ -1873,6 +1873,17 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 500px) {
+  .shop__categoriesandlist > div:nth-child(2) > h1 {
+    display: none;
+  }
+  .shop__categoriesandlist {
+    width: 90%;
+    flex-direction: column;
+  }
+  .shop-search-container {
+    width: 56%;
+    margin: 0 auto;
+  }
   .contact-form {
     /* width: 95%; */
     padding-left: 1em;
@@ -1891,6 +1902,9 @@ body::-webkit-scrollbar {
   }
   .basket-list h3 {
     font-size: 0.9rem;
+  }
+  .shop-categories-container {
+    display: none;
   }
 }
 
