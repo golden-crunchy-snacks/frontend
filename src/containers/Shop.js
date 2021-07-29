@@ -19,6 +19,9 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
   const [modalInfo, setModalInfo] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
+  const [categoriesButtonMessage, setCategoriesButtonMessage] =
+    useState("Show Categories");
+  const [categoriesModal, setCategoriesModal] = useState(false);
 
   // Get inital articles
   useEffect(() => {
@@ -97,6 +100,17 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     setModalInfo(props.article);
   };
 
+  // categoryHandle
+
+  const categoryHandle = () => {
+    setCategoriesModal(!categoriesModal);
+    if (categoriesButtonMessage === "Show Categories") {
+      setCategoriesButtonMessage("Hide Categories");
+    } else {
+      setCategoriesButtonMessage("Show Categories");
+    }
+  };
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -117,6 +131,30 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
               }}
               searchVisibility={searchVisibility}
             />
+            <button onClick={() => categoryHandle()}>
+              {categoriesButtonMessage}
+            </button>
+            {categoriesModal && (
+              <div className="categories-modal-container">
+                <h1>CATEGORIES</h1>
+                <form className="categories-modal">
+                  {categories.map((category) => {
+                    return (
+                      <label key={category.title}>
+                        <input
+                          type="checkbox"
+                          name={category.title}
+                          onClick={(e) => {
+                            filterHandle(e);
+                          }}
+                        />
+                        <span>{category.title}</span>
+                      </label>
+                    );
+                  })}
+                </form>
+              </div>
+            )}
           </div>
           <div className="shop-categories-container">
             <h1>CATEGORIES</h1>
