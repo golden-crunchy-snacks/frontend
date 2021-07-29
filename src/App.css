@@ -420,7 +420,7 @@ body::-webkit-scrollbar {
   width: 80%;
   max-width: 50em;
   margin: 0 auto;
-  margin-bottom: 2em;
+
   padding: 5em 0;
 
   /* width: 100%;
