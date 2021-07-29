@@ -1,6 +1,8 @@
 // Media
 import hero from "../../assets/img/hero.png";
 
+import { Link } from "react-router-dom";
+
 const Hero = () => {
   return (
     <section className="hero">
@@ -13,7 +15,9 @@ const Hero = () => {
             highest quality. We make products which our customers love, keeping
             them coming back for more.
           </h3>
-          <button className="hero__button">Shop Now</button>
+          <Link className="hero__button" to="/shop">
+            Shop Now
+          </Link>
         </div>
         <div className="hero__image">
           <img
