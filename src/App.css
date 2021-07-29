@@ -1783,6 +1783,12 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 800px) {
+  .hero__button {
+    margin-bottom: 50px;
+  }
+  .hero__subheading {
+    line-height: 24px;
+  }
   .header-container {
     flex-direction: column;
   }
@@ -1932,6 +1938,9 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 500px) {
+  .hero__subheading {
+    line-height: 24px;
+  }
   .shop__categoriesandlist > div:nth-child(2) > h1 {
     text-align: center;
     margin-left: 0;
