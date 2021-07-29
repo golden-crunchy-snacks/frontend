@@ -1908,6 +1908,7 @@ body::-webkit-scrollbar {
 
   .contact__container {
     flex-direction: column;
+    width: 80%;
   }
 
   .contact__body {
@@ -1915,10 +1916,10 @@ body::-webkit-scrollbar {
     margin: 0 auto 3em;
   }
 
-  /* .contact-form {
-    width: 95%;
+  .contact-form {
+    padding: 0 40px;
   }
-  .contact__container h1 {
+  /* .contact__container h1 {
     font-size: 18px;
   }
 
@@ -1928,6 +1929,9 @@ body::-webkit-scrollbar {
 
   .shop {
     width: 98%;
+  }
+  .contact {
+    margin-top: 30px;
   }
 }
 
