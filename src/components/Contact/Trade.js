@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AiOutlineMinuis, AiOutlinePlus } from "react-icons";
 
 const Trade = ({ title, info }) => {
   const [showInfo, setShowInfo] = useState(false);

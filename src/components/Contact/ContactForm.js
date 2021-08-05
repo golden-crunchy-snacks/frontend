@@ -4,7 +4,6 @@ import axios from "axios";
 
 // Components
 import Loader from "../Utility/Loader";
-import Trade from "./Trade";
 
 const ContactForm = () => {
   // States

@@ -1,6 +1,5 @@
 // Media
-import hero from "../../assets/img/hero.png";
-
+import logo from "../../assets/img/logo.png";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -22,7 +21,13 @@ const Hero = () => {
         <div className="hero__image">
           <img
             src="https://i.ibb.co/F6StBn0/tumblr-mj5u8ftf-KD1s7umblo1-400.png"
-            alt=""
+            alt="https://i.ibb.co/F6StBn0/tumblr-mj5u8ftf-KD1s7umblo1-400.png"
+          />
+        </div>
+        <div className="hero__image__mobile">
+          <img
+            src={logo}
+            alt={logo}
           />
         </div>
       </div>

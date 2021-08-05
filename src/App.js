@@ -4,6 +4,8 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cookies from "js-cookie";
 import { useState, useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 // Pages
 import Home from "./containers/Home";
@@ -30,6 +32,12 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState(null);
   const [userId, setUserId] = useState(null);
+
+
+   // Scroll Animation function usin AOS package
+   useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
   // Basket
   const [userBasket, setUserBasket] = useState(
