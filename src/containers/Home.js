@@ -31,7 +31,7 @@ const Home = ({ setBasket, userBasket }) => {
       }
     };
     fetchData();
-  });
+  }, []);
 
   // Modal Info Handle
   const modalHandle = (props) => {
