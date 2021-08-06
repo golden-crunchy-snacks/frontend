@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600.700&display=swap");
 
 ul {
   list-style-type: circle;
@@ -363,7 +363,7 @@ body::-webkit-scrollbar {
 
 .carousel > h1 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   margin: 35px 0 15px 30px;
   font-size: 22px;
 }
@@ -571,6 +571,7 @@ body::-webkit-scrollbar {
   padding: 30px;
   border-radius: 5px;
   height: fit-content;
+  font-family: "Montserrat", sans-serif;
 }
 
 .shop-categories-container > h1 {
@@ -615,23 +616,6 @@ body::-webkit-scrollbar {
 .categories-modal-container > h1 {
   margin-bottom: 18px;
   font-weight: 800;
-}
-
-.categories-modal {
-  /* margin: 0 20px; */
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.categories-modal > label {
-  width: 100%;
-  margin: 5px 20px 5px 0;
-}
-
-.categories-modal > label > input {
-  margin-right: 5px;
 }
 
 /* Article List */
@@ -1085,7 +1069,7 @@ body::-webkit-scrollbar {
 }
 .info__heading {
   font-family: "Montserrat", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   padding-top: 2em;
   padding-bottom: 2em;
   font-size: 2rem;
@@ -1099,10 +1083,13 @@ body::-webkit-scrollbar {
   padding-bottom: 6em;
 }
 .info__description {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
   max-width: 25em;
   color: #000000;
   font-weight: 500;
   padding-right: 4rem;
+  line-height: 1.2rem;
 }
 .info__image {
   width: auto;
@@ -1577,6 +1564,11 @@ body::-webkit-scrollbar {
   flex-direction: column;
 }
 
+.admin-orders-container > div:nth-child(1) > div {
+  margin-top: 30px;
+  width: 50%;
+}
+
 .admin-orders-container > div:nth-child(1) > h1 {
   margin-bottom: 15px;
 }
@@ -1624,6 +1616,23 @@ body::-webkit-scrollbar {
   width: 70%;
 }
 
+.admin-articles > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.admin-articles > div:nth-child(2) > button {
+  margin-bottom: 30px;
+  background: #fa4b00;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  width: 100%;
+}
 .admin-article {
   padding: 15px;
   display: flex;
@@ -1685,6 +1694,33 @@ body::-webkit-scrollbar {
   justify-content: space-evenly;
   align-items: center;
   position: relative;
+}
+
+.admin-categories {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  max-height: 100%;
+}
+
+.admin-categories > div {
+  width: 100%;
+  margin: 0 20px;
+}
+
+.admin-categories > div:nth-child(1) {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.admin-categories > div:nth-child(1) > h1 {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #000000;
+  border-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
 /* Contact */

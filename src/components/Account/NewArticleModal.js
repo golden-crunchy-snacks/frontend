@@ -34,7 +34,7 @@ const NewArticleModal = ({ onX }) => {
     fetchData();
   }, []);
 
-  // Update Article
+  // Create Article
   const uploadHandle = async () => {
     try {
       setIsLoading(true);

@@ -107,18 +107,21 @@ const Orders = () => {
     <div className="admin-orders-container">
       <div>
         <h1>Search by Reference Number</h1>
-        <SearchBar
-          placeholder="Search for order ..."
-          data={filteredData}
-          onChange={(e) => {
-            searchHandle(e);
-          }}
-          value={searchValue}
-          onClick={(e) => {
-            searchClickHandle(e);
-          }}
-          searchVisibility={searchVisibility}
-        />
+        <div>
+          {" "}
+          <SearchBar
+            placeholder="Search for order ..."
+            data={filteredData}
+            onChange={(e) => {
+              searchHandle(e);
+            }}
+            value={searchValue}
+            onClick={(e) => {
+              searchClickHandle(e);
+            }}
+            searchVisibility={searchVisibility}
+          />
+        </div>
       </div>
 
       {isLoading ? (

@@ -6,12 +6,14 @@ import Loader from "../Utility/SmallLoader";
 // Components
 import AdminArticle from "./AdminArticle";
 import NewArticleModal from "./NewArticleModal";
+import ManageCategoriesModal from "./ManageCategoriesModal";
 
 const Articles = () => {
   // States
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [modal, setModal] = useState(false);
+  const [articleModal, setArticleModal] = useState(false);
+  const [categoriesModal, setCategoriesModal] = useState(false);
 
   // Get orders
   useEffect(() => {
@@ -44,16 +46,31 @@ const Articles = () => {
       <div>
         <button
           onClick={() => {
-            setModal(true);
+            setArticleModal(true);
           }}
         >
           Create New Article
         </button>
+        <button
+          onClick={() => {
+            setCategoriesModal(true);
+          }}
+        >
+          Manage Categories
+        </button>
       </div>
-      {modal && (
+
+      {articleModal && (
         <NewArticleModal
           onX={() => {
-            setModal(false);
+            setArticleModal(false);
+          }}
+        />
+      )}
+      {categoriesModal && (
+        <ManageCategoriesModal
+          onX={() => {
+            setArticleModal(false);
           }}
         />
       )}

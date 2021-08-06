@@ -137,7 +137,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
             {categoriesModal && (
               <div className="categories-modal-container">
                 <h1>CATEGORIES</h1>
-                <form className="categories-modal">
+                <form className="shop-categories">
                   {categories.map((category) => {
                     return (
                       <label key={category.title}>
