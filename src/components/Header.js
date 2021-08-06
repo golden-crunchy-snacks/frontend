@@ -119,6 +119,23 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
           className="burger-menu-button"
           onClick={() => setBurgerHandle(true)}
         />
+        <Link
+          to="/basket"
+          className={location.pathname === "/basket" && "header-menu-clicked"}
+        >
+          <div
+            className={
+              location.pathname === "/basket"
+                ? "header-menu-clicked header-basket"
+                : "header-basket"
+            }
+          >
+            <FaShoppingBasket />
+            <div className="header-basket-counter">
+              {basket === null ? "0" : basket.length}
+            </div>
+          </div>
+        </Link>
         {burgerHandle && (
           <div className="burger-menu" data-aos="slide-right">
             <BiLeftArrowAlt
@@ -128,16 +145,19 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
             <Link
               to="/"
               className={location.pathname === "/" && "header-menu-clicked"}
+              onClick={() => setBurgerHandle(false)}
             >
               Home
             </Link>
             <Link
+              onClick={() => setBurgerHandle(false)}
               to="/shop"
               className={location.pathname === "/shop" && "header-menu-clicked"}
             >
               Shop
             </Link>
             <Link
+              onClick={() => setBurgerHandle(false)}
               to="/trade"
               className={
                 location.pathname === "/trade" && "header-menu-clicked"
@@ -146,6 +166,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               Trade
             </Link>
             <Link
+              onClick={() => setBurgerHandle(false)}
               to="/contact"
               className={
                 location.pathname === "/contact" && "header-menu-clicked"
@@ -154,6 +175,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               Contact
             </Link>
             <Link
+              onClick={() => setBurgerHandle(false)}
               to="/about"
               className={
                 location.pathname === "/about" && "header-menu-clicked"
@@ -162,6 +184,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               About Us
             </Link>
             <Link
+              onClick={() => setBurgerHandle(false)}
               to="/basket"
               className={
                 location.pathname === "/basket" && "header-menu-clicked"
@@ -176,6 +199,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
                 </button>
 
                 <Link
+                  onClick={() => setBurgerHandle(false)}
                   to="/account"
                   className={
                     location.pathname === "/account" && "header-menu-clicked"
@@ -186,6 +210,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               </>
             ) : (
               <Link
+                onClick={() => setBurgerHandle(false)}
                 to="/login"
                 className={
                   location.pathname === "/login" ||

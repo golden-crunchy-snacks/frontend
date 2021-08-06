@@ -177,7 +177,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
           </div>
         </div>
         <div>
-          <h1>Showing {filteredData.length} Results</h1>
+          {/* <h1>Showing {filteredData.length} Results</h1> */}
           <ArticleList
             data={filteredData}
             filter={filter}
