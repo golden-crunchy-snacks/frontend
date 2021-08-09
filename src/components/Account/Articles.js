@@ -70,7 +70,7 @@ const Articles = () => {
       {categoriesModal && (
         <ManageCategoriesModal
           onX={() => {
-            setArticleModal(false);
+            setCategoriesModal(false);
           }}
         />
       )}
