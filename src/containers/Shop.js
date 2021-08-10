@@ -160,25 +160,51 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
               {categoriesButtonMessage}
             </button>
             {categoriesModal && (
-              <div className="categories-modal-container">
-                <h1>CATEGORIES</h1>
-                <form className="shop-categories">
-                  {categories.map((category) => {
-                    return (
-                      <label key={category.title}>
-                        <input
-                          type="checkbox"
-                          name={category.title}
-                          onClick={(e) => {
-                            filterHandle(e);
-                          }}
-                        />
-                        <span>{category.title}</span>
-                      </label>
-                    );
-                  })}
-                </form>
-              </div>
+              <>
+                {" "}
+                <div className="categories-modal-container">
+                  <h1>CATEGORIES</h1>
+                  <form className="shop-categories">
+                    {categories.map((category) => {
+                      return (
+                        <label key={category.title}>
+                          <input
+                            type="checkbox"
+                            name={category.title}
+                            onClick={(e) => {
+                              filterHandle(e);
+                            }}
+                          />
+                          <span>{category.title}</span>
+                        </label>
+                      );
+                    })}
+                  </form>
+                </div>
+                {filter.length !== 0 && (
+                  <div className="categories-modal-container">
+                    <h1>SUB-CATEGORIES</h1>
+                    <form className="shop-categories">
+                      {subCategories.map((subCategory) => {
+                        return (
+                          filter.indexOf(subCategory.category) !== -1 && (
+                            <label key={subCategory.title}>
+                              <input
+                                type="checkbox"
+                                name={subCategory.title}
+                                onClick={(e) => {
+                                  filter2Handle(e);
+                                }}
+                              />
+                              <span>{subCategory.title}</span>
+                            </label>
+                          )
+                        );
+                      })}
+                    </form>
+                  </div>
+                )}
+              </>
             )}
           </div>
           <div className="shop-categories-container">
