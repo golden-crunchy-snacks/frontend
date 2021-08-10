@@ -10,6 +10,8 @@ const AdminArticle = ({ article }) => {
   const [picture, setPicture] = useState(article.picture);
   const [price, setPrice] = useState(article.price);
   const [description, setDescription] = useState(article.description);
+  const [subCategory, setSubCategory] = useState(article.subCategory);
+  const [subCategoryList, setSubCategoryList] = useState();
   const [category, setCategory] = useState(article.category);
   const [categoryList, setCategoryList] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -21,8 +23,12 @@ const AdminArticle = ({ article }) => {
         const response = await axios.get(
           `https://golden-crunchy-snacks.herokuapp.com/categories`
         );
+        const response2 = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/subcategories`
+        );
 
         setCategoryList(response.data);
+        setSubCategoryList(response2.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -41,6 +47,7 @@ const AdminArticle = ({ article }) => {
       formData.append("description", description);
       formData.append("price", parseFloat(price).toFixed(2));
       formData.append("category", category);
+      formData.append("subCategory", subCategory);
       formData.append("quantity", parseInt(quantity, 10));
       formData.append("picture", picture);
 
@@ -119,8 +126,6 @@ const AdminArticle = ({ article }) => {
                 }}
               ></textarea>
             </label>
-          </div>
-          <div>
             <label for="picture">
               <h1> Change Picture</h1>
               <input
@@ -132,6 +137,8 @@ const AdminArticle = ({ article }) => {
                 }}
               />
             </label>
+          </div>
+          <div>
             <label for="category">
               <h1>Category</h1>
               <select
@@ -146,6 +153,33 @@ const AdminArticle = ({ article }) => {
                 {categoryList.map((category) => {
                   return (
                     <option value={category.title}>{category.title}</option>
+                  );
+                })}
+              </select>
+            </label>
+            <label for="sub-Category">
+              <h1>Sub-Category</h1>
+              <select
+                name="subCategory"
+                cols="40"
+                rows="5"
+                value={subCategory}
+                onChange={(e) => {
+                  setSubCategory(e.target.value);
+                }}
+              >
+                {subCategory === undefined || "" || "None" ? (
+                  <option value="None">None</option>
+                ) : (
+                  <></>
+                )}
+                {subCategoryList.map((subCategory) => {
+                  return (
+                    subCategory.category === category && (
+                      <option value={subCategory.title}>
+                        {subCategory.title}
+                      </option>
+                    )
                   );
                 })}
               </select>

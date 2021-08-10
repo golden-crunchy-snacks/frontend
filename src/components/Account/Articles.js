@@ -7,6 +7,7 @@ import Loader from "../Utility/SmallLoader";
 import AdminArticle from "./AdminArticle";
 import NewArticleModal from "./NewArticleModal";
 import ManageCategoriesModal from "./ManageCategoriesModal";
+import ManageSubCategoriesModal from "./ManageSubCategoriesModal";
 
 const Articles = () => {
   // States
@@ -14,6 +15,7 @@ const Articles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [articleModal, setArticleModal] = useState(false);
   const [categoriesModal, setCategoriesModal] = useState(false);
+  const [subCategoriesModal, setSubCategoriesModal] = useState(false);
 
   // Get orders
   useEffect(() => {
@@ -58,6 +60,13 @@ const Articles = () => {
         >
           Manage Categories
         </button>
+        <button
+          onClick={() => {
+            setSubCategoriesModal(true);
+          }}
+        >
+          Manage Sub-Categories
+        </button>
       </div>
 
       {articleModal && (
@@ -71,6 +80,13 @@ const Articles = () => {
         <ManageCategoriesModal
           onX={() => {
             setCategoriesModal(false);
+          }}
+        />
+      )}
+      {subCategoriesModal && (
+        <ManageSubCategoriesModal
+          onX={() => {
+            setSubCategoriesModal(false);
           }}
         />
       )}

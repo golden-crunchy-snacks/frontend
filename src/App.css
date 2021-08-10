@@ -1723,6 +1723,49 @@ body::-webkit-scrollbar {
   padding-top: 5px;
 }
 
+.admin-sub-categories {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  max-height: 100%;
+}
+
+.admin-sub-categories > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 20px;
+}
+
+.admin-sub-categories > div:nth-child(1) {
+  overflow-y: scroll;
+  max-height: 100%;
+}
+
+.admin-sub-categories > div:nth-child(1) > h1:nth-child(1) {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.admin-sub-categories > div:nth-child(1) > h1:not(:nth-child(1)) {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #000000;
+  border-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.admin-sub-categories > div:nth-child(2) > label > h1 {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.admin-sub-categories > div:nth-child(2) > input {
+  margin-bottom: 20px;
+}
+
 /* Contact */
 
 .contact-form {

@@ -52,16 +52,14 @@ const Orders = () => {
 
   //   Complete and un-complete function
   const completeHandle = async (order) => {
-    console.log(order.deliveryStatus);
-    console.log(order);
     if (order.deliveryStatus === "pending") {
       try {
         const response = await axios.put(
           `https://golden-crunchy-snacks.herokuapp.com/orders/status`,
           { id: order._id, deliveryStatus: "completed" }
         );
-        window.location.reload(false);
         console.log(response.data);
+        window.location.reload(false);
       } catch (error) {
         console.log(error);
       }
@@ -72,7 +70,6 @@ const Orders = () => {
           { id: order._id, deliveryStatus: "pending" }
         );
         window.location.reload(false);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }

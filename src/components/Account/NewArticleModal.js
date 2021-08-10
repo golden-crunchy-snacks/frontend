@@ -16,6 +16,10 @@ const NewArticleModal = ({ onX }) => {
   const [category, setCategory] = useState();
   const [categoryList, setCategoryList] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [categoryId, setCategoryId] = useState();
+  const [subCategory, setSubCategory] = useState("None");
+  const [subCategoryId, setSubCategoryId] = useState();
+  const [subCategoryList, setSubCategoryList] = useState([]);
 
   // Get category list
   useEffect(() => {
@@ -25,8 +29,15 @@ const NewArticleModal = ({ onX }) => {
           `https://golden-crunchy-snacks.herokuapp.com/categories`
         );
 
+        const response2 = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/subcategories`
+        );
         setCategoryList(response.data);
+        setCategoryId(response.data[0]._id);
+        setCategory(response.data[0].title);
+        setSubCategoryList(response2.data);
         setIsLoading(false);
+        console.log(subCategoryList);
       } catch (error) {
         console.log(error.message);
       }
@@ -39,13 +50,12 @@ const NewArticleModal = ({ onX }) => {
     try {
       setIsLoading(true);
       const formData = new FormData();
-
+      formData.append("subCategory", subCategory);
       formData.append("title", title);
       formData.append("description", description);
       formData.append("price", parseFloat(price).toFixed(2));
       formData.append("category", category);
       formData.append("quantity", parseInt(quantity, 10));
-
       formData.append("picture", picture);
 
       const response = await axios.post(
@@ -95,8 +105,6 @@ const NewArticleModal = ({ onX }) => {
                     }}
                   ></textarea>
                 </label>
-              </div>
-              <div>
                 <label for="picture">
                   <h1> Change Picture</h1>
                   <input
@@ -108,20 +116,48 @@ const NewArticleModal = ({ onX }) => {
                     }}
                   />
                 </label>
+              </div>
+              <div>
                 <label for="category">
                   <h1>Category</h1>
                   <select
                     name="category"
                     cols="40"
                     rows="5"
-                    value={category}
                     onChange={(e) => {
-                      setCategory(e.target.value);
+                      setCategory(JSON.parse(e.target.value).title);
+                      setCategoryId(JSON.parse(e.target.value).id);
                     }}
                   >
                     {categoryList.map((category) => {
                       return (
-                        <option value={category.title}>{category.title}</option>
+                        <option
+                          value={`{"title": "${category.title}", "id": "${category._id}"}`}
+                        >
+                          {category.title}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </label>
+                <label for="subCategory">
+                  <h1>Sub-Category</h1>
+                  <select
+                    name="subCategory"
+                    cols="40"
+                    rows="5"
+                    onChange={(e) => {
+                      setSubCategory(e.target.value);
+                    }}
+                  >
+                    <option value="None">None</option>
+                    {subCategoryList.map((subCategory) => {
+                      return (
+                        subCategory.categoryId === categoryId && (
+                          <option value={subCategory.title}>
+                            {subCategory.title}
+                          </option>
+                        )
                       );
                     })}
                   </select>
