@@ -41,7 +41,6 @@ const Orders = () => {
         );
 
         setData(response.data);
-
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -54,18 +53,18 @@ const Orders = () => {
   const completeHandle = async (order) => {
     if (order.deliveryStatus === "pending") {
       try {
-        const response = await axios.put(
+        await axios.put(
           `https://golden-crunchy-snacks.herokuapp.com/orders/status`,
           { id: order._id, deliveryStatus: "completed" }
         );
-        console.log(response.data);
+
         window.location.reload(false);
       } catch (error) {
         console.log(error);
       }
     } else {
       try {
-        const response = await axios.put(
+        await axios.put(
           `https://golden-crunchy-snacks.herokuapp.com/orders/status`,
           { id: order._id, deliveryStatus: "pending" }
         );
@@ -145,7 +144,7 @@ const Orders = () => {
           <div>
             <h1>Completed</h1>
 
-            {data.map((order) => {
+            {filteredData.map((order) => {
               return (
                 order.deliveryStatus === "completed" && (
                   <AdminOrder

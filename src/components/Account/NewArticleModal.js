@@ -18,7 +18,6 @@ const NewArticleModal = ({ onX }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [categoryId, setCategoryId] = useState();
   const [subCategory, setSubCategory] = useState("None");
-  const [subCategoryId, setSubCategoryId] = useState();
   const [subCategoryList, setSubCategoryList] = useState([]);
 
   // Get category list
@@ -37,7 +36,6 @@ const NewArticleModal = ({ onX }) => {
         setCategory(response.data[0].title);
         setSubCategoryList(response2.data);
         setIsLoading(false);
-        console.log(subCategoryList);
       } catch (error) {
         console.log(error.message);
       }

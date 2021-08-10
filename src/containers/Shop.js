@@ -16,12 +16,16 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
   const [searchVisibility, setSearchVisibility] = useState(false);
   const [modal, setModal] = useState(false);
   const [filter, setFilter] = useState([]);
+  const [filter2, setFilter2] = useState([]);
   const [modalInfo, setModalInfo] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
+  const [subCategories, setSubCategories] = useState();
   const [categoriesButtonMessage, setCategoriesButtonMessage] =
     useState("Show Categories");
   const [categoriesModal, setCategoriesModal] = useState(false);
+
+  console.log(filter);
 
   // Get inital articles
   useEffect(() => {
@@ -41,7 +45,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     fetchData();
   }, []);
 
-  // Get categories
+  // Get categories & sub-categories
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,6 +53,11 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
           `https://golden-crunchy-snacks.herokuapp.com/categories`
         );
 
+        const response2 = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/subcategories`
+        );
+
+        setSubCategories(response2.data);
         setCategories(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -94,6 +103,18 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     setFilter(filterCategory);
   };
 
+  // Sub-Category filter function
+  const filter2Handle = (e) => {
+    const filterCategory = [...filter2];
+    console.log(e.target.name);
+    if (filterCategory.indexOf(e.target.name) === -1) {
+      filterCategory.push(e.target.name);
+    } else {
+      filterCategory.splice(filterCategory.indexOf(e.target.name), 1);
+    }
+    setFilter2(filterCategory);
+  };
+
   // Modal Info Handle
   const modalHandle = (props) => {
     setModal(true);
@@ -115,22 +136,26 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
     <Loader />
   ) : (
     <div className="shop">
+      <div>
+        <h1>What snack are you looking for ?</h1>
+        <SearchBar
+          placeholder="Search..."
+          data={filteredData}
+          onChange={(e) => {
+            searchHandle(e);
+          }}
+          value={searchValue}
+          onClick={(e) => {
+            searchClickHandle(e);
+          }}
+          searchVisibility={searchVisibility}
+        />
+      </div>
+
       <div className="shop__categoriesandlist">
         <div>
           {" "}
           <div className="shop-search-container">
-            <SearchBar
-              placeholder="Search..."
-              data={filteredData}
-              onChange={(e) => {
-                searchHandle(e);
-              }}
-              value={searchValue}
-              onClick={(e) => {
-                searchClickHandle(e);
-              }}
-              searchVisibility={searchVisibility}
-            />
             <button onClick={() => categoryHandle()}>
               {categoriesButtonMessage}
             </button>
@@ -175,12 +200,36 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
               })}
             </form>
           </div>
+          {filter.length !== 0 && (
+            <div className="shop-categories-container">
+              <h1>SUB-CATEGORIES</h1>
+              <form className="shop-categories">
+                {subCategories.map((subCategory) => {
+                  return (
+                    filter.indexOf(subCategory.category) !== -1 && (
+                      <label key={subCategory.title}>
+                        <input
+                          type="checkbox"
+                          name={subCategory.title}
+                          onClick={(e) => {
+                            filter2Handle(e);
+                          }}
+                        />
+                        <span>{subCategory.title}</span>
+                      </label>
+                    )
+                  );
+                })}
+              </form>
+            </div>
+          )}
         </div>
         <div>
           {/* <h1>Showing {filteredData.length} Results</h1> */}
           <ArticleList
             data={filteredData}
             filter={filter}
+            filter2={filter2}
             modalHandle={modalHandle}
             setBasket={setBasket}
             userBasket={userBasket}

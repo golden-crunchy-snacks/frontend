@@ -8,10 +8,14 @@ import AdminArticle from "./AdminArticle";
 import NewArticleModal from "./NewArticleModal";
 import ManageCategoriesModal from "./ManageCategoriesModal";
 import ManageSubCategoriesModal from "./ManageSubCategoriesModal";
+import SearchBar from "../Utility/SearchBar";
 
 const Articles = () => {
   // States
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
+  const [searchValue, setSearchValue] = useState("");
+  const [searchVisibility, setSearchVisibility] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [articleModal, setArticleModal] = useState(false);
   const [categoriesModal, setCategoriesModal] = useState(false);
@@ -26,7 +30,7 @@ const Articles = () => {
         );
 
         setData(response.data);
-
+        setFilteredData(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error.message);
@@ -35,38 +39,82 @@ const Articles = () => {
     fetchData();
   }, []);
 
+  // Search Handle
+  const searchHandle = (e) => {
+    setSearchVisibility(true);
+    setSearchValue(e.target.value);
+    let value = e.target.value.toLowerCase();
+    let result = [];
+    result = data.filter((data) => {
+      return data.title.toLowerCase().search(value) !== -1;
+    });
+    setFilteredData(result);
+  };
+
+  // Search Click Handle
+  const searchClickHandle = (e) => {
+    setSearchValue(e.target.innerText);
+    setSearchVisibility(false);
+    let value = e.target.innerText.toLowerCase();
+    let result = [];
+    result = data.filter((data) => {
+      return data.title.toLowerCase().search(value) !== -1;
+    });
+    setFilteredData(result);
+  };
+
   return isLoading ? (
     <Loader />
   ) : (
     <div className="admin-articles">
       <div>
-        {data.map((article) => {
-          return <AdminArticle article={article} />;
-        })}
+        <h1>Search by Title</h1>
+        <div>
+          {" "}
+          <SearchBar
+            placeholder="Search for order ..."
+            data={filteredData}
+            onChange={(e) => {
+              searchHandle(e);
+            }}
+            value={searchValue}
+            onClick={(e) => {
+              searchClickHandle(e);
+            }}
+            searchVisibility={searchVisibility}
+          />
+        </div>
       </div>
-
       <div>
-        <button
-          onClick={() => {
-            setArticleModal(true);
-          }}
-        >
-          Create New Article
-        </button>
-        <button
-          onClick={() => {
-            setCategoriesModal(true);
-          }}
-        >
-          Manage Categories
-        </button>
-        <button
-          onClick={() => {
-            setSubCategoriesModal(true);
-          }}
-        >
-          Manage Sub-Categories
-        </button>
+        <div>
+          {filteredData.map((article) => {
+            return <AdminArticle article={article} key={article._id} />;
+          })}
+        </div>
+
+        <div>
+          <button
+            onClick={() => {
+              setArticleModal(true);
+            }}
+          >
+            Create New Article
+          </button>
+          <button
+            onClick={() => {
+              setCategoriesModal(true);
+            }}
+          >
+            Manage Categories
+          </button>
+          <button
+            onClick={() => {
+              setSubCategoriesModal(true);
+            }}
+          >
+            Manage Sub-Categories
+          </button>
+        </div>
       </div>
 
       {articleModal && (

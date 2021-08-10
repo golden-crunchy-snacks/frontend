@@ -512,9 +512,22 @@ body::-webkit-scrollbar {
 /* Shop */
 .shop {
   margin: 0 auto;
-  padding-top: 3em;
+  padding-top: 2em;
   padding-bottom: 5em;
   background: linear-gradient(#f4f4f4, #ff9263);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shop > :nth-child(1) {
+  width: 50%;
+  margin-bottom: 40px;
+}
+
+.shop > :nth-child(1) > h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .shop__categoriesandlist {
@@ -572,6 +585,7 @@ body::-webkit-scrollbar {
   border-radius: 5px;
   height: fit-content;
   font-family: "Montserrat", sans-serif;
+  margin-bottom: 20px;
 }
 
 .shop-categories-container > h1 {
@@ -1607,22 +1621,40 @@ body::-webkit-scrollbar {
 
 .admin-articles {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.admin-articles > div {
+  display: flex;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 90%;
 }
 
-.admin-articles > div:nth-child(1) {
+.admin-articles > :nth-child(1) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.admin-articles > :nth-child(1) > div {
+  width: 60%;
+  margin: 25px 0;
+}
+
+.admin-articles > div > div:nth-child(1) {
   width: 70%;
 }
 
-.admin-articles > div:nth-child(2) {
+.admin-articles > div > div:nth-child(2) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.admin-articles > div:nth-child(2) > button {
+.admin-articles > div > div:nth-child(2) > button {
   margin-bottom: 30px;
   background: #fa4b00;
   color: white;
