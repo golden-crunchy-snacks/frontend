@@ -115,29 +115,28 @@ const Articles = () => {
             Manage Sub-Categories
           </button>
         </div>
+        {articleModal && (
+          <NewArticleModal
+            onX={() => {
+              setArticleModal(false);
+            }}
+          />
+        )}
+        {categoriesModal && (
+          <ManageCategoriesModal
+            onX={() => {
+              setCategoriesModal(false);
+            }}
+          />
+        )}
+        {subCategoriesModal && (
+          <ManageSubCategoriesModal
+            onX={() => {
+              setSubCategoriesModal(false);
+            }}
+          />
+        )}
       </div>
-
-      {articleModal && (
-        <NewArticleModal
-          onX={() => {
-            setArticleModal(false);
-          }}
-        />
-      )}
-      {categoriesModal && (
-        <ManageCategoriesModal
-          onX={() => {
-            setCategoriesModal(false);
-          }}
-        />
-      )}
-      {subCategoriesModal && (
-        <ManageSubCategoriesModal
-          onX={() => {
-            setSubCategoriesModal(false);
-          }}
-        />
-      )}
     </div>
   );
 };
