@@ -1,5 +1,10 @@
 /* Reset rules */
 
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
 html,
 body,
 div,

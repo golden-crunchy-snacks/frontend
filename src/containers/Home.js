@@ -35,9 +35,16 @@ const Home = ({ setBasket, userBasket }) => {
 
   // Modal Info Handle
   const modalHandle = (props) => {
+    console.log("yo");
     setModal(true);
     setModalInfo(props.article);
   };
+
+  // Filters for carousel
+  const haribo = "Haribo Range";
+  const biscuits = "Biscuits, Cookies & Wafers";
+  const lollipops = "Lollipops";
+  const travel = "Travel Sweets";
 
   return isLoading ? (
     <Loader />
@@ -46,14 +53,32 @@ const Home = ({ setBasket, userBasket }) => {
       <Hero />
       <ArticleCarousel
         data={data}
-        carouselTitle="Best sellers"
+        filter={haribo}
+        carouselTitle="Your favorite Haribo treats"
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}
       />
       <ArticleCarousel
         data={data}
-        carouselTitle="Our Selection of Nut Bars"
+        filter={biscuits}
+        carouselTitle="Biscuits, Cookies & Wafers"
+        modalHandle={modalHandle}
+        setBasket={setBasket}
+        userBasket={userBasket}
+      />
+      <ArticleCarousel
+        data={data}
+        filter={lollipops}
+        carouselTitle="Best-selling Lollipops"
+        modalHandle={modalHandle}
+        setBasket={setBasket}
+        userBasket={userBasket}
+      />
+      <ArticleCarousel
+        data={data}
+        filter={travel}
+        carouselTitle="Sweets for when you travel"
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}

@@ -1,3 +1,4 @@
+import logo from "../../assets/img/logo.png";
 const Info = () => {
   return (
     <div className="info">
@@ -36,12 +37,9 @@ const Info = () => {
             *Golden Crunchy* Peanut Bars, Almond Bars, Cashew Bars, Nougat Bars,
             Crispy Bars etc.,
           </p>
-          <div className="info__image">
-            <img
-              src="https://static01.nyt.com/images/2020/02/12/dining/11Chocolate2/merlin_168444732_854c1092-d8eb-41db-9a17-1bfbe786f01a-articleLarge.jpg?quality=75&auto=webp&disable=upscale"
-              alt=""
-            />
-          </div>
+        </div>
+        <div className="info__image">
+          <img src={logo} alt={logo} />
         </div>
       </div>
     </div>

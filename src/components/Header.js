@@ -7,6 +7,7 @@ import { useState } from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiLeftArrowAlt } from "react-icons/bi";
+import { VscAccount } from "react-icons/vsc";
 
 // Media
 import logo from "../assets/img/logo.png";
@@ -25,40 +26,58 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
   };
 
   return (
-    <>
+    <div className="header-home">
       {/* Desktop Header */}
       <div className="header-container">
         <div className="header-menu">
           <img src={logo} alt={logo} className="header-logo" />
           <Link
             to="/"
-            className={location.pathname === "/" && "header-menu-clicked"}
+            className={
+              location.pathname === "/"
+                ? "header-menu-clicked"
+                : "underline-grow"
+            }
           >
             Home
           </Link>
           <Link
             to="/shop"
-            className={location.pathname === "/shop" && "header-menu-clicked"}
+            className={
+              location.pathname === "/shop"
+                ? "header-menu-clicked"
+                : "underline-grow"
+            }
           >
             Shop
           </Link>
           <Link
             to="/trade"
-            className={location.pathname === "/trade" && "header-menu-clicked"}
+            className={
+              location.pathname === "/trade"
+                ? "header-menu-clicked"
+                : "underline-grow"
+            }
           >
             Trade
           </Link>
           <Link
             to="/contact"
             className={
-              location.pathname === "/contact" && "header-menu-clicked"
+              location.pathname === "/contact"
+                ? "header-menu-clicked"
+                : "underline-grow"
             }
           >
             Contact
           </Link>
           <Link
             to="/about"
-            className={location.pathname === "/about" && "header-menu-clicked"}
+            className={
+              location.pathname === "/about"
+                ? "header-menu-clicked"
+                : "underline-grow"
+            }
           >
             About Us
           </Link>
@@ -67,17 +86,28 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
         <div className="header-user">
           {userToken ? (
             <>
-              <button onClick={() => handleLogout()} className="logout">
+              <button onClick={() => handleLogout()} className="log">
                 Logout
               </button>
 
               <Link
                 to="/account"
                 className={
-                  location.pathname === "/account" && "header-menu-clicked"
+                  location.pathname === "/account"
+                    ? "header-menu-clicked2"
+                    : undefined
                 }
               >
-                Account
+                <div
+                  className={
+                    location.pathname === "/account"
+                      ? "header-menu-clicked2 header-basket"
+                      : "header-basket"
+                  }
+                >
+                  {" "}
+                  <VscAccount />
+                </div>
               </Link>
             </>
           ) : (
@@ -96,12 +126,16 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
 
           <Link
             to="/basket"
-            className={location.pathname === "/basket" && "header-menu-clicked"}
+            className={
+              location.pathname === "/basket"
+                ? "header-menu-clicked2"
+                : undefined
+            }
           >
             <div
               className={
                 location.pathname === "/basket"
-                  ? "header-menu-clicked header-basket"
+                  ? "header-basket header-menu-clicked2 "
                   : "header-basket"
               }
             >
@@ -121,13 +155,15 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
         />
         <Link
           to="/basket"
-          className={location.pathname === "/basket" && "header-menu-clicked"}
+          className={
+            location.pathname === "/basket" ? "header-menu-clicked" : undefined
+          }
         >
           <div
             className={
               location.pathname === "/basket"
-                ? "header-menu-clicked header-basket"
-                : "header-basket"
+                ? "header-basket2"
+                : "header-basket2"
             }
           >
             <FaShoppingBasket />
@@ -144,7 +180,9 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
             />
             <Link
               to="/"
-              className={location.pathname === "/" && "header-menu-clicked"}
+              className={
+                location.pathname === "/" ? "header-menu-clicked" : undefined
+              }
               onClick={() => setBurgerHandle(false)}
             >
               Home
@@ -152,7 +190,11 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
             <Link
               onClick={() => setBurgerHandle(false)}
               to="/shop"
-              className={location.pathname === "/shop" && "header-menu-clicked"}
+              className={
+                location.pathname === "/shop"
+                  ? "header-menu-clicked"
+                  : undefined
+              }
             >
               Shop
             </Link>
@@ -160,7 +202,9 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               onClick={() => setBurgerHandle(false)}
               to="/trade"
               className={
-                location.pathname === "/trade" && "header-menu-clicked"
+                location.pathname === "/trade"
+                  ? "header-menu-clicked"
+                  : undefined
               }
             >
               Trade
@@ -169,7 +213,9 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               onClick={() => setBurgerHandle(false)}
               to="/contact"
               className={
-                location.pathname === "/contact" && "header-menu-clicked"
+                location.pathname === "/contact"
+                  ? "header-menu-clicked"
+                  : undefined
               }
             >
               Contact
@@ -178,7 +224,9 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               onClick={() => setBurgerHandle(false)}
               to="/about"
               className={
-                location.pathname === "/about" && "header-menu-clicked"
+                location.pathname === "/about"
+                  ? "header-menu-clicked"
+                  : undefined
               }
             >
               About Us
@@ -187,22 +235,24 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
               onClick={() => setBurgerHandle(false)}
               to="/basket"
               className={
-                location.pathname === "/basket" && "header-menu-clicked"
+                location.pathname === "/basket"
+                  ? "header-menu-clicked"
+                  : undefined
               }
             >
               Basket
             </Link>
             {userToken ? (
               <>
-                <button onClick={() => handleLogout()} className="logout">
-                  Logout
-                </button>
+                <a onClick={() => handleLogout()}>Logout</a>
 
                 <Link
                   onClick={() => setBurgerHandle(false)}
                   to="/account"
                   className={
-                    location.pathname === "/account" && "header-menu-clicked"
+                    location.pathname === "/account"
+                      ? "header-menu-clicked"
+                      : undefined
                   }
                 >
                   Account
@@ -215,8 +265,8 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
                 className={
                   location.pathname === "/login" ||
                   location.pathname === "/signup"
-                    ? "header-menu-clicked log"
-                    : "log"
+                    ? "header-menu-clicked "
+                    : "header-menu-clicked"
                 }
               >
                 {location.pathname === "/signup" ? "Sign Up" : "Login"}
@@ -225,7 +275,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

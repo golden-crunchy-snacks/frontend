@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600.700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 
 ul {
   list-style-type: circle;
@@ -7,7 +7,7 @@ ul {
 
 body {
   background-color: #f4f4f4;
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
   position: relative;
   -ms-overflow-style: none;
 }
@@ -67,18 +67,29 @@ body::-webkit-scrollbar {
 
 /* Header */
 
+.header-home {
+  width: 100%;
+  background-color: #fa4b00;
+}
+
+.header {
+  width: 100%;
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-
+  color: white;
   width: 80%;
   max-width: 1440px;
+  padding: 10px;
 }
 
 .header-container > div > a,
 .header-container > div > button {
+  color: white;
   cursor: pointer;
   font-size: 20px;
 }
@@ -88,16 +99,8 @@ body::-webkit-scrollbar {
   font-size: 30px;
 }
 
-.header-container > div > a:nth-child(2):hover,
-.header-container > div > a:nth-child(3):hover,
-.header-container > div > a:nth-child(4):hover,
-.header-container > div > a:nth-child(5):hover,
-.header-container > div > a:nth-child(6):hover {
-  color: #d33f00;
-}
-
 .header-container > div > a > div:hover {
-  color: #d33f00;
+  color: black;
 }
 
 .header-logo {
@@ -113,7 +116,12 @@ body::-webkit-scrollbar {
 }
 
 .header-menu-clicked {
-  color: #d33f00;
+  border-bottom: solid white 3px;
+  padding-bottom: 5px;
+}
+
+.header-menu-clicked2 {
+  color: black;
 }
 
 .header-user {
@@ -124,7 +132,15 @@ body::-webkit-scrollbar {
 
 .header-basket {
   position: relative;
-  margin-left: 20px;
+  margin-left: 15px;
+  color: white;
+}
+
+.header-basket2 {
+  position: relative;
+  margin-left: 15px;
+  color: black;
+  padding-right: 5px;
 }
 
 .header-basket-counter {
@@ -148,15 +164,16 @@ body::-webkit-scrollbar {
 .log {
   background: #fa4b00;
   color: white;
-  border: none;
+  border: solid 2px white;
   border-radius: 10px;
   padding: 10px 20px;
-  margin-right: 20px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
 .log:hover {
-  background: #d33f00;
+  background: white;
+  color: #fa4b00;
 }
 
 .logout {
@@ -270,6 +287,7 @@ body::-webkit-scrollbar {
   width: calc(100% - 60px);
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
+  z-index: 25;
 }
 
 .search-bar-list > div {
@@ -290,8 +308,9 @@ body::-webkit-scrollbar {
 .hero {
   width: 100%;
   height: 60vh;
-
-  background: linear-gradient(#f4f4f4, #ff9263);
+  padding-bottom: 50px;
+  /* background: linear-gradient(#f4f4f4, #ff9263 50%); */
+  background-color: #fa4b00;
 }
 .hero__container {
   display: flex;
@@ -306,37 +325,37 @@ body::-webkit-scrollbar {
 .hero__heading {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  width: 90%;
-  font-size: 3vw;
-  margin-bottom: 1rem;
+
+  font-size: 4vw;
+  margin-bottom: 2rem;
+  color: white;
 }
 .hero__subheading {
   line-height: 2vw;
-  width: 90%;
+
   font-weight: 300;
   font-size: 1.5vw;
   padding-bottom: 4rem;
+  color: white;
 }
 .hero__button {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  border: none;
+  border: solid 2px white;
   border-radius: 15px;
   padding: 1em 3em;
-  background: #fa4b00;
+
+  background-color: #fa4b00;
   color: #ffffff;
   cursor: pointer;
 }
 .hero__button:hover {
-  background: #d33f00;
+  background: white;
+  color: #fa4b00;
 }
 
-.hero__image {
-  /* height: 20rem; */
-  width: 50rem;
-}
 .hero__image > img {
-  width: 100%;
+  width: 120%;
   height: 100%;
   object-fit: cover;
 }
@@ -392,19 +411,25 @@ body::-webkit-scrollbar {
 
 .carousel-article > h1 {
   text-align: center;
+  font-size: 14px;
 }
 
 .carousel-article:hover {
   box-shadow: 0px 5px 10px grey;
 }
 
-.carousel-article > img {
+.carousel-article > div:nth-child(1) {
+  cursor: pointer;
+}
+
+.carousel-article img {
   width: 100%;
   height: 175px;
   object-fit: cover;
   object-position: center;
   cursor: pointer;
 }
+
 .carousel-article-body {
   display: flex;
   align-items: center;
@@ -412,6 +437,10 @@ body::-webkit-scrollbar {
   flex-direction: row;
   width: 90%;
   margin: 0 auto;
+}
+
+.carousel-article-body {
+  font-size: 14px;
 }
 
 .carousel-article-price {
@@ -423,12 +452,39 @@ body::-webkit-scrollbar {
   background: #fa4b00;
   color: white;
   font-weight: 500;
-  border: none;
+  border: solid 2px;
   padding: 10px 15px 10px 15px;
-  width: 50%;
+  width: 60%;
   border-radius: 10px;
   cursor: pointer;
   z-index: 20;
+}
+
+.carousel-article-button:hover {
+  color: #fa4b00;
+  background: white;
+  border: solid 2px;
+}
+
+/* New Carousel (react-responsive-carousel) */
+
+.newCarousel-container {
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 40%;
+}
+
+.newCarousel {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.newCarousel > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  margin-bottom: 12%;
 }
 
 /* Contact */
@@ -436,7 +492,7 @@ body::-webkit-scrollbar {
 .contact {
   width: 100%;
   /* max-width: 1440px; */
-  background: url("https://cdn.shopify.com/s/files/1/1454/9374/articles/AdobeStock_234377349_protein_bars_Fotor.jpg?v=1589909151");
+
   /* object-fit: contain; */
   margin: 0 auto;
   padding-top: 50px;
@@ -468,15 +524,12 @@ body::-webkit-scrollbar {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  background: rgba(0, 0, 0, 0.6);
+  background: white;
   border-radius: 1em;
   padding: 40px 0;
 }
 
 .contact__body > h1 {
-  -webkit-text-stroke-width: 1.5px;
-
-  -webkit-text-stroke-color: black;
   color: #ffffff;
   font-size: 20px;
   font-weight: 800;
@@ -512,22 +565,36 @@ body::-webkit-scrollbar {
 /* Shop */
 .shop {
   margin: 0 auto;
-  padding-top: 2em;
+
   padding-bottom: 5em;
-  background: linear-gradient(#f4f4f4, #ff9263);
+  /* background: linear-gradient(#fa4b00, #f4f4f4); */
+  /* background-color: #fa4b00; */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .shop > :nth-child(1) {
-  width: 50%;
-  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  width: 100%;
+  margin-bottom: 30px;
+  background-color: #fa4b00;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shop > :nth-child(1) > div {
+  width: 40%;
 }
 
 .shop > :nth-child(1) > h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  color: white;
+  font-weight: 600;
+  font-size: 1.5em;
 }
 
 .shop__categoriesandlist {
@@ -705,9 +772,22 @@ body::-webkit-scrollbar {
   background: #fa4b00;
   color: white;
   font-weight: 500;
-  border: none;
+  border: solid 2px;
   padding: 10px 15px 10px 15px;
-  width: 50%;
+  width: 60%;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.article-button:hover {
+  border-radius: 15px;
+  background: white;
+  color: #fa4b00;
+  font-weight: 500;
+  border: solid 2px;
+  padding: 10px 15px 10px 15px;
+
   border-radius: 10px;
   cursor: pointer;
   z-index: 20;
@@ -732,7 +812,7 @@ body::-webkit-scrollbar {
   background-color: white;
   border-radius: 5px;
 
-  width: 30%;
+  width: 50%;
   max-height: 90vh;
   z-index: 30;
   padding: 20px;
@@ -748,7 +828,7 @@ body::-webkit-scrollbar {
   object-fit: cover;
   object-position: top;
   border-radius: 5px;
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .article-modal-container > h1 {
@@ -788,7 +868,21 @@ body::-webkit-scrollbar {
   background: #fa4b00;
   color: white;
   font-weight: 500;
-  border: none;
+  border: solid 2px;
+  padding: 10px 15px 10px 15px;
+  width: 50%;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 20;
+  margin-bottom: 20px;
+}
+
+.article-modal-container > button:hover {
+  border-radius: 15px;
+  background: white;
+  color: #fa4b00;
+  font-weight: 500;
+  border: solid 2px;
   padding: 10px 15px 10px 15px;
   width: 50%;
   border-radius: 10px;
@@ -801,8 +895,8 @@ body::-webkit-scrollbar {
   position: absolute;
   cursor: pointer;
   font-size: 20px;
-  top: 30px;
-  right: 30px;
+  top: 20px;
+  right: 20px;
 }
 
 /* Login & Signup */
@@ -818,7 +912,7 @@ body::-webkit-scrollbar {
   justify-content: space-between;
   align-items: center;
   border-radius: 1em;
-  box-shadow: 1px 1px 10px rgb(170, 170, 170);
+
   position: relative;
   margin-bottom: 250px;
 }
@@ -829,13 +923,18 @@ body::-webkit-scrollbar {
   color: white;
   font-weight: 600;
 
-  border: none;
+  border: solid 2px;
   padding: 10px 15px 10px 15px;
-  width: 80%;
+  width: 100%;
   max-width: 20em;
   /* border-radius: 1 0px; */
   cursor: pointer;
   z-index: 10;
+}
+
+.credentials-form button:hover {
+  background-color: white;
+  color: #fa4b00;
 }
 
 .credentials-form > div {
@@ -864,17 +963,13 @@ body::-webkit-scrollbar {
   margin-top: 20px;
 }
 
-.credentials-form a:hover {
-  color: #e20114;
-}
-
 .credentials-form input {
   border: 1px solid rgb(146, 146, 146);
   background: rgb(243, 243, 243);
   border-radius: 0.5rem;
   margin: 10px 0 20px 0;
-  padding: 5px;
-  width: 75%;
+  padding: 10px;
+  width: 55%;
   max-width: 20em;
 }
 
@@ -1074,7 +1169,7 @@ body::-webkit-scrollbar {
 }
 
 .info {
-  background: linear-gradient(#ff7b42, #f4f4f4);
+  background: #fa4b00;
 }
 .info__container {
   margin: 4em auto 0;
@@ -1088,33 +1183,34 @@ body::-webkit-scrollbar {
   padding-bottom: 2em;
   font-size: 2rem;
   text-align: center;
-  color: #000000;
+  color: white;
 }
 .info__body {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding-bottom: 6em;
+  margin-bottom: 40px;
 }
 .info__description {
+  text-align: center;
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  max-width: 25em;
-  color: #000000;
+  max-width: 40em;
+  color: white;
   font-weight: 500;
-  padding-right: 4rem;
+
   line-height: 1.2rem;
 }
 .info__image {
-  width: auto;
-  height: 20em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .info__image img {
-  width: 100%;
-  height: 100%;
+  width: 20%;
+  height: 20%;
   object-fit: cover;
-
-  border-radius: 2em 0 2em 0;
+  margin-bottom: 40px;
 }
 
 /* Alert Modal */
@@ -1375,11 +1471,16 @@ body::-webkit-scrollbar {
 }
 
 /* Trade */
+
+.trade__background {
+  width: 100%;
+  background-color: #fa4b00;
+}
 .trade {
+  padding-top: 50px;
   margin: 0 auto;
   width: 100%;
   max-width: 1440px;
-  margin-top: 3em;
 }
 .trade__container {
   width: 80%;
@@ -1387,7 +1488,7 @@ body::-webkit-scrollbar {
 }
 .trade__main {
   min-height: 60vh;
-
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1395,6 +1496,7 @@ body::-webkit-scrollbar {
 }
 
 .trade__heading {
+  color: white;
   font-family: "Montserrat", sans-serif;
   font-size: 2rem;
   font-weight: 600;
@@ -1402,31 +1504,35 @@ body::-webkit-scrollbar {
   max-width: 30rem;
 }
 .trade__description {
+  color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
 
-  margin-top: 5em;
+  margin-top: 3em;
   margin-bottom: 3em;
 
   text-align: center;
   /* max-width: 40rem; */
 }
 .trade__description p {
+  color: white;
   /* display: flex; */
   max-width: 15rem;
-  text-align: justify;
+  text-align: center;
 }
 
 .trade__section {
   padding-top: 3em;
   padding-bottom: 3em;
-  background: grey;
   min-height: 30vh;
+  width: 100%;
 }
-.trade__section-blue {
-  background: linear-gradient(#ff7b42, #ffffff);
+.trade__section-grey {
+  background: #f4f4f4;
+  color: black;
 }
+
 .trade__section-white {
   background: #ffffff;
 }
@@ -1434,6 +1540,8 @@ body::-webkit-scrollbar {
 .trade__text {
   max-width: 25em;
   margin-right: 3em;
+  font-size: 1.2em;
+  line-height: 1.3em;
 }
 
 .trade__text--black {
@@ -1456,13 +1564,15 @@ body::-webkit-scrollbar {
   font-size: 1.5rem;
   font-weight: 600;
   text-align: center;
+  margin-top: 20px;
 }
 
 .trade__sectionBody {
+  margin: 0 auto;
   margin-top: 3em;
-
+  align-items: center;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .trade__sectionParagraph {
@@ -1472,8 +1582,7 @@ body::-webkit-scrollbar {
 }
 
 .trade__image {
-  height: 20em;
-  width: 100%;
+  font-size: 15em;
   /* max-width: 30em; */
 }
 .trade__image img {
@@ -1534,6 +1643,7 @@ body::-webkit-scrollbar {
 /* Admin */
 
 .admin-container {
+  margin-top: 60px;
   margin-bottom: 120px;
 }
 
@@ -1666,17 +1776,59 @@ body::-webkit-scrollbar {
   width: 100%;
 }
 .admin-article {
+  position: relative;
   padding: 15px;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 15px;
   background-color: white;
   border-radius: 5px;
+}
+
+.confirm-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
   width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-modal > h1 {
+  color: white;
+}
+.confirm-modal > div {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin-top: 30px;
+}
+.confirm-modal > div > button {
+  width: 40%;
+}
+
+.admin-article {
+  margin-top: 20px;
 }
 
 .admin-article > * {
   margin-right: 10px;
+}
+
+.admin-article-container button {
+  background: #fa4b00;
+  color: white;
+  border: none;
+  font-size: 16px;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  cursor: pointer;
+  width: 100%;
 }
 
 .admin-article h1 {
@@ -1700,6 +1852,58 @@ body::-webkit-scrollbar {
 
 .admin-article select {
   width: 100%;
+}
+
+.admin-article-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+}
+
+.admin-article-container > :nth-child(2) {
+  display: flex;
+  justify-content: space-evenly;
+  max-width: 100%;
+  height: 180px;
+  width: 100%;
+  background-color: white;
+
+  padding-bottom: 15px;
+}
+
+.admin-article-container > :nth-child(3) {
+  display: flex;
+  justify-content: space-around;
+  max-width: 100%;
+
+  width: 100%;
+  background-color: white;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.admin-article-container > :nth-child(3) > label {
+  max-width: 25%;
+}
+
+.admin-article-container > :nth-child(3) > :nth-child(1) {
+  margin-left: 30px;
+}
+
+.admin-article-container > :nth-child(2) > div {
+  flex: 1;
+  margin: 0 20px;
+  background-color: lightgray;
+}
+
+.admin-article-container > :nth-child(2) img {
+  width: 100%;
+  object-fit: cover;
+
+  height: 100%;
 }
 
 .new-article-modal {
@@ -1805,7 +2009,7 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   margin-top: 3em;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: white;
   height: 50em;
   width: 80%;
   max-width: 50em;
@@ -1845,18 +2049,14 @@ body::-webkit-scrollbar {
 } */
 
 .contact__container h2 {
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
   font-weight: 600;
-  color: #ffffff;
+  color: black;
   margin-bottom: 10px;
   margin-top: 15px;
 }
 
 .contact__container h1 {
-  color: #ffffff;
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
+  color: black;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
   margin: 0 auto;
@@ -1865,18 +2065,15 @@ body::-webkit-scrollbar {
 }
 
 .contact__container p {
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
+  color: lightgrey;
   font-weight: 600;
   margin: 0 auto;
   margin-bottom: 40px;
-  color: #ffffff;
+  margin-top: 10px;
   font-style: italic;
 }
 
 .contact__container h3 {
-  -webkit-text-stroke-width: 0.75px;
-  -webkit-text-stroke-color: black;
   font-weight: 600;
   margin: 0 auto;
   margin-top: 10px;
@@ -1890,32 +2087,48 @@ body::-webkit-scrollbar {
   justify-content: center;
   margin: 0 auto;
   background: #fa4b00;
+  border: solid 2px;
   font-weight: 600;
   max-width: 20em;
   margin-top: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+}
+
+.contact-button:hover {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background: white;
+  color: #fa4b00;
+  font-weight: 600;
+  max-width: 20em;
+  margin-top: 40px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
 }
 
 .contact__input {
   font-size: 1.25rem;
   background: none;
-  color: #ffffff;
+  color: grey;
   margin-left: 1px;
   width: 100%;
   /* height: 20%; */
-
+  padding-bottom: 5px;
   border: none;
-  border-bottom: 3px solid #ff9263;
+  border-bottom: 2px solid lightgrey;
 }
 
 .contact__textarea {
   font-size: 1.25rem;
   border: none;
-  border-bottom: 3px solid #ff9263;
-  color: #ffffff;
+  border: 2px solid lightgrey;
+  color: grey;
   background: none;
   width: 100%;
   margin-right: 15px;
-  height: 1.5rem;
+  margin-top: 10px;
   margin-bottom: 10px;
   /* border-radius: 0.5em; */
 }
@@ -1931,6 +2144,7 @@ body::-webkit-scrollbar {
 .fas {
   font-size: 3em;
   margin: 1em;
+  color: white;
 }
 
 /* About */
@@ -1938,14 +2152,16 @@ body::-webkit-scrollbar {
 .about {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
-  background: linear-gradient(#f4f4f4, #ff9263);
+  color: white;
+  background-color: #fa4b00;
   padding-bottom: 80px;
 }
 
 .about > div {
   max-width: 1440px;
   width: 50%;
-  margin: 50px auto;
+  padding: 20px 0 100px 0;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1953,12 +2169,14 @@ body::-webkit-scrollbar {
 }
 
 .about > div > h1 {
+  color: white;
   font-weight: 600;
   margin: 50px 0;
   font-size: 24px;
 }
 
 .about > div > p {
+  color: white;
   line-height: 24px;
   width: 80%;
   text-align: center;
@@ -2038,11 +2256,6 @@ body::-webkit-scrollbar {
     font-size: larger;
     text-align: center;
     padding: initial;
-  }
-  .info__image {
-    height: 15rem;
-    width: 15em;
-    margin-bottom: 4em;
   }
 
   .trade__description {
@@ -2216,4 +2429,31 @@ body::-webkit-scrollbar {
   .contact-form {
     width: 100%;
   }
+}
+
+/* ANIMATON CLASSES */
+
+/* Text underline grow from middle */
+
+.underline-grow {
+  position: relative;
+  color: white;
+  padding-bottom: 9px;
+}
+
+.underline-grow::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.underline-grow:hover::before {
+  transform: scaleX(1);
 }

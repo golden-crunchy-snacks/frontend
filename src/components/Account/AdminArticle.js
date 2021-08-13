@@ -7,7 +7,19 @@ const AdminArticle = ({ article }) => {
   // States
   const [title, setTitle] = useState(article.title);
   const [quantity, setQuantity] = useState(article.quantity);
-  const [picture, setPicture] = useState(article.picture);
+  const [picture1, setPicture1] = useState(
+    article.picture ? article.picture : article.pictures.picture1
+  );
+  const [picture2, setPicture2] = useState(
+    article.pictures ? article.pictures.picture2 : ""
+  );
+  const [picture3, setPicture3] = useState(
+    article.pictures ? article.pictures.picture3 : ""
+  );
+  const [picture4, setPicture4] = useState(
+    article.pictures ? article.pictures.picture4 : ""
+  );
+
   const [price, setPrice] = useState(article.price);
   const [description, setDescription] = useState(article.description);
   const [subCategory, setSubCategory] = useState(article.subCategory);
@@ -15,6 +27,32 @@ const AdminArticle = ({ article }) => {
   const [category, setCategory] = useState(article.category);
   const [categoryList, setCategoryList] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [picturesModal, setPicturesModal] = useState(false);
+  const [src1, setSrc1] = useState(
+    article.picture ? article.picture : article.pictures.picture1
+  );
+  const [alt1, setAlt1] = useState(
+    article.picture ? article.picture : article.pictures.picture1
+  );
+  const [src2, setSrc2] = useState(
+    article.pictures ? article.pictures.picture2 : ""
+  );
+  const [alt2, setAlt2] = useState(
+    article.pictures ? article.pictures.picture2 : ""
+  );
+  const [src3, setSrc3] = useState(
+    article.pictures ? article.pictures.picture3 : ""
+  );
+  const [alt3, setAlt3] = useState(
+    article.pictures ? article.pictures.picture3 : ""
+  );
+  const [src4, setSrc4] = useState(
+    article.pictures ? article.pictures.picture4 : ""
+  );
+  const [alt4, setAlt4] = useState(
+    article.pictures ? article.pictures.picture4 : ""
+  );
+  const [confirmModal, setConfirmModal] = useState(false);
 
   // Get category list
   useEffect(() => {
@@ -39,23 +77,60 @@ const AdminArticle = ({ article }) => {
 
   // Update Article
   const updateHandle = async () => {
+    console.log(article.pictures);
     try {
       setIsLoading(true);
-      const formData = new FormData();
-      formData.append("id", article._id);
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("price", parseFloat(price).toFixed(2));
-      formData.append("category", category);
-      formData.append("subCategory", subCategory);
-      formData.append("quantity", parseInt(quantity, 10));
-      formData.append("picture", picture);
+      if (article.picture) {
+        console.log("ya");
+        deleteHandle();
+        const formData = new FormData();
+        formData.append("subCategory", subCategory);
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("price", parseFloat(price).toFixed(2));
+        formData.append("category", category);
+        formData.append("quantity", parseInt(quantity, 10));
+        formData.append("picture1", picture1);
+        formData.append("picture2", picture2);
+        formData.append("picture3", picture3);
+        formData.append("picture4", picture4);
+        await axios.post(
+          "https://golden-crunchy-snacks.herokuapp.com/article/create",
+          formData
+        );
+      } else {
+        console.log(
+          article._id,
+          title,
+          description,
+          price,
+          category,
+          subCategory,
+          quantity,
+          picture1,
+          picture2,
+          picture3,
+          picture4
+        );
+        const formData = new FormData();
+        formData.append("id", article._id);
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("price", parseFloat(price).toFixed(2));
+        formData.append("category", category);
+        formData.append("subCategory", subCategory);
+        formData.append("quantity", parseInt(quantity, 10));
+        formData.append("picture1", picture1);
+        formData.append("picture2", picture2);
+        formData.append("picture3", picture3);
+        formData.append("picture4", picture4);
 
-      await axios.put(
-        "https://golden-crunchy-snacks.herokuapp.com/article/update",
+        await axios.put(
+          "https://golden-crunchy-snacks.herokuapp.com/article/update",
 
-        formData
-      );
+          formData
+        );
+      }
 
       setIsLoading(false);
       alert("Item succesfully updated");
@@ -91,139 +166,258 @@ const AdminArticle = ({ article }) => {
     }
   };
 
-  return (
-    <div className="admin-article">
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <img
-            src={article.picture}
-            alt={article.picture}
-            className="image-default"
-          />
+  // Image preview
+  const imgHandle = (e) => {
+    if (e.target.files[0]) {
+      if (e.target.name === "1")
+        setSrc1(URL.createObjectURL(e.target.files[0]));
+      setAlt1(e.target.files[0].name);
+      setPicture1(e.target.files[0]);
+    }
+    if (e.target.name === "2") {
+      setSrc2(URL.createObjectURL(e.target.files[0]));
+      setAlt2(e.target.files[0].name);
+      setPicture2(e.target.files[0]);
+    }
+    if (e.target.name === "3") {
+      setSrc3(URL.createObjectURL(e.target.files[0]));
+      setAlt3(e.target.files[0].name);
+      setPicture3(e.target.files[0]);
+    }
+    if (e.target.name === "4") {
+      setSrc4(URL.createObjectURL(e.target.files[0]));
+      setAlt4(e.target.files[0].name);
+      setPicture4(e.target.files[0]);
+    }
+  };
 
+  return (
+    <div className="admin-article-container">
+      <div className="admin-article">
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            {confirmModal && (
+              <div className="confirm-modal">
+                <h1>Are you sure you want to delete this article ?</h1>
+                <div>
+                  <button
+                    onClick={() => {
+                      setConfirmModal(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={() => {
+                      deleteHandle();
+                    }}
+                  >
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            )}
+            <img
+              src={
+                article.picture ? article.picture : article.pictures.picture1
+              }
+              alt={
+                article.picture ? article.picture : article.pictures.picture1
+              }
+              className="image-default"
+            />
+
+            <div>
+              <label htmlFor="title">
+                <h1>Title</h1>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(e) => {
+                    setTitle(e.target.value);
+                  }}
+                />
+              </label>
+              <label htmlFor="description">
+                <h1>Description</h1>
+                <textarea
+                  name="description"
+                  cols="40"
+                  rows="5"
+                  value={description}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                  }}
+                ></textarea>
+              </label>
+              <label htmlFor="picture">
+                <button
+                  className="default-button"
+                  onClick={() => setPicturesModal(!picturesModal)}
+                >
+                  {" "}
+                  {picturesModal ? "Hide Pictures" : "Change Pictures"}
+                </button>
+              </label>
+            </div>
+            <div>
+              <label htmlFor="category">
+                <h1>Category</h1>
+                <select
+                  name="category"
+                  cols="40"
+                  rows="5"
+                  value={category}
+                  onChange={(e) => {
+                    setCategory(e.target.value);
+                  }}
+                >
+                  {categoryList.map((category) => {
+                    return (
+                      <option value={category.title} key={category._id}>
+                        {category.title}
+                      </option>
+                    );
+                  })}
+                </select>
+              </label>
+              <label htmlFor="sub-Category">
+                <h1>Sub-Category</h1>
+                <select
+                  name="subCategory"
+                  cols="40"
+                  rows="5"
+                  value={subCategory}
+                  onChange={(e) => {
+                    setSubCategory(e.target.value);
+                  }}
+                >
+                  {subCategory === undefined || "" || "None" ? (
+                    <option value="None">None</option>
+                  ) : (
+                    <></>
+                  )}
+                  {subCategoryList.map((subCategory) => {
+                    return (
+                      subCategory.category === category && (
+                        <option value={subCategory.title} key={subCategory._id}>
+                          {subCategory.title}
+                        </option>
+                      )
+                    );
+                  })}
+                </select>
+              </label>
+              <label htmlFor="quantity">
+                {" "}
+                <h1>Quantity</h1>{" "}
+                <input
+                  type="text"
+                  value={quantity}
+                  onChange={(e) => {
+                    setQuantity(e.target.value);
+                  }}
+                />
+              </label>
+              <label htmlFor="price">
+                {" "}
+                <h1>Price</h1>{" "}
+                <input
+                  type="text"
+                  value={price}
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                  }}
+                />
+              </label>
+            </div>
+            <div>
+              <button
+                className="default-button"
+                onClick={() => {
+                  updateHandle();
+                }}
+              >
+                Save Changes
+              </button>
+              <button
+                className="default-button"
+                onClick={() => {
+                  setConfirmModal(true);
+                }}
+              >
+                Delete Article
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+      {picturesModal && (
+        <>
           <div>
-            <label for="title">
-              <h1>Title</h1>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => {
-                  setTitle(e.target.value);
-                }}
-              />
-            </label>
-            <label for="description">
-              <h1>Description</h1>
-              <textarea
-                name="description"
-                cols="40"
-                rows="5"
-                value={description}
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
-              ></textarea>
-            </label>
-            <label for="picture">
-              <h1> Change Picture</h1>
+            <div>
+              {" "}
+              <img src={src1} alt={alt1} />
+            </div>
+            <div>
+              {" "}
+              <img src={src2} alt={alt2} />
+            </div>
+            <div>
+              {" "}
+              <img src={src3} alt={alt3} />
+            </div>
+            <div>
+              <img src={src4} alt={alt4} />
+            </div>
+          </div>
+          <div>
+            <label htmlFor="picture 1">
+              <h1>Picture 1</h1>
               <input
                 type="file"
-                name="picture"
+                name="1"
                 accept="image/png, image/jpeg"
                 onChange={(e) => {
-                  setPicture(e.target.files[0]);
+                  imgHandle(e);
                 }}
               />
             </label>
-          </div>
-          <div>
-            <label for="category">
-              <h1>Category</h1>
-              <select
-                name="category"
-                cols="40"
-                rows="5"
-                value={category}
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                }}
-              >
-                {categoryList.map((category) => {
-                  return (
-                    <option value={category.title}>{category.title}</option>
-                  );
-                })}
-              </select>
-            </label>
-            <label for="sub-Category">
-              <h1>Sub-Category</h1>
-              <select
-                name="subCategory"
-                cols="40"
-                rows="5"
-                value={subCategory}
-                onChange={(e) => {
-                  setSubCategory(e.target.value);
-                }}
-              >
-                {subCategory === undefined || "" || "None" ? (
-                  <option value="None">None</option>
-                ) : (
-                  <></>
-                )}
-                {subCategoryList.map((subCategory) => {
-                  return (
-                    subCategory.category === category && (
-                      <option value={subCategory.title}>
-                        {subCategory.title}
-                      </option>
-                    )
-                  );
-                })}
-              </select>
-            </label>
-            <label for="quantity">
-              {" "}
-              <h1>Quantity</h1>{" "}
+            <label htmlFor="picture 2">
+              <h1>Picture 2</h1>
               <input
-                type="text"
-                value={quantity}
+                type="file"
+                name="2"
+                accept="image/png, image/jpeg"
                 onChange={(e) => {
-                  setQuantity(e.target.value);
+                  imgHandle(e);
                 }}
               />
             </label>
-            <label for="price">
-              {" "}
-              <h1>Price</h1>{" "}
+            <label htmlFor="picture 3">
+              <h1>Picture 3</h1>
               <input
-                type="text"
-                value={price}
+                type="file"
+                name="3"
+                accept="image/png, image/jpeg"
                 onChange={(e) => {
-                  setPrice(e.target.value);
+                  imgHandle(e);
                 }}
               />
             </label>
-          </div>
-          <div>
-            <button
-              className="default-button"
-              onClick={() => {
-                updateHandle();
-              }}
-            >
-              Save Changes
-            </button>
-            <button
-              className="default-button"
-              onClick={() => {
-                deleteHandle();
-              }}
-            >
-              Delete Article
-            </button>
+            <label htmlFor="picture 4">
+              <h1>Picture 4</h1>
+              <input
+                type="file"
+                name="4"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                  imgHandle(e);
+                }}
+              />
+            </label>
           </div>
         </>
       )}

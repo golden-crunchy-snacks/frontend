@@ -1,6 +1,11 @@
+import { GiChocolateBar } from "react-icons/gi";
+import { RiMoneyPoundCircleLine } from "react-icons/ri";
+import { FaHandshake } from "react-icons/fa";
+import { BiNotepad } from "react-icons/bi";
+
 const Trade = () => {
   return (
-    <div>
+    <div className="trade__background">
       {/* <ContactForm /> */}
       <>
         <div className="trade">
@@ -43,21 +48,16 @@ const Trade = () => {
               </div>
             </main>
           </div>
-          <section className="trade__section trade__section-blue">
+          <section className="trade__section trade__section-grey">
             <div className="trade__container">
-              <h1 className="trade__sectionHeading trade__text--white">
-                Assortment
-              </h1>
+              <h1 className="trade__sectionHeading ">Assortment</h1>
               <div className="trade__sectionBody">
-                <p className="trade__text trade__text--white">
+                <p className="trade__text ">
                   Choose from an assortment of our branded products and as well
                   as a wide selection of international brands.
                 </p>
-                <div className="trade__image" >
-                  <img
-                    src="https://i.ebayimg.com/images/g/IygAAOSwu4xe1Ejl/s-l640.jpg"
-                    alt=""
-                  />
+                <div className="trade__image">
+                  <GiChocolateBar />
                 </div>
               </div>
             </div>
@@ -73,29 +73,23 @@ const Trade = () => {
                   attractive conditions for every customer structure.
                 </p>
                 <div className="trade__image">
-                  <img
-                    src="https://thumbs.dreamstime.com/b/businessman-drawing-virtual-screen-pricing-concept-89392739.jpg"
-                    alt=""
-                  />
+                  <RiMoneyPoundCircleLine />
                 </div>
               </div>
             </div>
           </section>
-          <section className="trade__section trade__section-blue">
+          <section className="trade__section trade__section-grey">
             <div className="trade__container">
-              <h1 className="trade__sectionHeading trade__text--white">
+              <h1 className="trade__sectionHeading trade__text--black">
                 Service
               </h1>
               <div className="trade__sectionBody">
-                <p className="trade__text trade__text--white">
+                <p className="trade__text trade__text--black">
                   Our field sales representatives and our competent staff in the
                   office are always happy to help you.
                 </p>
                 <div className="trade__image">
-                  <img
-                    src="https://static8.depositphotos.com/1518767/1031/i/600/depositphotos_10312371-stock-photo-businesswoman-reporting-to-sales-in.jpg"
-                    alt=""
-                  />
+                  <FaHandshake />
                 </div>
               </div>
             </div>
@@ -111,11 +105,8 @@ const Trade = () => {
                   your delivery. Our streamlined logistics solutions allow us to
                   deliver all around the United Kingdom.
                 </p>
-                <div className="trade__image" >
-                  <img
-                    src="https://www.jcshi-torque.co.uk/wp-content/uploads/2017/11/Ex-stock.jpg"
-                    alt=""
-                  />
+                <div className="trade__image">
+                  <BiNotepad />
                 </div>
               </div>
             </div>

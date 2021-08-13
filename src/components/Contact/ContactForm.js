@@ -194,7 +194,7 @@ const ContactForm = () => {
             className="default-button contact-button"
             onClick={() => submitHandle()}
           >
-            Send
+            SEND
           </button>
         </div>
       </div>

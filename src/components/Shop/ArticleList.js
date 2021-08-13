@@ -16,8 +16,12 @@ const ArticleList = ({
           return filter.length === 0 ? (
             <div className="article-list" key={index}>
               <img
-                src={article.picture}
-                alt={article.picture}
+                src={
+                  article.pictures ? article.pictures.picture1 : article.picture
+                }
+                alt={
+                  article.pictures ? article.pictures.picture1 : article.picture
+                }
                 onClick={() =>
                   modalHandle({
                     article: article,
@@ -47,8 +51,12 @@ const ArticleList = ({
             filter2.length === 0 ? (
             <div className="article-list" key={index}>
               <img
-                src={article.picture}
-                alt={article.picture}
+                src={
+                  article.pictures ? article.pictures.picture1 : article.picture
+                }
+                alt={
+                  article.pictures ? article.pictures.picture1 : article.picture
+                }
                 onClick={() =>
                   modalHandle({
                     article: article,
@@ -79,8 +87,16 @@ const ArticleList = ({
             filter2.indexOf(article.subCategory) !== -1 && (
               <div className="article-list" key={index}>
                 <img
-                  src={article.picture}
-                  alt={article.picture}
+                  src={
+                    article.pictures
+                      ? article.pictures.picture1
+                      : article.picture
+                  }
+                  alt={
+                    article.pictures
+                      ? article.pictures.picture1
+                      : article.picture
+                  }
                   onClick={() =>
                     modalHandle({
                       article: article,
