@@ -30,7 +30,14 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
       {/* Desktop Header */}
       <div className="header-container">
         <div className="header-menu">
-          <img src={logo} alt={logo} className="header-logo" />
+          <img
+            src={logo}
+            alt={logo}
+            className="header-logo"
+            onClick={() => {
+              history.push("/");
+            }}
+          />
           <Link
             to="/"
             className={
