@@ -180,105 +180,111 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
           </div>
         </Link>
         {burgerHandle && (
-          <div className="burger-menu" data-aos="slide-right">
-            <BiLeftArrowAlt
-              className="burger-arrow"
-              onClick={() => setBurgerHandle(false)}
-            />
-            <Link
-              to="/"
-              className={
-                location.pathname === "/" ? "header-menu-clicked" : undefined
-              }
-              onClick={() => setBurgerHandle(false)}
-            >
-              Home
-            </Link>
-            <Link
-              onClick={() => setBurgerHandle(false)}
-              to="/shop"
-              className={
-                location.pathname === "/shop"
-                  ? "header-menu-clicked"
-                  : undefined
-              }
-            >
-              Shop
-            </Link>
-            <Link
-              onClick={() => setBurgerHandle(false)}
-              to="/trade"
-              className={
-                location.pathname === "/trade"
-                  ? "header-menu-clicked"
-                  : undefined
-              }
-            >
-              Trade
-            </Link>
-            <Link
-              onClick={() => setBurgerHandle(false)}
-              to="/contact"
-              className={
-                location.pathname === "/contact"
-                  ? "header-menu-clicked"
-                  : undefined
-              }
-            >
-              Contact
-            </Link>
-            <Link
-              onClick={() => setBurgerHandle(false)}
-              to="/about"
-              className={
-                location.pathname === "/about"
-                  ? "header-menu-clicked"
-                  : undefined
-              }
-            >
-              About Us
-            </Link>
-            <Link
-              onClick={() => setBurgerHandle(false)}
-              to="/basket"
-              className={
-                location.pathname === "/basket"
-                  ? "header-menu-clicked"
-                  : undefined
-              }
-            >
-              Basket
-            </Link>
-            {userToken ? (
-              <>
-                <a onClick={() => handleLogout()}>Logout</a>
-
-                <Link
-                  onClick={() => setBurgerHandle(false)}
-                  to="/account"
-                  className={
-                    location.pathname === "/account"
-                      ? "header-menu-clicked"
-                      : undefined
-                  }
-                >
-                  Account
-                </Link>
-              </>
-            ) : (
+          <div
+            className="burger-menu-container"
+            data-aos="fade"
+            onClick={() => setBurgerHandle(false)}
+          >
+            <div className="burger-menu" data-aos="slide-right">
+              <BiLeftArrowAlt
+                className="burger-arrow"
+                onClick={() => setBurgerHandle(false)}
+              />
+              <Link
+                to="/"
+                className={
+                  location.pathname === "/" ? "header-menu-clicked" : undefined
+                }
+                onClick={() => setBurgerHandle(false)}
+              >
+                Home
+              </Link>
               <Link
                 onClick={() => setBurgerHandle(false)}
-                to="/login"
+                to="/shop"
                 className={
-                  location.pathname === "/login" ||
-                  location.pathname === "/signup"
-                    ? "header-menu-clicked "
-                    : "header-menu-clicked"
+                  location.pathname === "/shop"
+                    ? "header-menu-clicked"
+                    : undefined
                 }
               >
-                {location.pathname === "/signup" ? "Sign Up" : "Login"}
+                Shop
               </Link>
-            )}
+              <Link
+                onClick={() => setBurgerHandle(false)}
+                to="/trade"
+                className={
+                  location.pathname === "/trade"
+                    ? "header-menu-clicked"
+                    : undefined
+                }
+              >
+                Trade
+              </Link>
+              <Link
+                onClick={() => setBurgerHandle(false)}
+                to="/contact"
+                className={
+                  location.pathname === "/contact"
+                    ? "header-menu-clicked"
+                    : undefined
+                }
+              >
+                Contact
+              </Link>
+              <Link
+                onClick={() => setBurgerHandle(false)}
+                to="/about"
+                className={
+                  location.pathname === "/about"
+                    ? "header-menu-clicked"
+                    : undefined
+                }
+              >
+                About Us
+              </Link>
+              <Link
+                onClick={() => setBurgerHandle(false)}
+                to="/basket"
+                className={
+                  location.pathname === "/basket"
+                    ? "header-menu-clicked"
+                    : undefined
+                }
+              >
+                Basket
+              </Link>
+              {userToken ? (
+                <>
+                  <a onClick={() => handleLogout()}>Logout</a>
+
+                  <Link
+                    onClick={() => setBurgerHandle(false)}
+                    to="/account"
+                    className={
+                      location.pathname === "/account"
+                        ? "header-menu-clicked"
+                        : undefined
+                    }
+                  >
+                    Account
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  onClick={() => setBurgerHandle(false)}
+                  to="/login"
+                  className={
+                    location.pathname === "/login" ||
+                    location.pathname === "/signup"
+                      ? "header-menu-clicked "
+                      : "header-menu-clicked"
+                  }
+                >
+                  {location.pathname === "/signup" ? "Sign Up" : "Login"}
+                </Link>
+              )}
+            </div>
           </div>
         )}
       </div>

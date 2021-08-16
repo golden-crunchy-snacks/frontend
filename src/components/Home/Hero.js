@@ -1,6 +1,6 @@
 // Media
 import logo from "../../assets/img/logo.png";
-import hero from "../../assets/img/hero.png";
+
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -20,7 +20,10 @@ const Hero = () => {
           </Link>
         </div>
         <div className="hero__image">
-          <img src={hero} alt={hero} />
+          <img
+            src="https://res.cloudinary.com/golden-crunchy-snacks/image/upload/v1629126236/golden-crunchy-snacks/Website%20images/hero_l5ffvw.png"
+            alt="Various Assorted Snacks"
+          />
         </div>
         <div className="hero__image__mobile">
           <img src={logo} alt={logo} />

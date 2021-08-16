@@ -252,6 +252,16 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 
+.burger-menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+}
+
 /* SearchBar */
 
 .search-bar-container {
@@ -1197,7 +1207,7 @@ body::-webkit-scrollbar {
   font-weight: 400;
   max-width: 40em;
   color: white;
-  font-weight: 500;
+  font-weight: 400;
 
   line-height: 1.2rem;
 }
@@ -2221,7 +2231,6 @@ body::-webkit-scrollbar {
   }
 
   .hero {
-    margin-top: 2rem;
     height: 100%;
   }
   .hero__container {
@@ -2315,13 +2324,15 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
   }
   .basket-sub-container {
     margin-bottom: 3em;
     width: 100%;
   }
   .total-container {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
   }
 
   .basket-list > img {
@@ -2361,6 +2372,31 @@ body::-webkit-scrollbar {
   .mobile-header-container {
     display: block;
   }
+  .trade__image {
+    display: none;
+  }
+  .trade__text {
+    text-align: center;
+  }
+  .payment {
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+  }
+  .payment-container {
+    position: relative;
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .total-container {
+    margin-bottom: 30px;
+  }
 }
 
 @media (min-width: 501px) {
@@ -2370,8 +2406,42 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 500px) {
+  .about > div {
+    width: 80%;
+  }
+  .shop > :nth-child(1) > h1 {
+    margin-top: 20px;
+    color: white;
+
+    font-size: 1rem;
+  }
+  .shop > :nth-child(1) > div {
+    width: 55%;
+  }
+  .shop > :nth-child(1) {
+    margin-bottom: 10px;
+  }
+  .footer__about {
+    color: #ffffff;
+    letter-spacing: 0.15rem;
+    font-size: 1.2rem;
+  }
+  .footer__links ul {
+    text-align: center;
+    padding-top: 10px;
+  }
+  .footer__description {
+    text-align: center;
+    font-size: 1rem;
+  }
+  .hero {
+    height: fit-content;
+    padding-bottom: 20px;
+  }
   .hero__subheading {
     line-height: 24px;
+    font-size: 1rem;
+    padding-bottom: 2rem;
   }
   .shop__categoriesandlist > div:nth-child(2) > h1 {
     text-align: center;
@@ -2408,13 +2478,28 @@ body::-webkit-scrollbar {
   .shop-categories-container {
     display: none;
   }
+  .hero__heading {
+    font-size: 1.7rem;
+  }
+  .hero__button {
+    font-size: 0.8rem;
+    font-weight: 700;
+    border: solid 2px white;
+    border-radius: 15px;
+    padding: 1em 3em;
+    background-color: #fa4b00;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  .info__heading {
+    font-size: 1.5rem;
+  }
+  .info__description {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 400px) {
-  .hero__heading {
-    font-size: 2rem;
-  }
-
   .shop-categories-container {
     min-width: 8.5em;
   }
