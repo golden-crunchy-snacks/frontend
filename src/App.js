@@ -33,9 +33,8 @@ function App() {
   const [userToken, setUserToken] = useState(null);
   const [userId, setUserId] = useState(null);
 
-
-   // Scroll Animation function usin AOS package
-   useEffect(() => {
+  // Scroll Animation function usin AOS package
+  useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
 
@@ -156,7 +155,7 @@ function App() {
 
   return isLoading ? null : (
     <Router>
-      <Header
+      {/* <Header
         userBasket={userBasket}
         userToken={userToken}
         setTokenAndId={setTokenAndId}
@@ -211,7 +210,7 @@ function App() {
           <Home setBasket={setBasket} userBasket={userBasket} />
         </Route>
       </Switch>
-      <Footer />
+      <Footer /> */}
     </Router>
   );
 }

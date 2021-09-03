@@ -259,6 +259,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
             modalHandle={modalHandle}
             setBasket={setBasket}
             userBasket={userBasket}
+            dataLimit={10}
           />
         </div>
       </div>
