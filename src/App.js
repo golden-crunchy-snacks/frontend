@@ -155,7 +155,7 @@ function App() {
 
   return isLoading ? null : (
     <Router>
-      {/* <Header
+      <Header
         userBasket={userBasket}
         userToken={userToken}
         setTokenAndId={setTokenAndId}
@@ -210,7 +210,7 @@ function App() {
           <Home setBasket={setBasket} userBasket={userBasket} />
         </Route>
       </Switch>
-      <Footer /> */}
+      <Footer />
     </Router>
   );
 }
