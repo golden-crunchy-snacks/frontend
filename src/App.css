@@ -385,7 +385,7 @@ body::-webkit-scrollbar {
 
 .carousel {
   margin: 0 auto;
-  width: 90%;
+  width: 95%;
   max-width: 1440px;
   font-family: "Montserrat", sans-serif;
 }
@@ -468,6 +468,7 @@ body::-webkit-scrollbar {
   border-radius: 10px;
   cursor: pointer;
   z-index: 20;
+  font-size: 12px;
 }
 
 .carousel-article-button:hover {
