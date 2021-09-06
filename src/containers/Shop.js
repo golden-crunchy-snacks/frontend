@@ -8,7 +8,7 @@ import ArticleList from "../components/Shop/ArticleList";
 import ArticleModal from "../components/Shop/ArticleModal";
 import Loader from "../components/Utility/Loader";
 
-const Shop = ({ setBasket, userBasket, cookieBasket }) => {
+const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
   // States
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState(data);
@@ -260,6 +260,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
             setBasket={setBasket}
             userBasket={userBasket}
             dataLimit={10}
+            userType={userType}
           />
         </div>
       </div>
@@ -269,6 +270,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket }) => {
           onX={() => setModal(false)}
           setBasket={setBasket}
           userBasket={userBasket}
+          userType={userType}
         />
       )}
     </div>

@@ -7,7 +7,7 @@ import axios from "axios";
 // Components
 import errorMessages from "../../assets/lang/errorMessages.json";
 
-const Login = ({ setTokenAndId }) => {
+const Login = ({ setTokenAndId, setType }) => {
   const history = useHistory();
 
   // Input content
@@ -28,6 +28,7 @@ const Login = ({ setTokenAndId }) => {
 
       if (response.data.token) {
         setTokenAndId(response.data.token, response.data._id);
+        setType(response.data.type);
         setErrorMessage();
         history.push("/");
       }

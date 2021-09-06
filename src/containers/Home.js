@@ -9,7 +9,7 @@ import Info from "../components/Home/Info";
 import ArticleModal from "../components/Shop/ArticleModal";
 import Loader from "../components/Utility/Loader";
 
-const Home = ({ setBasket, userBasket }) => {
+const Home = ({ setBasket, userBasket, userType }) => {
   // States
   const [modalInfo, setModalInfo] = useState();
   const [modal, setModal] = useState(false);
@@ -43,7 +43,6 @@ const Home = ({ setBasket, userBasket }) => {
   // Filters for carousel
   const haribo = "Haribo Range";
   const biscuits = "Biscuits, Cookies & Wafers";
-  const lollipops = "Lollipops";
   const travel = "Travel Sweets";
   const americanCandy = "American Candy";
 
@@ -59,6 +58,7 @@ const Home = ({ setBasket, userBasket }) => {
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}
+        userType={userType}
       />
       <ArticleCarousel
         data={data}
@@ -67,6 +67,7 @@ const Home = ({ setBasket, userBasket }) => {
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}
+        userType={userType}
       />
       <ArticleCarousel
         data={data}
@@ -75,6 +76,7 @@ const Home = ({ setBasket, userBasket }) => {
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}
+        userType={userType}
       />
       <ArticleCarousel
         data={data}
@@ -83,6 +85,7 @@ const Home = ({ setBasket, userBasket }) => {
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}
+        userType={userType}
       />
       <Info />
       {modal && (
@@ -91,6 +94,7 @@ const Home = ({ setBasket, userBasket }) => {
           onX={() => setModal(false)}
           setBasket={setBasket}
           userBasket={userBasket}
+          userType={userType}
         />
       )}
     </div>

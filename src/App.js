@@ -32,6 +32,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userToken, setUserToken] = useState(null);
   const [userId, setUserId] = useState(null);
+  const [userType, setUserType] = useState(Cookies.get("type") || null);
 
   // Scroll Animation function usin AOS package
   useEffect(() => {
@@ -139,6 +140,16 @@ function App() {
     setUserToken(token);
   };
 
+  // Function for creating or deleting Cookies and State Customer Type:
+  const setType = async (type) => {
+    if (type) {
+      await Cookies.set("type", type);
+    } else {
+      await Cookies.remove("type");
+    }
+    setUserType(type);
+  };
+
   // useEffect for, on app loading, look for cookie token, call the function and stop isLoading
   useEffect(() => {
     const bootstrapAsync = async () => {
@@ -174,6 +185,7 @@ function App() {
             userBasket={userBasket}
             setBasket={setBasket}
             userId={userId}
+            userType={userType}
           />
         </Route>
         <Route path="/basket">
@@ -183,16 +195,17 @@ function App() {
             removeBasketQuantity={removeBasketQuantity}
             removeBasketItem={removeBasketItem}
             userId={userId}
+            userType={userType}
           />
         </Route>
         <Route path="/account">
           <Account setTokenAndId={setTokenAndId} userId={userId} />
         </Route>
         <Route path="/signup">
-          <Signup setTokenAndId={setTokenAndId} />
+          <Signup setTokenAndId={setTokenAndId} setType={setType} />
         </Route>
         <Route path="/login">
-          <Login setTokenAndId={setTokenAndId} />
+          <Login setTokenAndId={setTokenAndId} setType={setType} />
         </Route>
         <Route path="/about">
           <About />
@@ -204,10 +217,18 @@ function App() {
           <Contact />
         </Route>
         <Route path="/shop">
-          <Shop setBasket={setBasket} userBasket={userBasket} />
+          <Shop
+            setBasket={setBasket}
+            userBasket={userBasket}
+            userType={userType}
+          />
         </Route>
         <Route path="/">
-          <Home setBasket={setBasket} userBasket={userBasket} />
+          <Home
+            setBasket={setBasket}
+            userBasket={userBasket}
+            userType={userType}
+          />
         </Route>
       </Switch>
       <Footer />

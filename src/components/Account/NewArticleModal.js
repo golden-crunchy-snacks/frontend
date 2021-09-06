@@ -15,6 +15,7 @@ const NewArticleModal = ({ onX }) => {
   const [picture3, setPicture3] = useState();
   const [picture4, setPicture4] = useState();
   const [price, setPrice] = useState();
+  const [wholeSalePrice, setWholeSalePrice] = useState();
   const [description, setDescription] = useState();
   const [category, setCategory] = useState();
   const [categoryList, setCategoryList] = useState();
@@ -88,6 +89,7 @@ const NewArticleModal = ({ onX }) => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("price", parseFloat(price).toFixed(2));
+      formData.append("wholeSalePrice", parseFloat(wholeSalePrice).toFixed(2));
       formData.append("category", category);
       formData.append("quantity", parseInt(quantity, 10));
       formData.append("picture1", picture1);
@@ -210,6 +212,17 @@ const NewArticleModal = ({ onX }) => {
                         value={price}
                         onChange={(e) => {
                           setPrice(e.target.value);
+                        }}
+                      />
+                    </label>
+                    <label for="wholeSalePrice">
+                      {" "}
+                      <h1>Wholesale Price</h1>{" "}
+                      <input
+                        type="text"
+                        value={wholeSalePrice}
+                        onChange={(e) => {
+                          setWholeSalePrice(e.target.value);
                         }}
                       />
                     </label>

@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 // Components
 import { ImCross } from "react-icons/im";
 
-const ArticleModal = ({ data, onX, setBasket, userBasket }) => {
+const ArticleModal = ({ data, onX, setBasket, userBasket, userType }) => {
   const description = data.description.split("-");
   const [pictures, setPictures] = useState([]);
 
@@ -64,14 +64,22 @@ const ArticleModal = ({ data, onX, setBasket, userBasket }) => {
         </ul>
 
         <h2>Price</h2>
-        <h3>£ {data.price.toFixed(2)}</h3>
+        <h3>
+          £{" "}
+          {userType === "wholesaler"
+            ? data.wholeSalePrice.toFixed(2)
+            : data.price.toFixed(2)}
+        </h3>
         <button
           onClick={() =>
             setBasket({
               id: data._id,
               picture: data.picture,
               title: data.title,
-              price: data.price.toFixed(2),
+              price:
+                userType === "wholesaler"
+                  ? data.wholeSalePrice.toFixed(2)
+                  : data.price.toFixed(2),
               quantity: 1,
             })
           }

@@ -9,6 +9,7 @@ const ArticleCarousel = ({
   setBasket,
   userBasket,
   filter,
+  userType,
 }) => {
   const responsive = {
     desktop: {
@@ -77,7 +78,10 @@ const ArticleCarousel = ({
                   <h1>{article.title}</h1>
                   <div className="carousel-article-body">
                     <h2 className="carousel-article-price">
-                      £ {article.price.toFixed(2)}
+                      £{" "}
+                      {userType === "wholesaler"
+                        ? article.wholeSalePrice.toFixed(2)
+                        : article.price.toFixed(2)}
                     </h2>
                     <button
                       className="carousel-article-button"
@@ -88,7 +92,10 @@ const ArticleCarousel = ({
                             ? article.pictures.picture1
                             : article.picture,
                           title: article.title,
-                          price: article.price.toFixed(2),
+                          price:
+                            userType === "wholesaler"
+                              ? article.wholeSalePrice.toFixed(2)
+                              : article.price.toFixed(2),
                           quantity: 1,
                         })
                       }

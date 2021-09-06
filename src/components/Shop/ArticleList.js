@@ -7,8 +7,8 @@ const ArticleList = ({
   modalHandle,
   setBasket,
   filter2,
-
   dataLimit,
+  userType,
 }) => {
   // Pagination
   // useEffect(() => {
@@ -71,7 +71,12 @@ const ArticleList = ({
               />
               <h1>{article.title}</h1>
               <div className="article-body">
-                <h2 className="article-price">£ {article.price.toFixed(2)}</h2>
+                <h2 className="article-price">
+                  £{" "}
+                  {userType === "wholesaler"
+                    ? article.wholeSalePrice.toFixed(2)
+                    : article.price.toFixed(2)}
+                </h2>
                 <button
                   className="article-button"
                   onClick={() =>
@@ -79,7 +84,10 @@ const ArticleList = ({
                       id: article._id,
                       picture: article.picture,
                       title: article.title,
-                      price: article.price.toFixed(2),
+                      price:
+                        userType === "wholesaler"
+                          ? article.wholeSalePrice.toFixed(2)
+                          : article.price.toFixed(2),
                       quantity: 1,
                     })
                   }
@@ -106,7 +114,12 @@ const ArticleList = ({
               />
               <h1>{article.title}</h1>
               <div className="article-body">
-                <h2 className="article-price">£ {article.price.toFixed(2)}</h2>
+                <h2 className="article-price">
+                  £{" "}
+                  {userType === "wholesaler"
+                    ? article.wholeSalePrice.toFixed(2)
+                    : article.price.toFixed(2)}
+                </h2>
                 <button
                   className="article-button"
                   onClick={() =>
@@ -114,7 +127,10 @@ const ArticleList = ({
                       id: article._id,
                       picture: article.picture,
                       title: article.title,
-                      price: article.price.toFixed(2),
+                      price:
+                        userType === "wholesaler"
+                          ? article.wholeSalePrice.toFixed(2)
+                          : article.price.toFixed(2),
                       quantity: 1,
                     })
                   }
@@ -147,7 +163,10 @@ const ArticleList = ({
                 <h1>{article.title}</h1>
                 <div className="article-body">
                   <h2 className="article-price">
-                    £ {article.price.toFixed(2)}
+                    £{" "}
+                    {userType === "wholesaler"
+                      ? article.wholeSalePrice.toFixed(2)
+                      : article.price.toFixed(2)}
                   </h2>
                   <button
                     className="article-button"
@@ -156,7 +175,10 @@ const ArticleList = ({
                         id: article._id,
                         picture: article.picture,
                         title: article.title,
-                        price: article.price.toFixed(2),
+                        price:
+                          userType === "wholesaler"
+                            ? article.wholeSalePrice.toFixed(2)
+                            : article.price.toFixed(2),
                         quantity: 1,
                       })
                     }

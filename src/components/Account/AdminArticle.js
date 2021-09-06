@@ -21,6 +21,7 @@ const AdminArticle = ({ article }) => {
   );
 
   const [price, setPrice] = useState(article.price);
+  const [wholeSalePrice, setWholeSalePrice] = useState(article.wholeSalePrice);
   const [description, setDescription] = useState(article.description);
   const [subCategory, setSubCategory] = useState(article.subCategory);
   const [subCategoryList, setSubCategoryList] = useState();
@@ -85,6 +86,10 @@ const AdminArticle = ({ article }) => {
         deleteHandle();
         const formData = new FormData();
         formData.append("subCategory", subCategory);
+        formData.append(
+          "wholeSalePrice",
+          parseFloat(wholeSalePrice).toFixed(2)
+        );
         formData.append("title", title);
         formData.append("description", description);
         formData.append("price", parseFloat(price).toFixed(2));
@@ -117,6 +122,10 @@ const AdminArticle = ({ article }) => {
         formData.append("title", title);
         formData.append("description", description);
         formData.append("price", parseFloat(price).toFixed(2));
+        formData.append(
+          "wholeSalePrice",
+          parseFloat(wholeSalePrice).toFixed(2)
+        );
         formData.append("category", category);
         formData.append("subCategory", subCategory);
         formData.append("quantity", parseInt(quantity, 10));
@@ -154,7 +163,7 @@ const AdminArticle = ({ article }) => {
 
       if (response.data.message === "Article removed") {
         setIsLoading(false);
-        alert("Item succesfully deleted");
+        alert("Item succesfully no");
         window.location.reload(false);
       } else {
         alert("There's been a problem deleting this article");
@@ -257,7 +266,6 @@ const AdminArticle = ({ article }) => {
                   className="default-button"
                   onClick={() => setPicturesModal(!picturesModal)}
                 >
-                  {" "}
                   {picturesModal ? "Hide Pictures" : "Change Pictures"}
                 </button>
               </label>
@@ -311,8 +319,7 @@ const AdminArticle = ({ article }) => {
                 </select>
               </label>
               <label htmlFor="quantity">
-                {" "}
-                <h1>Quantity</h1>{" "}
+                <h1>Quantity</h1>
                 <input
                   type="text"
                   value={quantity}
@@ -322,13 +329,22 @@ const AdminArticle = ({ article }) => {
                 />
               </label>
               <label htmlFor="price">
-                {" "}
-                <h1>Price</h1>{" "}
+                <h1>Price</h1>
                 <input
                   type="text"
                   value={price}
                   onChange={(e) => {
                     setPrice(e.target.value);
+                  }}
+                />
+              </label>
+              <label htmlFor="wholeSalePrice">
+                <h1>wholeSalePrice</h1>
+                <input
+                  type="text"
+                  value={wholeSalePrice}
+                  onChange={(e) => {
+                    setWholeSalePrice(e.target.value);
                   }}
                 />
               </label>
@@ -358,15 +374,12 @@ const AdminArticle = ({ article }) => {
         <>
           <div>
             <div>
-              {" "}
               <img src={src1} alt={alt1} />
             </div>
             <div>
-              {" "}
               <img src={src2} alt={alt2} />
             </div>
             <div>
-              {" "}
               <img src={src3} alt={alt3} />
             </div>
             <div>
