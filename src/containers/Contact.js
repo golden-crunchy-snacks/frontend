@@ -11,9 +11,7 @@ const Contact = () => {
           <h1>Company Name:</h1>
           <h2>HF International Marketing Ltd</h2>
           <h1>Registered Address:</h1>
-          <h2>861 Plymouth Road</h2>
-          <h2>Slough SL1 4LP</h2>
-          <h2>Berkshire </h2>
+          <h2>86 Plymouth Road, Slough, Berkshire SL1 4LP </h2>
           <h2>United Kingdom</h2>
           <h1>E-mail:</h1>
           <h2>sales@hfinternationalmarketing.co.uk</h2>

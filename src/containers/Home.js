@@ -45,6 +45,7 @@ const Home = ({ setBasket, userBasket }) => {
   const biscuits = "Biscuits, Cookies & Wafers";
   const lollipops = "Lollipops";
   const travel = "Travel Sweets";
+  const americanCandy = "American Candy";
 
   return isLoading ? (
     <Loader />
@@ -69,8 +70,8 @@ const Home = ({ setBasket, userBasket }) => {
       />
       <ArticleCarousel
         data={data}
-        filter={lollipops}
-        carouselTitle="Best-selling Lollipops"
+        filter={americanCandy}
+        carouselTitle="American Candy"
         modalHandle={modalHandle}
         setBasket={setBasket}
         userBasket={userBasket}

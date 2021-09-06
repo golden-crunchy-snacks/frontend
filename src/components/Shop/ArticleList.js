@@ -53,7 +53,7 @@ const ArticleList = ({
         className="article-list-sub-container
   "
       >
-        {getPaginatedData().map((article, index) => {
+        {data.map((article, index) => {
           return filter.length === 0 ? (
             <div className="article-list" key={index}>
               <img
@@ -169,8 +169,8 @@ const ArticleList = ({
           );
         })}
       </div>
-      <div className="pagination">
-        {/* previous button */}
+      {/* <div className="pagination">
+    
         <button
           onClick={goToPreviousPage}
           className={`prev ${currentPage === 1 ? "disabled" : ""}`}
@@ -178,7 +178,7 @@ const ArticleList = ({
           prev
         </button>
 
-        {/* show page numbers */}
+
         {getPaginationGroup().map((item, index) => (
           <button
             key={index}
@@ -191,14 +191,14 @@ const ArticleList = ({
           </button>
         ))}
 
-        {/* next button */}
+      
         <button
           onClick={goToNextPage}
           className={`next ${currentPage === pages ? "disabled" : ""}`}
         >
           next
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
