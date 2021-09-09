@@ -163,7 +163,7 @@ const AdminArticle = ({ article }) => {
 
       if (response.data.message === "Article removed") {
         setIsLoading(false);
-        alert("Item succesfully no");
+        alert("Item succesfully deleted");
         window.location.reload(false);
       } else {
         alert("There's been a problem deleting this article");

@@ -10,12 +10,13 @@ import Loader from "../components/Utility/Loader";
 
 const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
   // States
+  const [isArticlesLoading, setIsArticlesLoading] = useState(false);
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState(data);
   const [searchValue, setSearchValue] = useState("");
   const [searchVisibility, setSearchVisibility] = useState(false);
   const [modal, setModal] = useState(false);
-  const [filter, setFilter] = useState([]);
+  const [filter, setFilter] = useState("");
   const [filter2, setFilter2] = useState([]);
   const [modalInfo, setModalInfo] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -24,8 +25,6 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
   const [categoriesButtonMessage, setCategoriesButtonMessage] =
     useState("Show Categories");
   const [categoriesModal, setCategoriesModal] = useState(false);
-
-  console.log(filter);
 
   // Get inital articles
   useEffect(() => {
@@ -92,27 +91,79 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
   };
 
   // Category filter function
-  const filterHandle = (e) => {
-    const filterCategory = [...filter];
-    console.log(e.target.name);
-    if (filterCategory.indexOf(e.target.name) === -1) {
-      filterCategory.push(e.target.name);
+  const filterHandle = async (e) => {
+    setIsArticlesLoading(true);
+    const newData = [];
+    if (filter === e.target.name) {
+      setFilter("");
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/articles`
+        );
+        setFilteredData(response.data);
+        setCurrentPage(1);
+        setPageLimit(Math.ceil(response.data.length / dataLimit));
+        setIsArticlesLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     } else {
-      filterCategory.splice(filterCategory.indexOf(e.target.name), 1);
+      setFilter(e.target.name);
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/articles`
+        );
+        for (let i = 0; i < response.data.length; i++) {
+          if (response.data[i].category === e.target.name) {
+            newData.push(response.data[i]);
+          }
+        }
+        setFilteredData(newData);
+        setCurrentPage(1);
+        setPageLimit(Math.ceil(newData.length / dataLimit));
+        setIsArticlesLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-    setFilter(filterCategory);
   };
 
   // Sub-Category filter function
-  const filter2Handle = (e) => {
-    const filterCategory = [...filter2];
-    console.log(e.target.name);
-    if (filterCategory.indexOf(e.target.name) === -1) {
-      filterCategory.push(e.target.name);
+  const filter2Handle = async (e) => {
+    setIsArticlesLoading(true);
+    const newData = [];
+    if (filter2 === e.target.name) {
+      setFilter2("");
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/articles`
+        );
+        setFilteredData(response.data);
+        setCurrentPage(1);
+        setPageLimit(Math.ceil(response.data.length / dataLimit));
+        setIsArticlesLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     } else {
-      filterCategory.splice(filterCategory.indexOf(e.target.name), 1);
+      setFilter2(e.target.name);
+      try {
+        const response = await axios.get(
+          `https://golden-crunchy-snacks.herokuapp.com/articles`
+        );
+        for (let i = 0; i < response.data.length; i++) {
+          if (response.data[i].subCategory === e.target.name) {
+            newData.push(response.data[i]);
+          }
+        }
+        setFilteredData(newData);
+        setCurrentPage(1);
+        setPageLimit(Math.ceil(newData.length / dataLimit));
+        setIsArticlesLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
     }
-    setFilter2(filterCategory);
   };
 
   // Modal Info Handle
@@ -131,6 +182,12 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
       setCategoriesButtonMessage("Show Categories");
     }
   };
+
+  // Pagination
+
+  const [pageLimit, setPageLimit] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const dataLimit = 15;
 
   return isLoading ? (
     <Loader />
@@ -174,6 +231,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
                             onClick={(e) => {
                               filterHandle(e);
                             }}
+                            checked={filter === category.title ? true : false}
                           />
                           <span>{category.title}</span>
                         </label>
@@ -181,7 +239,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
                     })}
                   </form>
                 </div>
-                {filter.length !== 0 && (
+                {filter !== "" && (
                   <div className="categories-modal-container">
                     <h1>SUB-CATEGORIES</h1>
                     <form className="shop-categories">
@@ -195,6 +253,9 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
                                 onClick={(e) => {
                                   filter2Handle(e);
                                 }}
+                                checked={
+                                  filter2 === subCategory.title ? true : false
+                                }
                               />
                               <span>{subCategory.title}</span>
                             </label>
@@ -219,6 +280,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
                       onClick={(e) => {
                         filterHandle(e);
                       }}
+                      checked={filter === category.title ? true : false}
                     />
                     <span>{category.title}</span>
                   </label>
@@ -226,7 +288,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
               })}
             </form>
           </div>
-          {filter.length !== 0 && (
+          {filter !== "" && (
             <div className="shop-categories-container">
               <h1>SUB-CATEGORIES</h1>
               <form className="shop-categories">
@@ -240,6 +302,7 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
                           onClick={(e) => {
                             filter2Handle(e);
                           }}
+                          checked={filter2 === subCategory.title ? true : false}
                         />
                         <span>{subCategory.title}</span>
                       </label>
@@ -259,8 +322,13 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
             modalHandle={modalHandle}
             setBasket={setBasket}
             userBasket={userBasket}
-            dataLimit={10}
+            dataLimit={dataLimit}
             userType={userType}
+            isArticlesLoading={isArticlesLoading}
+            pageLimit={pageLimit}
+            setPageLimit={setPageLimit}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       </div>
