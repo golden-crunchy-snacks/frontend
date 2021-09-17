@@ -85,20 +85,20 @@ const ArticleCarousel = ({
                     </h2>
                     <button
                       className="carousel-article-button"
-                      onClick={() =>
-                        setBasket({
-                          id: article._id,
-                          picture: article.pictures
-                            ? article.pictures.picture1
-                            : article.picture,
-                          title: article.title,
-                          price:
-                            userType === "wholesaler"
-                              ? article.wholeSalePrice.toFixed(2)
-                              : article.price.toFixed(2),
-                          quantity: 1,
-                        })
-                      }
+                      // onClick={() =>
+                      //   setBasket({
+                      //     id: article._id,
+                      //     picture: article.pictures
+                      //       ? article.pictures.picture1
+                      //       : article.picture,
+                      //     title: article.title,
+                      //     price:
+                      //       userType === "wholesaler"
+                      //         ? article.wholeSalePrice.toFixed(2)
+                      //         : article.price.toFixed(2),
+                      //     quantity: 1,
+                      //   })
+                      // }
                     >
                       Add to Cart
                     </button>

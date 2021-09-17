@@ -76,6 +76,8 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
       return data.title.toLowerCase().search(value) !== -1;
     });
     setFilteredData(result);
+    setCurrentPage(1);
+    setPageLimit(Math.ceil(filteredData.length / dataLimit));
   };
 
   // Search Click Handle
@@ -88,6 +90,8 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
       return data.title.toLowerCase().search(value) !== -1;
     });
     setFilteredData(result);
+    setCurrentPage(1);
+    setPageLimit(Math.ceil(filteredData.length / dataLimit));
   };
 
   // Category filter function

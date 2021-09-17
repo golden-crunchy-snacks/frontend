@@ -88,18 +88,18 @@ const ArticleList = ({
                 </h2>
                 <button
                   className="article-button"
-                  onClick={() =>
-                    setBasket({
-                      id: article._id,
-                      picture: article.picture,
-                      title: article.title,
-                      price:
-                        userType === "wholesaler"
-                          ? article.wholeSalePrice.toFixed(2)
-                          : article.price.toFixed(2),
-                      quantity: 1,
-                    })
-                  }
+                  // onClick={() =>
+                  //   setBasket({
+                  //     id: article._id,
+                  //     picture: article.picture,
+                  //     title: article.title,
+                  //     price:
+                  //       userType === "wholesaler"
+                  //         ? article.wholeSalePrice.toFixed(2)
+                  //         : article.price.toFixed(2),
+                  //     quantity: 1,
+                  //   })
+                  // }
                 >
                   Add to Cart
                 </button>
