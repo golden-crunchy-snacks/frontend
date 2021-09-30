@@ -71,18 +71,18 @@ const ArticleModal = ({ data, onX, setBasket, userBasket, userType }) => {
             : data.price.toFixed(2)}
         </h3>
         <button
-        // onClick={() =>
-        //   setBasket({
-        //     id: data._id,
-        //     picture: data.picture,
-        //     title: data.title,
-        //     price:
-        //       userType === "wholesaler"
-        //         ? data.wholeSalePrice.toFixed(2)
-        //         : data.price.toFixed(2),
-        //     quantity: 1,
-        //   })
-        // }
+          onClick={() =>
+            setBasket({
+              id: data._id,
+              picture: data.picture,
+              title: data.title,
+              price:
+                userType === "wholesaler"
+                  ? data.wholeSalePrice.toFixed(2)
+                  : data.price.toFixed(2),
+              quantity: 1,
+            })
+          }
         >
           ADD TO CART
         </button>
