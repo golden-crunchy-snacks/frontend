@@ -1,0 +1,31 @@
+[{
+    "image":"/img/quality.png",
+    "title":"Quality Products",
+    "description": "We are your competent food product supplier with a broad range of products from all segments, with our own recognized brand, complemented by a wide selection of international brands."
+},
+{
+    "image":"/img/customer.png",
+    "title":"Customer Satisfaction",
+    "description": "  Our added value we promise you in handshake quality: Benefit from a variety of product choices, reasonable prices, efficient logistics solutions and quality customer servie. And all of this from just one source!"
+},{
+    "image":"/img/selection.png",
+    "title":"Wide Selection",
+    "description": " Choose from an assortment of our branded products and as well as a wide selection of international brands."
+},
+{
+    "image":"/img/price.png",
+    "title":"Fair Prices",
+    "description": "  You benefit from out clear and transparent pricing. We offer attractive conditions for every customer structure."
+},
+{
+    "image":"/img/delivery.jpg",
+    "title":"Quick Delivery",
+    "description": "  Within just 24 hours of receiving your order, we can send out your delivery. Our streamlined logistics solutions allow us to deliver all around the United Kingdom."
+},
+{
+    "image":"/img/client.jpg",
+    "title":"Client Support",
+    "description": " Our field sales representatives and our competent staff in the office are always happy to help you."
+}
+
+]

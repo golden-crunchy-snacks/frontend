@@ -193,12 +193,11 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const dataLimit = 15;
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <div className="shop">
       <div>
         <h1>What snack are you looking for ?</h1>
+
         <SearchBar
           placeholder="Search..."
           data={filteredData}
@@ -225,48 +224,56 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
                 {" "}
                 <div className="categories-modal-container">
                   <h1>CATEGORIES</h1>
-                  <form className="shop-categories">
-                    {categories.map((category) => {
-                      return (
-                        <label key={category.title}>
-                          <input
-                            type="checkbox"
-                            name={category.title}
-                            onClick={(e) => {
-                              filterHandle(e);
-                            }}
-                            checked={filter === category.title ? true : false}
-                          />
-                          <span>{category.title}</span>
-                        </label>
-                      );
-                    })}
-                  </form>
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    <form className="shop-categories">
+                      {categories.map((category) => {
+                        return (
+                          <label key={category.title}>
+                            <input
+                              type="checkbox"
+                              name={category.title}
+                              onClick={(e) => {
+                                filterHandle(e);
+                              }}
+                              checked={filter === category.title ? true : false}
+                            />
+                            <span>{category.title}</span>
+                          </label>
+                        );
+                      })}
+                    </form>
+                  )}
                 </div>
                 {filter !== "" && (
                   <div className="categories-modal-container">
                     <h1>SUB-CATEGORIES</h1>
-                    <form className="shop-categories">
-                      {subCategories.map((subCategory) => {
-                        return (
-                          filter.indexOf(subCategory.category) !== -1 && (
-                            <label key={subCategory.title}>
-                              <input
-                                type="checkbox"
-                                name={subCategory.title}
-                                onClick={(e) => {
-                                  filter2Handle(e);
-                                }}
-                                checked={
-                                  filter2 === subCategory.title ? true : false
-                                }
-                              />
-                              <span>{subCategory.title}</span>
-                            </label>
-                          )
-                        );
-                      })}
-                    </form>
+                    {isLoading ? (
+                      <Loader />
+                    ) : (
+                      <form className="shop-categories">
+                        {subCategories.map((subCategory) => {
+                          return (
+                            filter.indexOf(subCategory.category) !== -1 && (
+                              <label key={subCategory.title}>
+                                <input
+                                  type="checkbox"
+                                  name={subCategory.title}
+                                  onClick={(e) => {
+                                    filter2Handle(e);
+                                  }}
+                                  checked={
+                                    filter2 === subCategory.title ? true : false
+                                  }
+                                />
+                                <span>{subCategory.title}</span>
+                              </label>
+                            )
+                          );
+                        })}
+                      </form>
+                    )}
                   </div>
                 )}
               </>
@@ -274,66 +281,81 @@ const Shop = ({ setBasket, userBasket, cookieBasket, userType }) => {
           </div>
           <div className="shop-categories-container">
             <h1>CATEGORIES</h1>
-            <form className="shop-categories">
-              {categories.map((category) => {
-                return (
-                  <label key={category.title}>
-                    <input
-                      type="checkbox"
-                      name={category.title}
-                      onClick={(e) => {
-                        filterHandle(e);
-                      }}
-                      checked={filter === category.title ? true : false}
-                    />
-                    <span>{category.title}</span>
-                  </label>
-                );
-              })}
-            </form>
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <form className="shop-categories">
+                {categories.map((category) => {
+                  return (
+                    <label key={category.title}>
+                      <input
+                        type="checkbox"
+                        name={category.title}
+                        onClick={(e) => {
+                          filterHandle(e);
+                        }}
+                        checked={filter === category.title ? true : false}
+                      />
+                      <span>{category.title}</span>
+                    </label>
+                  );
+                })}
+              </form>
+            )}
           </div>
           {filter !== "" && (
             <div className="shop-categories-container">
               <h1>SUB-CATEGORIES</h1>
-              <form className="shop-categories">
-                {subCategories.map((subCategory) => {
-                  return (
-                    filter.indexOf(subCategory.category) !== -1 && (
-                      <label key={subCategory.title}>
-                        <input
-                          type="checkbox"
-                          name={subCategory.title}
-                          onClick={(e) => {
-                            filter2Handle(e);
-                          }}
-                          checked={filter2 === subCategory.title ? true : false}
-                        />
-                        <span>{subCategory.title}</span>
-                      </label>
-                    )
-                  );
-                })}
-              </form>
+              {isLoading ? (
+                <Loader />
+              ) : (
+                <form className="shop-categories">
+                  {subCategories.map((subCategory) => {
+                    return (
+                      filter.indexOf(subCategory.category) !== -1 && (
+                        <label key={subCategory.title}>
+                          <input
+                            type="checkbox"
+                            name={subCategory.title}
+                            onClick={(e) => {
+                              filter2Handle(e);
+                            }}
+                            checked={
+                              filter2 === subCategory.title ? true : false
+                            }
+                          />
+                          <span>{subCategory.title}</span>
+                        </label>
+                      )
+                    );
+                  })}
+                </form>
+              )}
             </div>
           )}
         </div>
+
         <div>
           {/* <h1>Showing {filteredData.length} Results</h1> */}
-          <ArticleList
-            data={filteredData}
-            filter={filter}
-            filter2={filter2}
-            modalHandle={modalHandle}
-            setBasket={setBasket}
-            userBasket={userBasket}
-            dataLimit={dataLimit}
-            userType={userType}
-            isArticlesLoading={isArticlesLoading}
-            pageLimit={pageLimit}
-            setPageLimit={setPageLimit}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <ArticleList
+              data={filteredData}
+              filter={filter}
+              filter2={filter2}
+              modalHandle={modalHandle}
+              setBasket={setBasket}
+              userBasket={userBasket}
+              dataLimit={dataLimit}
+              userType={userType}
+              isArticlesLoading={isArticlesLoading}
+              pageLimit={pageLimit}
+              setPageLimit={setPageLimit}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
         </div>
       </div>
       {modal && (

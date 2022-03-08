@@ -91,7 +91,9 @@ const ArticleList = ({
                   onClick={() =>
                     setBasket({
                       id: article._id,
-                      picture: article.picture,
+                      picture: article.picture
+                        ? article.picture
+                        : article.pictures.picture1,
                       title: article.title,
                       price:
                         userType === "wholesaler"

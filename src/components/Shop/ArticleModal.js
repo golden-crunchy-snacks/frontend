@@ -74,7 +74,7 @@ const ArticleModal = ({ data, onX, setBasket, userBasket, userType }) => {
           onClick={() =>
             setBasket({
               id: data._id,
-              picture: data.picture,
+              picture: data.picture ? data.picture : data.pictures.picture1,
               title: data.title,
               price:
                 userType === "wholesaler"

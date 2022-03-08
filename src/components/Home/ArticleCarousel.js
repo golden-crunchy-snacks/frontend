@@ -41,7 +41,10 @@ const ArticleCarousel = ({
 
   return (
     <div className="carousel">
-      <h1>{carouselTitle}</h1>
+      <div>
+        <h1>{carouselTitle}</h1>
+      </div>
+
       <Carousel
         responsive={responsive}
         infinite={true}

@@ -30,15 +30,18 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
       {/* Desktop Header */}
       <div className="header-container">
         <div className="header-menu">
-          <img
+          {/* <img
             src={logo}
             alt={logo}
             className="header-logo"
             onClick={() => {
               history.push("/");
             }}
-          />
-          <Link
+          /> */}
+          <Link to="/">
+            <h1 className="header-logo">GCS</h1>
+          </Link>
+          {/* <Link
             to="/"
             className={
               location.pathname === "/"
@@ -47,7 +50,7 @@ const Header = ({ userBasket, userToken, setTokenAndId }) => {
             }
           >
             Home
-          </Link>
+          </Link> */}
           <Link
             to="/shop"
             className={

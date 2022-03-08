@@ -77,7 +77,7 @@ const Basket = ({
                       £ {articleTotal(article.price, article.quantity)}
                       <span>
                         {" "}
-                        ({article.quantity} x {article.price})
+                        ({article.quantity} x £{article.price})
                       </span>
                     </h3>
                     <button
@@ -88,7 +88,7 @@ const Basket = ({
                         })
                       }
                     >
-                      X
+                      Remove
                     </button>
                   </div>
                 );
@@ -141,6 +141,14 @@ const Basket = ({
               </>
             )}
           </div>
+        )}
+        {basket.length === 0 && (
+          <button
+            className="basket__zero__button"
+            onClick={() => history.push("/shop")}
+          >
+            Start Shopping
+          </button>
         )}
       </div>
     </div>

@@ -59,18 +59,21 @@ function App() {
           setUserBasket(JSON.stringify(updatedBasket));
           setAlertModal(true);
           setAlertModalMessage(`${basket.title} added to your Basket`);
+          setTimeout(() => setAlertModal(false), 3000);
         } else {
           updatedBasket.push(basket);
           Cookies.set("userBasket", updatedBasket, { expires: 1 });
           setUserBasket(JSON.stringify(updatedBasket));
           setAlertModal(true);
           setAlertModalMessage(`${basket.title} added to your Basket`);
+          setTimeout(() => setAlertModal(false), 3000);
         }
       } else {
         Cookies.set("userBasket", [basket], { expires: 1 });
         setUserBasket(JSON.stringify([basket]));
         setAlertModal(true);
         setAlertModalMessage(`${basket.title} added to your Basket`);
+        setTimeout(() => setAlertModal(false), 3000);
       }
     } else {
       Cookies.remove("userBasket");
@@ -95,6 +98,7 @@ function App() {
         setUserBasket(JSON.stringify(updatedBasket));
         setAlertModal(true);
         setAlertModalMessage(`Removed 1 x ${basket.title} from your Basket`);
+        setTimeout(() => setAlertModal(false), 3000);
       } else {
         updatedBasket.splice(
           [updatedBasket.findIndex((x) => x.title === basket.title)],
@@ -103,6 +107,7 @@ function App() {
         Cookies.set("userBasket", updatedBasket, { expires: 1 });
         setAlertModal(true);
         setAlertModalMessage(`Removed ${basket.title} from your Basket`);
+        setTimeout(() => setAlertModal(false), 3000);
       }
     }
   };
@@ -120,6 +125,7 @@ function App() {
       setUserBasket(JSON.stringify(updatedBasket));
       setAlertModal(true);
       setAlertModalMessage(`Removed ${basket.title} from your Basket`);
+      setTimeout(() => setAlertModal(false), 3000);
     }
   };
 

@@ -8,7 +8,7 @@ const Hero = () => {
     <section className="hero">
       <div className="hero__container">
         <div className="hero__text">
-          <h1 className="hero__heading">Welcome to Golden Crunchy Snacks</h1>
+          <h1 className="hero__heading">Welcome to Golden Crunchy Snacks </h1>
           <h3 className="hero__subheading">
             We make products we can be proud of. We pour heart and soul into
             everything we do, and every pack that leaves our factory is of the

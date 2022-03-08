@@ -46,48 +46,67 @@ const Home = ({ setBasket, userBasket, userType }) => {
   const travel = "Travel Sweets";
   const americanCandy = "American Candy";
 
-  return isLoading ? (
-    <Loader />
-  ) : (
+  return (
     <div className="home">
       <Hero />
-      <ArticleCarousel
-        data={data}
-        filter={haribo}
-        carouselTitle="Your favorite Haribo treats"
-        modalHandle={modalHandle}
-        setBasket={setBasket}
-        userBasket={userBasket}
-        userType={userType}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ArticleCarousel
+          data={data}
+          filter={haribo}
+          carouselTitle="YOUR FAVORITE HARIBO TREATS"
+          modalHandle={modalHandle}
+          setBasket={setBasket}
+          userBasket={userBasket}
+          userType={userType}
+        />
+      )}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ArticleCarousel
+          data={data}
+          filter={biscuits}
+          carouselTitle="BISCUITS, COOKIES & WAFERS"
+          modalHandle={modalHandle}
+          setBasket={setBasket}
+          userBasket={userBasket}
+          userType={userType}
+        />
+      )}
+      <Info text="The Golden Crunchy brand is becoming very popular and growing stronger year by year reaching customers nationally. The company products are all 100% Vegetarian, Halal and manufactured in UK and Europe. The products have the finest ingredients creating superior and rich taste with high quality." />
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ArticleCarousel
+          data={data}
+          filter={americanCandy}
+          carouselTitle="AMERICAN CANDY"
+          modalHandle={modalHandle}
+          setBasket={setBasket}
+          userBasket={userBasket}
+          userType={userType}
+        />
+      )}
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ArticleCarousel
+          data={data}
+          filter={travel}
+          carouselTitle="SWEETS FOR WHEN YOU TRAVEL"
+          modalHandle={modalHandle}
+          setBasket={setBasket}
+          userBasket={userBasket}
+          userType={userType}
+        />
+      )}
+      <Info
+        text="
+We pride ourselves on the breadth of our product range and continually scour the UK, Europe and beyond to bring you that something unique and special that will give you a point of difference."
       />
-      <ArticleCarousel
-        data={data}
-        filter={biscuits}
-        carouselTitle="Biscuits, Cookies & Wafers"
-        modalHandle={modalHandle}
-        setBasket={setBasket}
-        userBasket={userBasket}
-        userType={userType}
-      />
-      <ArticleCarousel
-        data={data}
-        filter={americanCandy}
-        carouselTitle="American Candy"
-        modalHandle={modalHandle}
-        setBasket={setBasket}
-        userBasket={userBasket}
-        userType={userType}
-      />
-      <ArticleCarousel
-        data={data}
-        filter={travel}
-        carouselTitle="Sweets for when you travel"
-        modalHandle={modalHandle}
-        setBasket={setBasket}
-        userBasket={userBasket}
-        userType={userType}
-      />
-      <Info />
       {modal && (
         <ArticleModal
           data={modalInfo}
